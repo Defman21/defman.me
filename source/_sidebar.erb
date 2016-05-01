@@ -1,0 +1,10 @@
+<div class="sidebar">
+    <div class="logo">Defman.me</div>
+    <nav class="items">
+        <% data.pages.each do |id, page| %>
+            <div class="page<%= " current" if current_page.url == page[0] %>" id="<%= id %>">
+                <%= link_to "<i class='fa fa-#{page[2]}'></i> #{page[1]}", page[0] %>
+            </div>
+        <% end %>
+    </nav>
+</div>

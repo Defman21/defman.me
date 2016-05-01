@@ -1,0 +1,5 @@
+{
+    "home": ["/", "Home", "home"],
+    "blog": ["/blog/", "Blog", "rss"],
+    "contact": ["/#contact", "Contact", "reply"]
+}

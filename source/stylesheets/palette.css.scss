@@ -1,0 +1,60 @@
+@import "colors";
+
+$color01: $base08;
+$color02: $base09;
+$color03: $base0A;
+$color04: $base0B;
+$color05: $base0C;
+$color06: $base0D;
+$color07: $base0E;
+$color08: $base0F;
+
+$palette: $color01,
+          $color02,
+          $color03,
+          $color04,
+          $color05,
+          $color06,
+          $color07,
+          $color08;
+
+#palette {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+
+    .color {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        margin: 0.3em;
+        cursor: pointer;
+    }
+    
+    @for $i from 1 through length($palette) {
+        .color#color-0#{$i} {
+            background: nth($palette, $i);
+        }
+    }
+    
+}
+
+.code {
+    background: lighten($background, 2);
+    display: block;
+    padding: 10px;
+    font-family: "Hack", monospace;
+    margin: 20px auto;
+
+    .line {
+        display: block;
+        margin: 0.3em 0;
+        transition: all .1s ease;
+    }
+
+    @for $i from 1 through length($palette) {
+        .line.hover.base-0#{$i} {
+            color: (nth($palette, $i));
+        }
+    }
+}

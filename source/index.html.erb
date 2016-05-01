@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Defman</title>
+    <%= stylesheet_link_tag :index %>
+    <%= stylesheet_link_tag :"font-awesome" %>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">Defman.me</div>
+            <nav>
+                <a id="h-about" href="#about">About me</a>
+                <a id="h-projects" href="#projects">Projects</a>
+                <a id="h-contact" href="#contact">Contact</a>
+                <a id="blog" href="/blog">Blog</a>
+            </nav>
+        </header>
+        <main>
+            <div class="container" id="about">
+                <span class="title">About me</span>
+                <div class="content">
+                    I'm a Web-developer and Software engineer.
+                    I like to learn about new technologies and languages,
+                    but my primary programming languages are:
+                    <ul>
+                        <li>PHP</li>
+                        <li>JavaScript</li>
+                        <li>CSS3</li>
+                        <li>HTML5</li>
+                    </ul>
+                    Being a Software engineer, I'm writing a lot of different
+                    tools for public/private usage.
+                    That saying, I have advanced knowledge in these languages:
+                    <ul>
+                        <li>Python</li>
+                        <li>Ruby</li>
+                        <li>Go</li>
+                    </ul>
+                    Being a Komodo (by ActiveState) contributor, I know some
+                    unpopular and very specific languages like
+                    <ul>
+                        <li>UDL</li>
+                        <li>IDL</li>
+                        <li>XUL</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container" id="projects">
+                <span class="title">Projects</span>
+                <div class="content">
+                    Most of my projects are different things for
+                    <span class="komodoide">
+                        <a href="//komodoide.com" class="nonewline" id="komodoide">Komodo IDE</a>
+                    </span>, like color schemes, add-ons, userscripts (macros),
+                    etc.
+                    In before, I was using elementary OS and I and my
+                    co-workers created a theme for it called "Xenite". You can
+                    find it here:
+                    <a href="//github.com/eOS-themes/Xenite">
+                        <i class="fa fa-github"></i> eOS-themes/Xenite on GitHub
+                    </a>
+                    The rest of my things which I didn't mention above is here:
+                    <a href="//github.com/Defman21">
+                        <i class="fa fa-github"></i> Defman21 on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="container" id="contact">
+                <span class="title">Contact</span>
+                <div class="content">
+                    Want to chat? I stick around there:
+                    <ul nodots>
+                        <% data.contacts.each do |service, data| %>
+                            <li>
+                                <a href="<%= data[1] %><%= data[0] %>">
+                                    <i class="fa fa-<%= data[2] %>"></i> <%= service.capitalize %>
+                                </a>
+                            </li>
+                        <% end %>
+                    </ul>
+                    Choose whatever you want, I'm free around 5PM-8PM UTC.
+                    Outside those hours you may not get an answer at all.
+                </div>
+            </div>
+            <div class="container" id="helpme">
+                <span class="title">Could you help?</span>
+                <div class="content">
+                    If you've found something bad in this page (probably something in the text),
+                    please notify me in Telegram. English is not my native language so I could made
+                    some typos/grammar mistakes on the web-site.
+                </div>
+            </div>
+            <div class="container" id="keys">
+                <span class="title">PGP keys</span>
+                <div class="content">
+                    The list of my PGP keys:
+                    <ul>
+                        <li>0xEEA15EF7 - Sergey Kislyakov &lt;thefyro1@gmail.com&gt;</li>
+                        <li>0xAF9AC46F - Sergey "Defman" Kislyakov &lt;thefyro1@gmail.com&gt;</li>
+                    </ul>
+                    Available on <a href="//keyserver.ubuntu.com:11371">Ubuntu's keyserver.</a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="copyright">
+                defman21.gq &copy; 2016
+                <br>
+                Colors used: <a class="nonewline" href="/materia">Materia</a>
+            </div>
+        </footer>
+    </div>
+    <%= javascript_include_tag :jquery %>
+    <%= javascript_include_tag :scrollTo %>
+    <%= javascript_include_tag :"main.lib" %>
+</body>
+</html>

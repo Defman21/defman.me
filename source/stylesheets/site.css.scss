@@ -1,0 +1,137 @@
+@charset "utf-8";
+@import "normalize";
+
+$background: #EDEDED;
+$foreground: #202020;
+$sidebar: #0D89A8;
+$logo: #fff;
+$logo_size: 1.3rem;
+$sidebar_links: darken($sidebar, 20);
+$sl_size: 0.9rem;
+$blog_size: 1.1rem;
+$blog_ls: 1.5rem;
+
+$blog_item_title_size: 1.3rem;
+
+body {
+    background: $background;
+    color: $foreground;
+    font-family: "Lato", "Helvetica Neue", "PT Sans", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+}
+
+a {
+    color: inherit;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    box-sizing: border-box;
+
+    .sidebar, .content {
+        float: left;
+    }
+}
+
+.sidebar {
+    background: $sidebar;
+    max-width: 270px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+
+    .logo {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 30px 0;
+        background: darken($sidebar, 5);
+        font-size: $logo_size;
+        color: $logo;
+    }
+
+    .items {
+        .page {
+            &.current {
+                background: darken($sidebar, 10);
+
+                a {
+                    color: $logo;
+
+                    &:hover {
+                        background: darken($sidebar, 10);
+                    }
+                }
+            }
+
+            a {
+                display: block;
+                padding: 15px;
+                text-decoration: none;
+                color: $sidebar_links;
+                font-weight: bold;
+                font-size: $sl_size;
+
+                &:hover {
+                    background: lighten($sidebar, 3);
+                }
+            }
+        }
+    }
+}
+
+.content {
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: lighten($background, 3);
+    width: 80%;
+    height: 100%;
+}
+
+.blog-content {
+    font-size: $blog_size;
+    line-height: $blog_ls;
+
+    .title {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: $blog_item_title_size + 1rem;
+    }
+
+    .timestamp {
+        display: block;
+        font-size: 0.8rem;
+        color: lighten($foreground, 30);
+    }
+}
+
+.blog-list {
+    .list-item {
+        padding: 25px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border-bottom: 1px solid darken($background, 5);
+
+        .title {
+            font-weight: bold;
+            text-transform: uppercase;
+
+            a {
+                text-decoration: none;
+                font-size: $blog_item_title_size;
+            }
+        }
+
+        .timestamp {
+            display: block;
+            font-size: 0.8rem;
+            color: lighten($foreground, 30);
+        }
+    }
+}
