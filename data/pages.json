@@ -1,5 +1,6 @@
 {
-    "home": ["/", "Home", "home"],
-    "blog": ["/blog/", "Blog", "rss"],
-    "contact": ["/#contact", "Contact", "reply"]
+    "about me": ["/#about", "About me", "home"],
+    "projects": ["/#projects", "projects", "projects"],
+    "contact": ["/#contact", "Contact", "contact"],
+    "blog": ["/blog/", "Blog", "blog"]
 }

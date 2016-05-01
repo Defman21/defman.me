@@ -1,25 +1,23 @@
 ---
 title: Blog
 ---
-<div class="blog-list">
-    <% sorted = current_page.children.sort_by { |page| page.data.date } .reverse! %>
-    <% sorted.each do |page| %>
-        <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
-        <div class="list-item">
-            <span class="title"><%= link_to page.data.title, page.url %></span>
-            <span class="timestamp">on <%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
-            <p class="description">
-                <%= truncate_with_ellipses page.data.description, 150 %>
-            </p>
+<% sorted = current_page.children.sort_by { |page| page.data.date } .reverse! %>
+<% sorted.each do |page| %>
+    <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
+    <div class="container article" id="<%= page.data.url %>">
+        <span class="title"><%= link_to page.data.title, page.url %></span>
+        <span class="timestamp">on <%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
+        <div class="content">
+            <%= truncate_with_ellipses page.data.description, 150 %>
         </div>
-    <% end %>
-    <% if sorted.length == 0 %>
-        <div class="list-item">
-            <span class="title">There are no articles</span>
-            <span class="timestamp">1970/01/01 00:00</span>
-            <p class="description">
-                :)
-            </p>
+    </div>
+<% end %>
+<% if sorted.length == 0 %>
+    <div class="container" id="no-content">
+        <span class="title">No content</span>
+        <div class="content">
+            There are no content at the moment :(
         </div>
-    <% end %>
-</div>
+    </div>
+<% end %>
+

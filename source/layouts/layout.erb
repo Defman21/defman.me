@@ -9,17 +9,30 @@
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
-    <%= stylesheet_link_tag :site %>
+    <%= stylesheet_link_tag :index %>
     <%= stylesheet_link_tag :"font-awesome" %>
     <%= javascript_include_tag :all %>
   </head>
 
   <body class="<%= page_classes %>">
-    <div class="wrapper">
-        <%= partial "sidebar" %>
-        <div class="content">
+    <div class="wrap">
+        <header>
+            <div class="logo">Defman.me</div>
+            <nav>
+                <%= partial "header" %>
+            </nav>
+        </header>
+        <main>
             <%= yield %>
-        </div>
+        </main>
+        <footer>
+            <div class="copyright">
+                defman.me &copy; 2016
+                <br>
+                Colors used: <a class="nonewline" href="/materia">Materia</a>
+            </div>
+        </footer>
     </div>
   </body>
 </html>
+
