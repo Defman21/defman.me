@@ -4,8 +4,11 @@ page '/*.txt', layout: false
 page "index.html", layout: false
 page "materia.html", layout: false
 
+page 'projects/index.html', layout: :layout
+page 'projects/*', layout: :project
 page 'blog/index.html', layout: :layout
 page 'blog/*', layout: :blog
+
 
 set :index_file, "index.html"
 set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true

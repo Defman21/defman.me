@@ -1,6 +1,6 @@
 {
     "about me": ["/#about", "About me", "home"],
-    "projects": ["/#projects", "projects", "projects"],
     "contact": ["/#contact", "Contact", "contact"],
+    "projects": ["/projects/", "projects", "projects"],
     "blog": ["/blog/", "Blog", "blog"]
 }

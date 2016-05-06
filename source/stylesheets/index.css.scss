@@ -89,7 +89,7 @@ header {
         color: $about;
     }
     
-    a#h-projects:hover, a#projects:hover {
+    a#projects:hover, a#projects.active {
         color: $projects;
     }
 
@@ -134,23 +134,42 @@ header {
     }
 }
 
+code {
+    background: $code;
+    padding: 5px;
+    font-size: 0.9rem;
+    font-family: "Hack", "Source Code Pro", monospace;
+}
+
 main {
     .container {
         @include trsn($transition);
 
-        &.article {
+        &.article, &.project {
             margin: 20px 0;
 
             .title {
                 margin-bottom: 0;
             }
 
-            .timestamp {
+            .timestamp, .language {
                 font-size: 0.7em;
                 display: block;
                 text-transform: uppercase;
                 cursor: default;
                 margin-bottom: 20px;
+            }
+
+            .content {
+                h1, h2, h3, h4, h5, h6 {
+                    font-weight: normal;
+                }
+
+                @for $i from 1 through 6 {
+                    h#{$i} {
+                        font-size: inspect(1.7 - $i/10) + "rem";
+                    }
+                }
             }
         }
 
