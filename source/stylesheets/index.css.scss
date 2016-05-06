@@ -44,6 +44,7 @@ ul {
 .wrap {
     width: $wrap-width;
     margin: 0 auto;
+    padding: 10px;
 }
 
 a {
@@ -104,27 +105,26 @@ header {
 header {
     width: 100%;
     text-transform: uppercase;
+    margin: 20px 0;
 
     .logo, nav {
         display: inline-block;
     }
 
     .logo {
-        margin: 10px;
-        padding: 5px;
-        font-size: 1.3em;
-        margin-left: 0;
+        font-size: 1.2em;
         cursor: default;
         @include trsn($transition);
     }
 
     nav {
         float: right;
+        display: block;
         @include user-select(none);
 
         a {
             display: inline-block;
-            margin: 15px;
+            margin: 0 10px;
             @include trsn($transition);
         }
 
@@ -135,10 +135,7 @@ header {
 }
 
 main {
-    margin: 30px 0;
-
     .container {
-        margin-top: 30px;
         @include trsn($transition);
 
         &.article {
@@ -148,13 +145,11 @@ main {
         }
 
         .title {
-            font-size: 1.3em;
+            font-size: 1.2em;
             display: inline-block;
             text-transform: uppercase;
             cursor: default;
-            margin: 15px 0;
-            margin-top: 0;
-            padding: 5px;
+            margin: 20px 0;
             @include trsn($transition)
         }
 
@@ -163,10 +158,6 @@ main {
             display: block;
             text-transform: uppercase;
             cursor: default;
-        }
-
-        .content {
-            padding: 5px;
         }
     }
 }
@@ -186,15 +177,15 @@ footer {
     }
 }
 
-@media (max-width: 660px) {
+@media (min-width: 490px) and (max-width: 660px) {
     header {
         nav {
             display: block;
             width: 100%;
-            margin-bottom: 20px;
+            margin: 20px 0;
 
             a:first-of-type {
-                margin-left: 5px;
+                margin-left: 0;
             }
         }
     }
@@ -204,15 +195,13 @@ footer {
     header {
         text-align: center;
 
-        .logo {
-            margin: 10px 0;
-            padding: 0;
-        }
-
         nav {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
             a {
                 display: block;
-                margin: 15px 0;
+                margin: 10px 0;
             }
         }
 
