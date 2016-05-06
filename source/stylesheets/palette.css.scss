@@ -40,7 +40,7 @@ $palette: $color01,
 }
 
 .code {
-    background: lighten($background, 2);
+    background: $code;
     display: block;
     padding: 10px;
     font-family: "Hack", monospace;

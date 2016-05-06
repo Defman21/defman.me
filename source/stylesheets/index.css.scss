@@ -47,7 +47,7 @@ ul {
 }
 
 a {
-    color: lighten($highlight, 40);
+    color: $links;
     text-shadow: 0;
     text-decoration: none;
     outline: 0;
@@ -68,25 +68,19 @@ ul[nodots] {
 }
 
 .highlight {
-    background: $highlight;
-}
-
-.hash-about,
-.hash-projects,
-.hash-contact {
-    border-left: 4px solid transparent;
+    color: $highlight;
 }
 
 .hash-about {
-    border-left-color: $about !important;
+    color: $about !important;
 }
 
 .hash-projects {
-    border-left-color: $projects !important;
+    color: $projects !important;
 }
 
 .hash-contact {
-    border-left-color: $contact !important;
+    color: $contact !important;
 }
 
 header {
@@ -116,14 +110,12 @@ header {
     }
 
     .logo {
-        margin: 15px;
+        margin: 10px;
+        padding: 5px;
+        font-size: 1.3em;
         margin-left: 0;
         cursor: default;
         @include trsn($transition);
-        
-        &:hover {
-            background: $highlight;
-        }
     }
 
     nav {
@@ -135,6 +127,10 @@ header {
             margin: 15px;
             @include trsn($transition);
         }
+
+        a:last-of-type {
+            margin-right: 0;
+        }
     }
 }
 
@@ -143,9 +139,6 @@ main {
 
     .container {
         margin-top: 30px;
-        border-left: 2px solid transparent;
-        border-right: 2px solid transparent;
-        padding: 0 10px;
         @include trsn($transition);
 
         &.article {
@@ -155,12 +148,13 @@ main {
         }
 
         .title {
-            font-size: 1.5em;
+            font-size: 1.3em;
             display: inline-block;
             text-transform: uppercase;
             cursor: default;
             margin: 15px 0;
             margin-top: 0;
+            padding: 5px;
             @include trsn($transition)
         }
 
@@ -169,6 +163,10 @@ main {
             display: block;
             text-transform: uppercase;
             cursor: default;
+        }
+
+        .content {
+            padding: 5px;
         }
     }
 }
@@ -182,13 +180,13 @@ footer {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1080px) {
     .wrap {
         width: 95% !important;
     }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 660px) {
     header {
         nav {
             display: block;
@@ -196,7 +194,7 @@ footer {
             margin-bottom: 20px;
 
             a:first-of-type {
-                margin-left: 0;
+                margin-left: 5px;
             }
         }
     }
@@ -206,9 +204,16 @@ footer {
     header {
         text-align: center;
 
-        nav a {
-            display: block;
-            margin-left: 0;
+        .logo {
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        nav {
+            a {
+                display: block;
+                margin: 15px 0;
+            }
         }
 
     }
