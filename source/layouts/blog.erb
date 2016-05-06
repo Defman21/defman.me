@@ -1,9 +1,27 @@
 <% wrap_layout :layout do %>
-    <div class="container" id="<%= current_page.url %>">
-        <span class="title"><%= current_page.data.title %></span>
+    <div class="container article" id="<%= current_page.url %>">
+        <span class="title"><%= current_page.data.id %></span>
         <span class="timestamp">on <% y, m, d, h, min = current_page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %><%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
         <div class="content">
             <%= yield %>
+        </div>
+        <div class="comments">
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "http://defman.me/<%= current_page.url %>";
+                    this.page.identifier = "<%= current_page.data.id %>";
+                };
+                (function() {
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//defman.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         </div>
     </div>
 <% end %>
