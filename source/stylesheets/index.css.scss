@@ -134,11 +134,20 @@ header {
     }
 }
 
-code {
+pre, code.prettyprint {
     background: $code;
-    padding: 5px;
     font-size: 0.9rem;
     font-family: "Hack", "Source Code Pro", monospace;
+    overflow-y: auto;
+    
+    & > code {
+        display: block;
+        padding: 5px;
+    }
+    
+    &.prettyprint {
+        padding: 5px;
+    }
 }
 
 main {
