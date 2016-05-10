@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <title>Sinatra + Rack + Rake + ActiveRecord</title>
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+    <link href="/stylesheets/index.css" rel="stylesheet" />
+    <link href="/stylesheets/font-awesome.css" rel="stylesheet" />
+    <script src="/javascripts/all.js"></script>
+  </head>
+
+  <body class="blog blog_sinatra-app blog_sinatra-app_index">
+    <div class="wrap">
+        <header>
+            <div class="logo">Defman.me</div>
+            <nav>
+                    <a id="home" class="" href="/#about">About me</a>
+    <a id="contact" class="" href="/#contact">Contact</a>
+    <a id="projects" class="" href="/projects/">projects</a>
+    <a id="blog" class="" href="/blog/">Blog</a>
+
+            </nav>
+        </header>
+        <main>
+                <div class="container article" id="201605101630-create-sinatra-app">
+        <span class="title">Sinatra + Rack + Rake + ActiveRecord</span>
+        <span class="timestamp">on 2016/05/10 16:30</span>
+        <div class="content">
+            <p>Building an application with Ruby is pretty interesting (at least for me).
+You can use Rails if you want to do it fast or you can use Sinatra if you&rsquo;re
+interested in building a very lightweight REST API application.</p>
+
+<p>This article should help you create a simple Sinatra RESTFUL application with
+Rack tasks for ActiveRecord and Rake.</p>
+
+<h1>Creating a structure</h1>
+
+<p>In my project, I use this structure for the application:</p>
+
+<pre><code class="prettyprint">.
+├── apps
+│   └── # your applications here
+├── config.ru # Our Rack config
+├── db
+│   ├── config.yml # ActiveRecord database configuration
+│   ├── migrate
+│   │   └── # Migrations
+│   └── schema.rb
+├── environment.db
+├── Gemfile
+├── models
+│   └── # Our ActiveRecord models (Bases) here
+└── Rakefile # Our Rake tasks
+</code></pre>
+
+<p>Moving next!</p>
+
+<h1>Gemfile</h1>
+
+<p>We need <code class="prettyprint">sinatra</code>, <code class="prettyprint">sinatra-contrib</code>, <code class="prettyprint">activerecord</code>, <code class="prettyprint">rake</code>, <code class="prettyprint">rack</code> and
+<code class="prettyprint">logger</code> in our project and <code class="prettyprint">slite3</code> or other driver for database.</p>
+
+<pre><code class="prettyprint">source &#39;https://rubygems.org&#39;
+
+gem &#39;sinatra&#39;
+gem &#39;sinatra-contrib&#39;
+gem &#39;activerecord&#39;
+gem &#39;sqlite3&#39;
+gem &#39;rake&#39;
+gem &#39;rack&#39;
+gem &#39;logger&#39;
+</code></pre>
+
+<p>Run <code class="prettyprint">bundle</code> to install the gems.</p>
+
+<h1>Rakefile</h1>
+
+<p>If you want to use ActiveRecord tasks with Sinatra, you have to configure
+Rackfile. It&rsquo;s not very hard and you don&rsquo;t have to install any extensions
+(like <code class="prettyprint">sinatra-activerecord</code>).</p>
+
+<pre><code class="prettyprint">require &#39;yaml&#39;
+require &#39;logger&#39;
+require &#39;active_record&#39;
+
+include ActiveRecord::Tasks
+
+class Seeder
+  def initialize(seed)
+    @seed = seed
+  end
+
+  def load_seed
+    raise &quot;Seed file &#39;#{@seed}&#39; does not exist&quot; unless File.file? @seed
+    load @seed_file
+  end
+end
+
+
+root = File.expand_path &#39;..&#39;, __FILE__
+DatabaseTasks.env = ENV[&#39;ENV&#39;] || &#39;development&#39;
+conf = File.join root, &#39;db/config.yml&#39;
+DatabaseTasks.database_configuration = YAML.load(File.read(conf))
+DatabaseTasks.db_dir = File.join root, &#39;db&#39;
+DatabaseTasks.fixtures_path = File.join root, &#39;test/fixtures&#39;
+DatabaseTasks.migrations_paths = [File.join(root, &#39;db/migrate&#39;)]
+DatabaseTasks.seed_loader = Seeder.new File.join root, &#39;db/seeds.rb&#39;
+DatabaseTasks.root = root
+
+task :environment do
+  ActiveRecord::Base.configurations = DatabaseTasks.database_configuration
+  ActiveRecord::Base.establish_connection DatabaseTasks.env.to_sym
+end
+
+load &#39;active_record/railties/databases.rake&#39;
+</code></pre>
+
+<p>Now if you run <code class="prettyprint">rake -T</code>, you should get the similar output:</p>
+
+<pre><code class="prettyprint">rake db:create              # Creates the database from DATABASE_URL or con...
+rake db:drop                # Drops the database from DATABASE_URL or confi...
+rake db:fixtures:load       # Load fixtures into the current environment&#39;s ...
+rake db:migrate             # Migrate the database (options: VERSION=x, VER...
+rake db:migrate:status      # Display status of migrations
+rake db:rollback            # Rolls the schema back to the previous version...
+rake db:schema:cache:clear  # Clear a db/schema_cache.dump file
+rake db:schema:cache:dump   # Create a db/schema_cache.dump file
+rake db:schema:dump         # Create a db/schema.rb file that is portable a...
+rake db:schema:load         # Load a schema.rb file into the database
+rake db:seed                # Load the seed data from db/seeds.rb
+rake db:setup               # Create the database, load the schema, and ini...
+rake db:structure:dump      # Dump the database structure to db/structure.sql
+rake db:structure:load      # Recreate the databases from the structure.sql...
+rake db:version             # Retrieves the current schema version number
+</code></pre>
+
+<p>It&rsquo;s truncated to 80 chars, but if you just see <code class="prettyprint">rake db:</code> - then you&rsquo;re good.</p>
+
+<p>Now we should add a config file for our ActiveRecord connection.</p>
+
+<h1>ActiveRecord config file</h1>
+
+<p>It&rsquo;s placed at <code class="prettyprint">db/config.yml</code> and here&rsquo;s how it looks:</p>
+
+<pre><code class="prettyprint">development:
+    adapter: sqlite3
+    database: environment.db
+    pool: 5
+    timeout: 5000
+</code></pre>
+
+<p>For better explanation, you should have a look at the official documentation.</p>
+
+<p>Next we should create migrations for our app.</p>
+
+<h1>Migrations</h1>
+
+<p>In this tutorial, we will create <code class="prettyprint">users</code> table with <code class="prettyprint">001_create_users.rb</code>
+migration placed in <code class="prettyprint">db/migrate/</code>.</p>
+
+<pre><code class="prettyprint">class CreateUsers &lt; ActiveRecord::Migration
+  def up
+    create_table :users do |t|
+      t.string :username
+      t.string :password
+      t.string :email
+    end
+  end
+
+  def down
+    drop_table :users
+  end
+end
+</code></pre>
+
+<p>This code will create the <code class="prettyprint">users</code> table when migrating.</p>
+
+<p>Run <code class="prettyprint">rake db:migrate</code> to execute migrations.</p>
+
+<p>We have prepared everything, so now we&rsquo;re gonna create an application!</p>
+
+<h1>Creating the application</h1>
+
+<p>At first, let&rsquo;s create our Rack file (<code class="prettyprint">config.ru</code>)</p>
+
+<pre><code class="prettyprint">require &#39;sinatra/base&#39;
+require &#39;sinatra/json&#39;
+require &#39;sinatra/reloader&#39;
+
+require &#39;active_record&#39;
+require &#39;yaml&#39;
+require &#39;json&#39;
+
+class BaseApp &lt; Sinatra::Base
+
+  # Register custom extensions
+
+  configure :development do
+    register Sinatra::Reloader
+  end
+
+  # Configure ActiveRecord
+
+  env    = ENV[&#39;ENV&#39;] || &#39;development&#39;
+  root   = File.expand_path &#39;..&#39;, __FILE__
+  config = YAML.load(File.read(File.join(root, &#39;db/config.yml&#39;)))
+
+  ActiveRecord::Base.configurations = config
+  ActiveRecord::Base.establish_connection env.to_sym
+
+  # Create @body variable
+
+  before do
+    if request.content_length.to_i &gt; 0
+      request.body.rewind
+      @body = JSON.parse request.body.read, symbolize_names: true
+    end
+  end
+end
+
+Dir.glob(&quot;./models/*.rb&quot;).sort.each do |file|
+  require file
+end
+
+Dir.glob(&quot;./apps/*.rb&quot;).sort.each do |file|
+  require file
+end
+
+map &quot;/&quot; do
+  run RootApp
+end
+</code></pre>
+
+<p>So, what&rsquo;s going on there?</p>
+
+<ol>
+<li>At first, we require our dependencies.</li>
+<li>We create a new instance of <code class="prettyprint">Sinatra::Base</code>, which contains some settings
+and ActiveRecord connection initialization which our <code class="prettyprint">apps/</code> uses.</li>
+<li>Next, because we&rsquo;re creating a RESTFUL API, we should accept request body
+and parse it. This is the <code class="prettyprint">before</code> block, which invokes by Sinatra before the
+active route. (so if an user call <code class="prettyprint">/route</code>, Sinatra executes <code class="prettyprint">before</code> and
+then the route).</li>
+<li><code class="prettyprint">Dir.glob</code> loads our models and apps. Models are loading first because
+Apps depends on them.</li>
+<li><code class="prettyprint">map</code> is some sort of namespaces, we could add more <code class="prettyprint">map</code> to run different
+apps on these urls, so if you add <code class="prettyprint">map &#39;/users/ do ... end</code>, Rack will run the
+code defined in the block for <code class="prettyprint">/users/*</code> url.</li>
+</ol>
+
+<p>In the code, <code class="prettyprint">map</code> binds <code class="prettyprint">/</code> to run RootApp. Let&rsquo;s take a look how <code class="prettyprint">RootApp</code>
+looks.</p>
+
+<p><strong>Path:</strong> <code class="prettyprint">apps/root.rb</code></p>
+
+<pre><code class="prettyprint">class RootApp &lt; BaseApp
+  get &quot;/&quot; do
+    @user = User.find_by id: @body[:id]
+    if @user
+      json response: {
+        status: :ok,
+        errors: [],
+        data: @user,
+        request: params,
+        redirect: nil
+      }
+    else
+      json response: {
+        status: :fail,
+        errors: [
+          &quot;User #{params[:id]} does not exist&quot;
+        ],
+        data: [],
+        request: params,
+        redirect: nil
+      }
+    end
+  end
+
+  post &#39;/&#39; do
+    @user = User.create username: @body[:username],
+                        password: @body[:password],
+                        email: @body[:email]
+    if @user.valid?
+      json response: {
+        status: :ok,
+        errors: [],
+        data: @user,
+        request: @body,
+        redirect: &quot;/#{@user.id}&quot;
+      }
+    else
+      json response: {
+        status: :fail,
+        errors: @user.errors,
+        data: [],
+        request: @body,
+        redirect: &quot;/&quot;
+      }
+    end
+  end
+end
+</code></pre>
+
+<p>class <code class="prettyprint">RootApp</code> extends <code class="prettyprint">BaseApp</code>, so we don&rsquo;t have to re-initialize
+ActiveRecord connection and register extensions again.</p>
+
+<p><code class="prettyprint">get</code> and <code class="prettyprint">post</code> methods are bindings for <code class="prettyprint">GET /</code> and <code class="prettyprint">POST /</code> requests.</p>
+
+<p><code class="prettyprint">get</code> Accepts JSON body with <code class="prettyprint">id</code> parameter in it and it&rsquo;s using ActiveRecord
+to find the user by ID. If user with this ID does not exist, we response with
+JSON contains <code class="prettyprint">errors</code> key, but if it does exist, we just return the data.</p>
+
+<p><code class="prettyprint">post</code> uses the same ideology as <code class="prettyprint">get</code> for responding, but in this method
+we&rsquo;re creating a new User instance using ActiveRecord::Base class (<code class="prettyprint">User</code>).</p>
+
+<p>Let&rsquo;s take a look at it!</p>
+
+<p><strong>Path:</strong> <code class="prettyprint">models/user.rb</code></p>
+
+<pre><code class="prettyprint">class User &lt; ActiveRecord::Base
+  validates :username, length: {
+    minimum: 6,
+    maximum: 35,
+  }, uniqueness: true
+
+  validates :password, format: {
+    with: /\A[a-zA-Z0-9!@#\$%^&amp;\(\)]+\z/,
+    message: &quot;only allows a-z, 0-9 and !@#$%^&amp;*()&quot;
+  }
+end
+</code></pre>
+
+<p>As you can see, there are no new methods defined, but I&rsquo;ve
+added some validations:</p>
+
+<ol>
+<li>Username should have 6-35 characters and be unique.</li>
+<li>Password should contain only a-z, 0-9 and !@#$%^&amp;*().</li>
+</ol>
+
+<p>You can add validation for <code class="prettyprint">:email</code> field as well, but the best
+validation for e-mail is sending a mail to it with a confirmation link.</p>
+
+<p>And&hellip; we&rsquo;re done! Now you should able to run your application with
+<code class="prettyprint">rackup -p 3000</code>.</p>
+
+<ul>
+<li>To create an user, send POST request to <code class="prettyprint">localhost:3000/</code> with credentials.</li>
+<li>To view an user, send GET request to <code class="prettyprint">localhost:3000/</code> with ID of the user.</li>
+</ul>
+
+<p>You could try to send invalid data or non-existent ID to see if it works
+(it should give you a JSON response contains <code class="prettyprint">errors</code> key with some data
+inside and the empty <code class="prettyprint">data</code> array).</p>
+
+<p>If you have any questions, feel free to ask them in the comments!</p>
+
+        </div>
+            <div class="comments">
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        this.page.url = "http://defman.me//blog/sinatra-app/";
+                        this.page.identifier = "201605101630-create-sinatra-app";
+                    };
+                    (function() {
+                        var d = document, s = d.createElement('script');
+    
+                        s.src = '//defman.disqus.com/embed.js';
+    
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+    </div>
+
+        </main>
+        <footer>
+            <div class="copyright">
+                defman.me &copy; 2016
+                <br>
+                Colors used: <a class="nonewline" href="/materia">Materia</a>
+            </div>
+        </footer>
+    </div>
+  </body>
+</html>
+
