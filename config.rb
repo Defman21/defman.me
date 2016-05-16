@@ -6,6 +6,8 @@ page "materia.html", layout: false
 
 page 'projects/index.html', layout: :layout
 page 'projects/*', layout: :project
+page 'schemes/index.html', layout: :layout
+page 'schemes/*', layout: :scheme
 page 'blog/index.html', layout: :layout
 page 'blog/*', layout: :blog
 

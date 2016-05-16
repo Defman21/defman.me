@@ -1,0 +1,12 @@
+---
+title: Defman - Schemes
+---
+<% current_page.children.each do |page| %>
+    <div class="container scheme" id="<%= page.data.scheme.id %>">
+        <span class="title"><%= link_to page.data.scheme.name, page.url %></span>
+        <span class="comp">for Komodo <%= page.data.scheme.comp %></span>
+        <div class="content">
+            <%= truncate_with_ellipses page.data.description, 150 %>
+        </div>
+    </div>
+<% end %>

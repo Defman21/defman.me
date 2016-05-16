@@ -92,6 +92,10 @@ header {
     a#projects:hover, a#projects.active {
         color: $projects;
     }
+    
+    a#schemes:hover, a#schemes.active {
+        color: $schemes;
+    }
 
     a#h-contact:hover, a#contact:hover {
         color: $contact;
@@ -154,14 +158,14 @@ main {
     .container {
         @include trsn($transition);
 
-        &.article, &.project {
+        &.article, &.project, &.scheme {
             margin: 20px 0;
 
             .title {
                 margin-bottom: 0;
             }
 
-            .timestamp, .language {
+            .timestamp, .language, .comp {
                 font-size: 0.7em;
                 display: block;
                 text-transform: uppercase;
@@ -178,6 +182,10 @@ main {
                     h#{$i} {
                         font-size: inspect(1.7 - $i/10) + "rem";
                     }
+                }
+                
+                a {
+                    display: inline-block;
                 }
             }
         }

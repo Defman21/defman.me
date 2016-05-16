@@ -1,0 +1,13 @@
+<% wrap_layout :layout do %>
+    <div class="container scheme" id="<%= current_page.data.scheme.id %>">
+        <span class="title"><%= current_page.data.scheme.name %></span>
+        <span class="comp">for Komodo <%= current_page.data.scheme.comp %></span>
+        <div class="content">
+            <%= yield %>
+        </div>
+        <div class="links">
+            <a class="github" href="//github.com/Defman21/<%= current_page.data.scheme.repo %>"><i class="fa fa-github"></i>
+            Defman21/<%= current_page.data.scheme.repo %> on GitHub</a>
+        </div>
+    </div>
+<% end %>
