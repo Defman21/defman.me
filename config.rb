@@ -1,7 +1,6 @@
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
-page "index.html", layout: false
 page "materia.html", layout: false
 
 page 'projects/index.html', layout: :layout

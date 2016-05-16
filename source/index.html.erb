@@ -1,82 +1,52 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <title>Defman</title>
-    <%= stylesheet_link_tag :index %>
-    <%= stylesheet_link_tag :"font-awesome" %>
-</head>
-<body>
-    <div class="wrap">
-        <header>
-            <div class="logo"><a href="/">Defman.me</a></div>
-            <nav>
-                <a id="h-about" href="#about">About me</a>
-                <a id="h-contact" href="#contact">Contact</a>
-                <a id="projects" href="/projects">Projects</a>
-                <a id="blog" href="/blog">Blog</a>
-            </nav>
-        </header>
-        <main>
-            <div class="container" id="about">
-                <span class="title">About me</span>
-                <div class="content">
-                    I'm a Web-developer and Software engineer.
-                    I like to learn about new technologies and languages,
-                    and this is what I know perfectly:
-                    <ul>
-                        <li>Ruby</li>
-                        <li>PHP</li>
-                        <li>JavaScript</li>
-                        <li>CoffeeScript</li>
-                        <li>CSS3</li>
-                        <li>HTML5</li>
-                    </ul>
-                    Being a Software engineer, I write different CLI tools in these languages:
-                    <ul>
-                        <li>Python</li>
-                        <li>Ruby</li>
-                    </ul>
+---
+title: Defman
+layout: layout
+js: on
+---
+<div class="container" id="about">
+    <span class="title">About me</span>
+    <div class="content">
+        I'm a Web-developer and Software engineer.
+        I like to learn about new technologies and languages,
+        and this is what I know perfectly:
+        <ul>
+            <li>Ruby</li>
+            <li>PHP</li>
+            <li>JavaScript</li>
+            <li>CoffeeScript</li>
+            <li>CSS3</li>
+            <li>HTML5</li>
+        </ul>
+        Being a Software engineer, I write different CLI tools in these languages:
+        <ul>
+            <li>Python</li>
+            <li>Ruby</li>
+        </ul>
 
-                    Being a Komodo (by ActiveState) contributor, I know some
-                    unpopular and very specific languages like:
-                    <ul>
-                        <li>UDL</li>
-                        <li>IDL</li>
-                        <li>XUL</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="container" id="contact">
-                <span class="title">Contact</span>
-                <div class="content">
-                    Want to chat? I stick around there:
-                    <ul nodots>
-                        <% data.contacts.each do |service, data| %>
-                            <li>
-                                <a href="<%= data[1] %><%= data[0] %>">
-                                    <i class="fa fa-<%= data[2] %>"></i> <%= service.capitalize %>
-                                </a>
-                            </li>
-                        <% end %>
-                    </ul>
-                    Choose whatever you want, I'm free around 5PM-8PM UTC.
-                    Outside those hours you may not get an answer at all.
-                </div>
-            </div>
-        </main>
-        <footer>
-            <div class="copyright">
-                defman.me &copy; 2016
-                <br>
-                Colors used: <a class="nonewline" href="/materia">Materia</a>
-            </div>
-        </footer>
+        Being a Komodo (by ActiveState) contributor, I know some
+        unpopular and very specific languages like:
+        <ul>
+            <li>UDL</li>
+            <li>IDL</li>
+            <li>XUL</li>
+        </ul>
     </div>
-    <%= javascript_include_tag :jquery %>
-    <%= javascript_include_tag :scrollTo %>
-    <%= javascript_include_tag :"main.lib" %>
-</body>
-</html>
+</div>
+<div class="container" id="contact">
+    <span class="title">Contact</span>
+    <div class="content">
+        Want to chat? I stick around there:
+        <ul nodots>
+            <% data.contacts.each do |service, data| %>
+                <li>
+                    <a href="<%= data[1] %><%= data[0] %>">
+                        <i class="fa fa-<%= data[2] %>"></i> <%= service.capitalize %>
+                    </a>
+                </li>
+            <% end %>
+        </ul>
+        Choose whatever you want, I'm free around 5PM-8PM UTC.
+        Outside those hours you may not get an answer at all.
+    </div>
+</div>
+

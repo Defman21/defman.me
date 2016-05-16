@@ -11,7 +11,6 @@
 
     <%= stylesheet_link_tag :index %>
     <%= stylesheet_link_tag :"font-awesome" %>
-    <%= javascript_include_tag :all %>
   </head>
 
   <body class="<%= page_classes %>">
@@ -33,6 +32,11 @@
             </div>
         </footer>
     </div>
+    <% if current_page.data.js %>
+        <%= javascript_include_tag :jquery %>
+        <%= javascript_include_tag :scrollTo %>
+        <%= javascript_include_tag :"main.lib" %>
+    <% end %>
   </body>
 </html>
 
