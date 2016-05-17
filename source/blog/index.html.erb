@@ -6,7 +6,7 @@ title: Defman - Blog
     <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
     <div class="container article" id="<%= page.data.url %>">
         <span class="title"><%= link_to page.data.title, page.url %></span>
-        <span class="timestamp">on <%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
+        <span class="timestamp"><i class="fa fa-clock-o"></i> <%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
         <div class="content">
             <%= truncate_with_ellipses page.data.description, 150 %>
         </div>

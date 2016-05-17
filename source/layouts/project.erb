@@ -1,13 +1,17 @@
 <% wrap_layout :layout do %>
     <div class="container project" id="<%= current_page.data.project.id %>">
         <span class="title"><%= current_page.data.project.name %></span>
-        <span class="language">Written in <%= current_page.data.project.lang %></span>
+        <span class="language"><%= current_page.data.project.lang %></span>
         <div class="content">
             <%= yield %>
         </div>
         <div class="links">
-            <a class="github" href="//github.com/Defman21/<%= current_page.data.project.repo %>"><i class="fa fa-github"></i>
-            Defman21/<%= current_page.data.project.repo %> on GitHub</a>
+            <p>
+                <a class="github" href="//github.com/Defman21/<%= current_page.data.project.repo %>"><i class="fa fa-github"></i> Source code</a>
+            </p>
+            <p>
+                <a class="github" href="//github.com/Defman21/<%= current_page.data.project.repo %>/releases/latest"><i class="fa fa-github"></i> Latest release</a>
+            </p>
         </div>
     </div>
 <% end %>

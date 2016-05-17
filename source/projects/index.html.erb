@@ -4,7 +4,7 @@ title: Defman - Projects
 <% current_page.children.each do |page| %>
     <div class="container project" id="<%= page.data.project.id %>">
         <span class="title"><%= link_to page.data.project.name, page.url %></span>
-        <span class="language">written in <%= page.data.project.lang %></span>
+        <span class="language"><%= page.data.project.lang %></span>
         <div class="content">
             <%= truncate_with_ellipses page.data.description, 150 %>
         </div>

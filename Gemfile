@@ -12,6 +12,6 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'middleman', '>= 4.0.0'
 gem 'middleman-livereload', '~> 3.4.3'
 gem 'middleman-deploy', github: 'middleman-contrib/middleman-deploy', branch: 'master'
-gem 'middleman-ellipses', path: './middleman-ellipses'
+gem 'defman-me', path: './defman-me'
 gem 'redcarpet', '~> 3.3.4'
 gem 'therubyracer'

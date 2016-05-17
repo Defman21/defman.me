@@ -1,6 +1,4 @@
 {
-    "about me": ["/#about", "About me", "home", "hash-href"],
-    "contact": ["/#contact", "Contact", "contact", "hash-href"],
     "projects": ["/projects/", "projects", "projects"],
     "schemes": ["/schemes/", "schemes", "schemes"],
     "blog": ["/blog/", "Blog", "blog"]

@@ -2,14 +2,14 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "middleman-ellipses"
+  s.name        = "defman-me"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Sergey Kislyakov"]
   s.email       = ["thefyro1@gmail.com"]
   s.homepage    = "http://defman.me"
-  s.summary     = "Truncates long string with ..."
-  s.description = "Truncates long string with ..."
+  s.summary     = "Defman.me helpers"
+  s.description = "Defman.me helpers"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

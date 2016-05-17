@@ -34,11 +34,13 @@ ul {
 }
 
 ::selection {
-    background: $selection;
+    background: $selection-bg;
+    color: $selection-fg;
 }
 
 ::-moz-selection {
-    background: $selection;
+    background: $selection-bg;
+    color: $selection-fg;
 }
 
 .wrap {
@@ -54,13 +56,8 @@ a {
     outline: 0;
     @include trsn($transition);
 
-    &:hover {
+    &:hover, &.active {
         color: $highlight;
-    }
-
-    &:not(.nonewline):after {
-        content: "";
-        display: block;
     }
 }
 
@@ -70,40 +67,6 @@ ul[nodots] {
 
 .highlight {
     color: $highlight;
-}
-
-.hash-about {
-    color: $about !important;
-}
-
-.hash-projects {
-    color: $projects !important;
-}
-
-.hash-contact {
-    color: $contact !important;
-}
-
-header {
-    a#h-about:hover, a#home:hover {
-        color: $about;
-    }
-    
-    a#projects:hover, a#projects.active {
-        color: $projects;
-    }
-    
-    a#schemes:hover, a#schemes.active {
-        color: $schemes;
-    }
-
-    a#h-contact:hover, a#contact:hover {
-        color: $contact;
-    }
-
-    a#blog:hover, a#blog.active {
-        color: $blog;
-    }
 }
 
 header {
@@ -156,39 +119,7 @@ pre, code.prettyprint {
 
 main {
     .container {
-        @include trsn($transition);
-
-        &.article, &.project, &.scheme {
-            margin: 20px 0;
-
-            .title {
-                margin-bottom: 0;
-            }
-
-            .timestamp, .language, .comp {
-                font-size: 0.7em;
-                display: block;
-                text-transform: uppercase;
-                cursor: default;
-                margin-bottom: 20px;
-            }
-
-            .content {
-                h1, h2, h3, h4, h5, h6 {
-                    font-weight: normal;
-                }
-
-                @for $i from 1 through 6 {
-                    h#{$i} {
-                        font-size: inspect(1.7 - $i/10) + "rem";
-                    }
-                }
-                
-                a {
-                    display: inline-block;
-                }
-            }
-        }
+        margin: 20px 0;
 
         .title {
             font-size: 1.2em;
@@ -196,10 +127,30 @@ main {
             text-transform: uppercase;
             cursor: default;
             margin: 20px 0;
-            @include trsn($transition)
+            margin-bottom: 0;
+            @include trsn($transition);
         }
 
-        
+        .timestamp, .language, .comp {
+            font-size: 0.7em;
+            display: block;
+            text-transform: uppercase;
+            cursor: default;
+            margin-bottom: 20px;
+            color: $subtext;
+        }
+
+        .content {
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: normal;
+            }
+
+            @for $i from 1 through 6 {
+                h#{$i} {
+                    font-size: inspect(1.7 - $i/10) + "rem";
+                }
+            }           
+        }
     }
 }
 

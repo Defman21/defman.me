@@ -27,4 +27,4 @@ end
 
 activate :livereload
 activate :directory_indexes
-activate :ellipses
+activate :defmanme

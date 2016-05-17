@@ -9,9 +9,9 @@ GIT
       ptools
 
 PATH
-  remote: ./middleman-ellipses
+  remote: ./defman-me
   specs:
-    middleman-ellipses (0.0.1)
+    defman-me (0.0.1)
       middleman-core (>= 4.1.7)
 
 GEM
@@ -145,9 +145,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  defman-me!
   middleman (>= 4.0.0)
   middleman-deploy!
-  middleman-ellipses!
   middleman-livereload (~> 3.4.3)
   redcarpet (~> 3.3.4)
   therubyracer

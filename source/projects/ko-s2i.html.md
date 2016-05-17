@@ -33,11 +33,10 @@ git clone https://github.com/Defman21/komodo-scheme-to-interface
 ## Usage
 
 ```bash
-ruby ./main.rb
+./main.rb
 ```
 
 ## Note
 
-Font size should be set with font size type (`pt`, `em`, `rem` or others),
-like `10pt`, `1rem`, `1em`.
+Font size should be like `10pt`, `1rem` or `1em`.
 
