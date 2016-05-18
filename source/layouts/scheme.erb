@@ -12,6 +12,10 @@
             <p>
                 <a class="github" href="//github.com/Defman21/<%= current_page.data.scheme.repo %>/releases/latest"><i class="fa fa-github"></i> Latest release</a>
             </p>
+            <p>
+                <a class="package" href="//komodoide.com/packages/schemes/<%= current_page.data.scheme.id %>"><i class="fa fa-download"></i> Package</a>
+            </p>
+            <%= partial "_links" %>
         </div>
     </div>
 <% end %>

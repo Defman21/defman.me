@@ -1,0 +1,13 @@
+<% if current_page.data.links %>
+    <% current_page.data.links.each do |link| %>
+        <%
+            name = link[0]
+            link = link[1]
+        %>
+        <p>
+            <a href="<%= link.href %>" class="external-link">
+                <i class="fa fa-<%= link.fa || 'link' %>"></i> <%= name %>
+            </a>
+        </p>
+    <% end %>
+<% end %>

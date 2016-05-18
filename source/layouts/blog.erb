@@ -5,6 +5,9 @@
         <div class="content">
             <%= yield %>
         </div>
+        <div class="links">
+            <%= partial "_links" %>
+        </div>
         <% if current_page.data.comments %>
             <div class="comments">
                 <div id="disqus_thread"></div>

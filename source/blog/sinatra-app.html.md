@@ -4,6 +4,10 @@ description: How to build an application with Sinatra, Rack and ActiveRecord?
 date: 201605101630
 id: 201605101630-create-sinatra-app
 comments: on
+links:
+    Simple Sinatra App:
+        href: //github.com/Defman21/simple-sinatra-app
+        fa: github
 ---
 
 Building an application with Ruby is pretty interesting (at least for me).
@@ -129,7 +133,7 @@ It's placed at `db/config.yml` and here's how it looks:
 ```
 development:
     adapter: sqlite3
-    database: environment.db
+    database: development.db
     pool: 5
     timeout: 5000
 ```
