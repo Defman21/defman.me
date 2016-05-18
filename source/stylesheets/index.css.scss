@@ -23,8 +23,8 @@ $wrap-width: 60%;
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
 body {
-    font: 1.2em "Lato", "Source Sans Pro", sans-serif;
-    line-height: 1.5em;
+    font: 1.2rem "Lato", "Source Sans Pro", sans-serif;
+    line-height: 1.8rem;
     background: $background;
     color: $foreground;
 }
@@ -78,7 +78,7 @@ header {
     }
 
     .logo {
-        font-size: 1.2em;
+        font-size: 1.5rem;
         cursor: default;
     }
 
@@ -118,13 +118,13 @@ main {
     z-index: 2;
     background: $background;
     position: relative;
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     
     .container {
         margin: 20px 0;
 
         .title {
-            font-size: 1.2em;
+            font-size: 1.5rem;
             display: inline-block;
             text-transform: uppercase;
             cursor: default;
@@ -133,11 +133,13 @@ main {
         }
 
         .timestamp, .language, .comp {
-            font-size: 0.7em;
+            font-size: 0.7rem;
             display: block;
+            line-height: 1.1rem;
             text-transform: uppercase;
             cursor: default;
             color: $subtext;
+            margin-bottom: 5px;
         }
 
         .content {
@@ -158,14 +160,14 @@ footer {
     display: block;
     position: fixed;
     width: inherit;
-    bottom: 0;
+    bottom: 20px;
     z-index: 1;
     
     .copyright {
         text-align: center;
         text-transform: uppercase;
         color: $base03;
-        font-size: 0.7em;
+        font-size: 0.7rem;
     }
 }
 
