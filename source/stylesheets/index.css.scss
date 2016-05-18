@@ -115,6 +115,11 @@ pre, code.prettyprint {
 }
 
 main {
+    z-index: 2;
+    background: $background;
+    position: relative;
+    margin-bottom: 100px;
+    
     .container {
         margin: 20px 0;
 
@@ -132,7 +137,6 @@ main {
             display: block;
             text-transform: uppercase;
             cursor: default;
-            margin-bottom: 20px;
             color: $subtext;
         }
 
@@ -151,6 +155,12 @@ main {
 }
 
 footer {
+    display: block;
+    position: fixed;
+    width: inherit;
+    bottom: 0;
+    z-index: 1;
+    
     .copyright {
         text-align: center;
         text-transform: uppercase;
