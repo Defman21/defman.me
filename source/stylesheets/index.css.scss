@@ -46,7 +46,6 @@ ul {
 .wrap {
     width: $wrap-width;
     margin: 0 auto;
-    padding: 10px;
 }
 
 a {
@@ -66,6 +65,13 @@ ul[nodots] {
 
 .highlight {
     color: $highlight;
+}
+
+header, main {
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 header {
@@ -119,6 +125,7 @@ main {
     background: $background;
     position: relative;
     margin-bottom: 120px;
+    box-sizing: border-box;
     
     .container {
         margin: 20px 0;
@@ -128,8 +135,6 @@ main {
             display: inline-block;
             text-transform: uppercase;
             cursor: default;
-            margin: 20px 0;
-            margin-bottom: 0;
         }
 
         .timestamp, .language, .comp {
@@ -160,8 +165,10 @@ footer {
     display: block;
     position: fixed;
     width: inherit;
-    bottom: 20px;
+    padding: 10px 0;
+    bottom: 0;
     z-index: 1;
+    background: darken($background, 1);
     
     .copyright {
         text-align: center;
@@ -173,18 +180,22 @@ footer {
 
 @media (max-width: 980px) {
     .wrap {
-        width: 95% !important;
+        width: 100% !important;
+        padding: 0;
     }
 }
 
 @media (max-width: 490px) {
     header {
         text-align: center;
+        display: block;
 
         nav {
             display: block;
             width: 100%;
             margin: 10px 0;
+            float: none;
+            
             a {
                 display: block;
                 margin: 10px 0;
