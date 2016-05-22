@@ -5,9 +5,7 @@ js: yes
 extra:
     - search
 ---
-<input id="search" placeholder="Search..."></input>
-<div id="search-result">
-</div>
+<%= partial "search", :locals => {:file => "schemes"} %>
 <% current_page.children.each do |page| %>
     <div class="container scheme" id="<%= page.data.scheme.id %>">
         <span class="title"><%= link_to page.data.scheme.name, page.url %></span>
@@ -17,6 +15,3 @@ extra:
         </div>
     </div>
 <% end %>
-<script>
-    search("schemes");
-</script>
