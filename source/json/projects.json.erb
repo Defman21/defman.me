@@ -10,7 +10,8 @@ resources.each do |resource|
         name: resource.metadata[:page][:project][:name],
         regex: resource.metadata[:page][:project][:name],
         url: resource.url,
-        desc: truncate_with_ellipses(resource.metadata[:page][:description], 70)
+        desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
+        tags: resource.metadata[:page][:tags] || ""
     }
 end
 

@@ -5,7 +5,7 @@ js: yes
 extra:
     - search
 ---
-<%= partial "search", :locals => {:file => "schemes"} %>
+<%= partial "search", locals: {file: "schemes"} %>
 <% current_page.children.each do |page| %>
     <div class="container scheme" id="<%= page.data.scheme.id %>">
         <span class="title"><%= link_to page.data.scheme.name, page.url %></span>

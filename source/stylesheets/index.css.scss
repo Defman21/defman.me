@@ -167,19 +167,20 @@ main {
 
         .title {
             font-size: 1.5rem;
-            display: inline-block;
+            display: block;
             text-transform: uppercase;
             cursor: default;
         }
 
-        .timestamp, .language, .comp {
+        .timestamp, .language, .comp, .tags {
             font-size: 0.7rem;
-            display: block;
+            display: inline-block;
             line-height: 1.1rem;
             text-transform: uppercase;
             cursor: default;
             color: $subtext;
             margin-bottom: 5px;
+            margin-right: 10px;
         }
 
         .content {

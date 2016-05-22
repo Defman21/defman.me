@@ -4,6 +4,7 @@ description: How to build an application with Sinatra, Rack and ActiveRecord?
 date: 201605101630
 id: 201605101630-create-sinatra-app
 comments: on
+tags: sinatra ruby rest api
 links:
     Simple Sinatra App:
         href: //github.com/Defman21/simple-sinatra-app

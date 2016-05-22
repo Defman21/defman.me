@@ -2,6 +2,7 @@
     <div class="container article" id="<%= current_page.data.id %>">
         <span class="title"><%= current_page.data.title %></span>
         <span class="timestamp"><i class="fa fa-clock-o"></i> <% y, m, d, h, min = current_page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %><%= "#{y}/#{m}/#{d} #{h}:#{min}" %></span>
+        <span class="tags"><i class="fa fa-tags"></i> <%= current_page.data.tags || "no tags" %></span>
         <div class="content">
             <%= yield %>
         </div>

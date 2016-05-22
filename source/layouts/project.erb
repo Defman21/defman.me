@@ -2,6 +2,7 @@
     <div class="container project" id="<%= current_page.data.project.id %>">
         <span class="title"><%= current_page.data.project.name %></span>
         <span class="language"><%= current_page.data.project.lang %></span>
+        <span class="tags"><i class="fa fa-tags"></i> <%= current_page.data.tags || "no tags" %></span>
         <div class="content">
             <%= yield %>
         </div>
