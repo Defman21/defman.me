@@ -13,12 +13,16 @@ do (w = window, $ = jQuery) ->
                 $tpl ="""
 <div class='result'>
     <span class='result-name'>
-        <a href='%url'>%name</a>
+        <a href='%url'>%name <span class='result-desc'>%desc</span></a>
     </span>
 </div>
 """
                 for item in search
-                    if item.name.toLowerCase().search(regex) > -1
+                    if item.name.toLowerCase().search(regex) > -1 ||
+                       item.desc.toLowerCase().search(regex) > -1
                         console.log "Adding #{item.name}"
-                        $_tpl = $tpl.replace('%url', item.url).replace '%name', item.name
+                        $_tpl = $tpl
+                                .replace('%url', item.url)
+                                .replace('%desc', item.desc)
+                                .replace '%name', item.name
                         $("#search-result").append $ $_tpl
