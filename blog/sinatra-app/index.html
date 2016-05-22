@@ -15,6 +15,7 @@
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
     <link href="/stylesheets/index.css" rel="stylesheet" />
+    <link href="/stylesheets/highlight/styles.css" rel="stylesheet" />
     <link href="/stylesheets/font-awesome.css" rel="stylesheet" />
     
   </head>
@@ -45,8 +46,7 @@ Rack tasks for ActiveRecord and Rake.</p>
 <h1>Creating a structure</h1>
 
 <p>In my project, I use this structure for the application:</p>
-
-<pre><code class="prettyprint">.
+<pre class="highlight plaintext"><code>.
 ├── apps
 │   └── # your applications here
 ├── config.ru # Our Rack config
@@ -68,16 +68,15 @@ Rack tasks for ActiveRecord and Rake.</p>
 
 <p>We need <code class="prettyprint">sinatra</code>, <code class="prettyprint">sinatra-contrib</code>, <code class="prettyprint">activerecord</code>, <code class="prettyprint">rake</code>, <code class="prettyprint">rack</code> and
 <code class="prettyprint">logger</code> in our project and <code class="prettyprint">slite3</code> or other driver for database.</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
 
-<pre><code class="prettyprint">source &#39;https://rubygems.org&#39;
-
-gem &#39;sinatra&#39;
-gem &#39;sinatra-contrib&#39;
-gem &#39;activerecord&#39;
-gem &#39;sqlite3&#39;
-gem &#39;rake&#39;
-gem &#39;rack&#39;
-gem &#39;logger&#39;
+<span class="n">gem</span> <span class="s1">'sinatra'</span>
+<span class="n">gem</span> <span class="s1">'sinatra-contrib'</span>
+<span class="n">gem</span> <span class="s1">'activerecord'</span>
+<span class="n">gem</span> <span class="s1">'sqlite3'</span>
+<span class="n">gem</span> <span class="s1">'rake'</span>
+<span class="n">gem</span> <span class="s1">'rack'</span>
+<span class="n">gem</span> <span class="s1">'logger'</span>
 </code></pre>
 
 <p>Run <code class="prettyprint">bundle</code> to install the gems.</p>
@@ -87,48 +86,46 @@ gem &#39;logger&#39;
 <p>If you want to use ActiveRecord tasks with Sinatra, you have to configure
 Rackfile. It&rsquo;s not very hard and you don&rsquo;t have to install any extensions
 (like <code class="prettyprint">sinatra-activerecord</code>).</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'yaml'</span>
+<span class="nb">require</span> <span class="s1">'logger'</span>
+<span class="nb">require</span> <span class="s1">'active_record'</span>
 
-<pre><code class="prettyprint">require &#39;yaml&#39;
-require &#39;logger&#39;
-require &#39;active_record&#39;
+<span class="kp">include</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Tasks</span>
 
-include ActiveRecord::Tasks
+<span class="k">class</span> <span class="nc">Seeder</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="vi">@seed</span> <span class="o">=</span> <span class="n">seed</span>
+  <span class="k">end</span>
 
-class Seeder
-  def initialize(seed)
-    @seed = seed
-  end
-
-  def load_seed
-    raise &quot;Seed file &#39;#{@seed}&#39; does not exist&quot; unless File.file? @seed
-    load @seed_file
-  end
-end
+  <span class="k">def</span> <span class="nf">load_seed</span>
+    <span class="k">raise</span> <span class="s2">"Seed file '</span><span class="si">#{</span><span class="vi">@seed</span><span class="si">}</span><span class="s2">' does not exist"</span> <span class="k">unless</span> <span class="no">File</span><span class="p">.</span><span class="nf">file?</span> <span class="vi">@seed</span>
+    <span class="nb">load</span> <span class="vi">@seed_file</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
 
-root = File.expand_path &#39;..&#39;, __FILE__
-DatabaseTasks.env = ENV[&#39;ENV&#39;] || &#39;development&#39;
-conf = File.join root, &#39;db/config.yml&#39;
-DatabaseTasks.database_configuration = YAML.load(File.read(conf))
-DatabaseTasks.db_dir = File.join root, &#39;db&#39;
-DatabaseTasks.fixtures_path = File.join root, &#39;test/fixtures&#39;
-DatabaseTasks.migrations_paths = [File.join(root, &#39;db/migrate&#39;)]
-DatabaseTasks.seed_loader = Seeder.new File.join root, &#39;db/seeds.rb&#39;
-DatabaseTasks.root = root
+<span class="n">root</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span> <span class="s1">'..'</span><span class="p">,</span> <span class="kp">__FILE__</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">env</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'ENV'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">'development'</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span> <span class="n">root</span><span class="p">,</span> <span class="s1">'db/config.yml'</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">database_configuration</span> <span class="o">=</span> <span class="no">YAML</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="n">conf</span><span class="p">))</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">db_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span> <span class="n">root</span><span class="p">,</span> <span class="s1">'db'</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">fixtures_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span> <span class="n">root</span><span class="p">,</span> <span class="s1">'test/fixtures'</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">migrations_paths</span> <span class="o">=</span> <span class="p">[</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'db/migrate'</span><span class="p">)]</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">seed_loader</span> <span class="o">=</span> <span class="no">Seeder</span><span class="p">.</span><span class="nf">new</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span> <span class="n">root</span><span class="p">,</span> <span class="s1">'db/seeds.rb'</span>
+<span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">root</span> <span class="o">=</span> <span class="n">root</span>
 
-task :environment do
-  ActiveRecord::Base.configurations = DatabaseTasks.database_configuration
-  ActiveRecord::Base.establish_connection DatabaseTasks.env.to_sym
-end
+<span class="n">task</span> <span class="ss">:environment</span> <span class="k">do</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">configurations</span> <span class="o">=</span> <span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">database_configuration</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span> <span class="no">DatabaseTasks</span><span class="p">.</span><span class="nf">env</span><span class="p">.</span><span class="nf">to_sym</span>
+<span class="k">end</span>
 
-load &#39;active_record/railties/databases.rake&#39;
+<span class="nb">load</span> <span class="s1">'active_record/railties/databases.rake'</span>
 </code></pre>
 
 <p>Now if you run <code class="prettyprint">rake -T</code>, you should get the similar output:</p>
-
-<pre><code class="prettyprint">rake db:create              # Creates the database from DATABASE_URL or con...
+<pre class="highlight plaintext"><code>rake db:create              # Creates the database from DATABASE_URL or con...
 rake db:drop                # Drops the database from DATABASE_URL or confi...
-rake db:fixtures:load       # Load fixtures into the current environment&#39;s ...
+rake db:fixtures:load       # Load fixtures into the current environment's ...
 rake db:migrate             # Migrate the database (options: VERSION=x, VER...
 rake db:migrate:status      # Display status of migrations
 rake db:rollback            # Rolls the schema back to the previous version...
@@ -150,12 +147,11 @@ rake db:version             # Retrieves the current schema version number
 <h1>ActiveRecord config file</h1>
 
 <p>It&rsquo;s placed at <code class="prettyprint">db/config.yml</code> and here&rsquo;s how it looks:</p>
-
-<pre><code class="prettyprint">development:
-    adapter: sqlite3
-    database: development.db
-    pool: 5
-    timeout: 5000
+<pre class="highlight yaml"><code><span class="s">development</span><span class="pi">:</span>
+    <span class="s">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
+    <span class="s">database</span><span class="pi">:</span> <span class="s">development.db</span>
+    <span class="s">pool</span><span class="pi">:</span> <span class="s">5</span>
+    <span class="s">timeout</span><span class="pi">:</span> <span class="s">5000</span>
 </code></pre>
 
 <p>For better explanation, you should have a look at the official documentation.</p>
@@ -166,20 +162,19 @@ rake db:version             # Retrieves the current schema version number
 
 <p>In this tutorial, we will create <code class="prettyprint">users</code> table with <code class="prettyprint">001_create_users.rb</code>
 migration placed in <code class="prettyprint">db/migrate/</code>.</p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">CreateUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+  <span class="k">def</span> <span class="nf">up</span>
+    <span class="n">create_table</span> <span class="ss">:users</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:username</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:password</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-<pre><code class="prettyprint">class CreateUsers &lt; ActiveRecord::Migration
-  def up
-    create_table :users do |t|
-      t.string :username
-      t.string :password
-      t.string :email
-    end
-  end
-
-  def down
-    drop_table :users
-  end
-end
+  <span class="k">def</span> <span class="nf">down</span>
+    <span class="n">drop_table</span> <span class="ss">:users</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 </code></pre>
 
 <p>This code will create the <code class="prettyprint">users</code> table when migrating.</p>
@@ -191,53 +186,52 @@ end
 <h1>Creating the application</h1>
 
 <p>At first, let&rsquo;s create our Rack file (<code class="prettyprint">config.ru</code>)</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'sinatra/base'</span>
+<span class="nb">require</span> <span class="s1">'sinatra/json'</span>
+<span class="nb">require</span> <span class="s1">'sinatra/reloader'</span>
 
-<pre><code class="prettyprint">require &#39;sinatra/base&#39;
-require &#39;sinatra/json&#39;
-require &#39;sinatra/reloader&#39;
+<span class="nb">require</span> <span class="s1">'active_record'</span>
+<span class="nb">require</span> <span class="s1">'yaml'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
 
-require &#39;active_record&#39;
-require &#39;yaml&#39;
-require &#39;json&#39;
+<span class="k">class</span> <span class="nc">BaseApp</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
 
-class BaseApp &lt; Sinatra::Base
+  <span class="c1"># Register custom extensions</span>
 
-  # Register custom extensions
+  <span class="n">configure</span> <span class="ss">:development</span> <span class="k">do</span>
+    <span class="n">register</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Reloader</span>
+  <span class="k">end</span>
 
-  configure :development do
-    register Sinatra::Reloader
-  end
+  <span class="c1"># Configure ActiveRecord</span>
 
-  # Configure ActiveRecord
+  <span class="n">env</span>    <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'ENV'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">'development'</span>
+  <span class="n">root</span>   <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span> <span class="s1">'..'</span><span class="p">,</span> <span class="kp">__FILE__</span>
+  <span class="n">config</span> <span class="o">=</span> <span class="no">YAML</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">'db/config.yml'</span><span class="p">)))</span>
 
-  env    = ENV[&#39;ENV&#39;] || &#39;development&#39;
-  root   = File.expand_path &#39;..&#39;, __FILE__
-  config = YAML.load(File.read(File.join(root, &#39;db/config.yml&#39;)))
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">configurations</span> <span class="o">=</span> <span class="n">config</span>
+  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span> <span class="n">env</span><span class="p">.</span><span class="nf">to_sym</span>
 
-  ActiveRecord::Base.configurations = config
-  ActiveRecord::Base.establish_connection env.to_sym
+  <span class="c1"># Create @body variable</span>
 
-  # Create @body variable
+  <span class="n">before</span> <span class="k">do</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">content_length</span><span class="p">.</span><span class="nf">to_i</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="n">request</span><span class="p">.</span><span class="nf">body</span><span class="p">.</span><span class="nf">rewind</span>
+      <span class="vi">@body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span> <span class="n">request</span><span class="p">.</span><span class="nf">body</span><span class="p">.</span><span class="nf">read</span><span class="p">,</span> <span class="ss">symbolize_names: </span><span class="kp">true</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-  before do
-    if request.content_length.to_i &gt; 0
-      request.body.rewind
-      @body = JSON.parse request.body.read, symbolize_names: true
-    end
-  end
-end
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s2">"./models/*.rb"</span><span class="p">).</span><span class="nf">sort</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+  <span class="nb">require</span> <span class="n">file</span>
+<span class="k">end</span>
 
-Dir.glob(&quot;./models/*.rb&quot;).sort.each do |file|
-  require file
-end
+<span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s2">"./apps/*.rb"</span><span class="p">).</span><span class="nf">sort</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+  <span class="nb">require</span> <span class="n">file</span>
+<span class="k">end</span>
 
-Dir.glob(&quot;./apps/*.rb&quot;).sort.each do |file|
-  require file
-end
-
-map &quot;/&quot; do
-  run RootApp
-end
+<span class="n">map</span> <span class="s2">"/"</span> <span class="k">do</span>
+  <span class="n">run</span> <span class="no">RootApp</span>
+<span class="k">end</span>
 </code></pre>
 
 <p>So, what&rsquo;s going on there?</p>
@@ -261,54 +255,53 @@ code defined in the block for <code class="prettyprint">/users/*</code> url.</li
 looks.</p>
 
 <p><strong>Path:</strong> <code class="prettyprint">apps/root.rb</code></p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">RootApp</span> <span class="o">&lt;</span> <span class="no">BaseApp</span>
+  <span class="n">get</span> <span class="s2">"/"</span> <span class="k">do</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find_by</span> <span class="ss">id: </span><span class="vi">@body</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+    <span class="k">if</span> <span class="vi">@user</span>
+      <span class="n">json</span> <span class="ss">response: </span><span class="p">{</span>
+        <span class="ss">status: :ok</span><span class="p">,</span>
+        <span class="ss">errors: </span><span class="p">[],</span>
+        <span class="ss">data: </span><span class="vi">@user</span><span class="p">,</span>
+        <span class="ss">request: </span><span class="n">params</span><span class="p">,</span>
+        <span class="ss">redirect: </span><span class="kp">nil</span>
+      <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="n">json</span> <span class="ss">response: </span><span class="p">{</span>
+        <span class="ss">status: :fail</span><span class="p">,</span>
+        <span class="ss">errors: </span><span class="p">[</span>
+          <span class="s2">"User </span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span><span class="si">}</span><span class="s2"> does not exist"</span>
+        <span class="p">],</span>
+        <span class="ss">data: </span><span class="p">[],</span>
+        <span class="ss">request: </span><span class="n">params</span><span class="p">,</span>
+        <span class="ss">redirect: </span><span class="kp">nil</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-<pre><code class="prettyprint">class RootApp &lt; BaseApp
-  get &quot;/&quot; do
-    @user = User.find_by id: @body[:id]
-    if @user
-      json response: {
-        status: :ok,
-        errors: [],
-        data: @user,
-        request: params,
-        redirect: nil
-      }
-    else
-      json response: {
-        status: :fail,
-        errors: [
-          &quot;User #{params[:id]} does not exist&quot;
-        ],
-        data: [],
-        request: params,
-        redirect: nil
-      }
-    end
-  end
-
-  post &#39;/&#39; do
-    @user = User.create username: @body[:username],
-                        password: @body[:password],
-                        email: @body[:email]
-    if @user.valid?
-      json response: {
-        status: :ok,
-        errors: [],
-        data: @user,
-        request: @body,
-        redirect: &quot;/#{@user.id}&quot;
-      }
-    else
-      json response: {
-        status: :fail,
-        errors: @user.errors,
-        data: [],
-        request: @body,
-        redirect: &quot;/&quot;
-      }
-    end
-  end
-end
+  <span class="n">post</span> <span class="s1">'/'</span> <span class="k">do</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">create</span> <span class="ss">username: </span><span class="vi">@body</span><span class="p">[</span><span class="ss">:username</span><span class="p">],</span>
+                        <span class="ss">password: </span><span class="vi">@body</span><span class="p">[</span><span class="ss">:password</span><span class="p">],</span>
+                        <span class="ss">email: </span><span class="vi">@body</span><span class="p">[</span><span class="ss">:email</span><span class="p">]</span>
+    <span class="k">if</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">valid?</span>
+      <span class="n">json</span> <span class="ss">response: </span><span class="p">{</span>
+        <span class="ss">status: :ok</span><span class="p">,</span>
+        <span class="ss">errors: </span><span class="p">[],</span>
+        <span class="ss">data: </span><span class="vi">@user</span><span class="p">,</span>
+        <span class="ss">request: </span><span class="vi">@body</span><span class="p">,</span>
+        <span class="ss">redirect: </span><span class="s2">"/</span><span class="si">#{</span><span class="vi">@user</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">"</span>
+      <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="n">json</span> <span class="ss">response: </span><span class="p">{</span>
+        <span class="ss">status: :fail</span><span class="p">,</span>
+        <span class="ss">errors: </span><span class="vi">@user</span><span class="p">.</span><span class="nf">errors</span><span class="p">,</span>
+        <span class="ss">data: </span><span class="p">[],</span>
+        <span class="ss">request: </span><span class="vi">@body</span><span class="p">,</span>
+        <span class="ss">redirect: </span><span class="s2">"/"</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 </code></pre>
 
 <p>class <code class="prettyprint">RootApp</code> extends <code class="prettyprint">BaseApp</code>, so we don&rsquo;t have to re-initialize
@@ -326,18 +319,17 @@ we&rsquo;re creating a new User instance using ActiveRecord::Base class (<code c
 <p>Let&rsquo;s take a look at it!</p>
 
 <p><strong>Path:</strong> <code class="prettyprint">models/user.rb</code></p>
+<pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">validates</span> <span class="ss">:username</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span>
+    <span class="ss">minimum: </span><span class="mi">6</span><span class="p">,</span>
+    <span class="ss">maximum: </span><span class="mi">35</span><span class="p">,</span>
+  <span class="p">},</span> <span class="ss">uniqueness: </span><span class="kp">true</span>
 
-<pre><code class="prettyprint">class User &lt; ActiveRecord::Base
-  validates :username, length: {
-    minimum: 6,
-    maximum: 35,
-  }, uniqueness: true
-
-  validates :password, format: {
-    with: /\A[a-zA-Z0-9!@#\$%^&amp;\(\)]+\z/,
-    message: &quot;only allows a-z, 0-9 and !@#$%^&amp;*()&quot;
-  }
-end
+  <span class="n">validates</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">format: </span><span class="p">{</span>
+    <span class="ss">with: </span><span class="sr">/\A[a-zA-Z0-9!@#\$%^&amp;\(\)]+\z/</span><span class="p">,</span>
+    <span class="ss">message: </span><span class="s2">"only allows a-z, 0-9 and !@#$%^&amp;*()"</span>
+  <span class="p">}</span>
+<span class="k">end</span>
 </code></pre>
 
 <p>As you can see, there are no new methods defined, but I&rsquo;ve
