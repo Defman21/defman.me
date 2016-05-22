@@ -15,3 +15,4 @@ gem 'middleman-deploy', github: 'middleman-contrib/middleman-deploy', branch: 'm
 gem 'defman-me', path: './defman-me'
 gem 'redcarpet', '~> 3.3.4'
 gem 'therubyracer'
+gem 'middleman-syntax'

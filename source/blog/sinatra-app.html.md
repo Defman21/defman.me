@@ -45,7 +45,7 @@ Moving next!
 We need `sinatra`, `sinatra-contrib`, `activerecord`, `rake`, `rack` and
 `logger` in our project and `slite3` or other driver for database.
 
-```
+```ruby
 source 'https://rubygems.org'
 
 gem 'sinatra'
@@ -65,7 +65,7 @@ If you want to use ActiveRecord tasks with Sinatra, you have to configure
 Rackfile. It's not very hard and you don't have to install any extensions
 (like `sinatra-activerecord`).
 
-```
+```ruby
 require 'yaml'
 require 'logger'
 require 'active_record'
@@ -130,7 +130,7 @@ Now we should add a config file for our ActiveRecord connection.
 
 It's placed at `db/config.yml` and here's how it looks:
 
-```
+```yaml
 development:
     adapter: sqlite3
     database: development.db
@@ -147,7 +147,7 @@ Next we should create migrations for our app.
 In this tutorial, we will create `users` table with `001_create_users.rb`
 migration placed in `db/migrate/`.
 
-```
+```ruby
 class CreateUsers < ActiveRecord::Migration
   def up
     create_table :users do |t|
@@ -173,7 +173,7 @@ We have prepared everything, so now we're gonna create an application!
 
 At first, let's create our Rack file (`config.ru`)
 
-```
+```ruby
 require 'sinatra/base'
 require 'sinatra/json'
 require 'sinatra/reloader'
@@ -242,7 +242,7 @@ looks.
 
 **Path:** `apps/root.rb`
 
-```
+```ruby
 class RootApp < BaseApp
   get "/" do
     @user = User.find_by id: @body[:id]
@@ -308,7 +308,7 @@ Let's take a look at it!
 
 **Path:** `models/user.rb`
 
-```
+```ruby
 class User < ActiveRecord::Base
   validates :username, length: {
     minimum: 6,

@@ -1,0 +1,47 @@
+@import "../colors";
+
+.highlight {
+    &.plaintext code {
+        color: $base07;
+    }
+    
+    .n, .nb, .no {
+        color: $base07;
+    }
+    
+    .kp {
+        color: $base09;
+    }
+    
+    .s1, .s2 {
+        color: $base0B;
+    }
+    
+    .k {
+        color: $base0E;
+    }
+    
+    .nc {
+        color: $base0A;
+    }
+    
+    .nf, .p, .pi {
+        color: $base0D;
+    }
+    
+    .vi, .sr {
+        color: $base0C;
+    }
+    
+    .ss, .s {
+        color: $base0B;
+    }
+    
+    .c1 {
+        color: $base03;
+    }
+    
+    .mi, .si {
+        color: $base08;
+    }
+}

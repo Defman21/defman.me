@@ -12,8 +12,10 @@ page 'blog/*', layout: :blog
 
 
 set :index_file, "index.html"
-set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
+
+activate :syntax
 set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
 
 configure :build do
   activate :minify_css
