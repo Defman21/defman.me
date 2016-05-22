@@ -1,7 +1,13 @@
 ---
 title: Defman - Blog
 og: no
+js: yes
+extra:
+    - search
 ---
+<input id="search" placeholder="Search..."></input>
+<div id="search-result">
+</div>
 <% sorted = current_page.children.sort_by { |page| page.data.date } .reverse! %>
 <% sorted.each do |page| %>
     <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
@@ -22,4 +28,6 @@ og: no
         </div>
     </div>
 <% end %>
-
+<script>
+    search("articles");
+</script>

@@ -1,0 +1,17 @@
+<%
+resources = children('blog').select do |resource|
+    resource.metadata[:options][:layout] != :layout
+end
+
+articles = []
+
+resources.each do |resource|
+    articles << {
+        name: resource.metadata[:page][:title],
+        regex: resource.metadata[:page][:title],
+        url: resource.url
+    }
+end
+
+%>
+<%= articles.to_json %>

@@ -1,0 +1,17 @@
+<%
+resources = children('projects').select do |resource|
+    resource.metadata[:options][:layout] != :layout
+end
+
+projects = []
+
+resources.each do |resource|
+    projects << {
+        name: resource.metadata[:page][:project][:name],
+        regex: resource.metadata[:page][:project][:name],
+        url: resource.url
+    }
+end
+
+%>
+<%= projects.to_json %>
