@@ -12,6 +12,13 @@
 
     <link href="/stylesheets/index.css" rel="stylesheet" />
     <link href="/stylesheets/font-awesome.css" rel="stylesheet" />
+    
+        <script src="/javascripts/jquery.js"></script>
+        <script src="/javascripts/scrollTo.js"></script>
+        <script src="/javascripts/main.lib.js"></script>
+        
+            <script src="/javascripts/schemes.js"></script>
+        
   </head>
 
   <body class="schemes schemes_index">
@@ -26,14 +33,26 @@
             </nav>
         </header>
         <main>
-                <div class="container scheme" id="materia">
+                <input id="search" placeholder="Search..."></input>
+    <div id="search-result">
+    </div>
+    <div class="container scheme" id="flat">
+        <span class="title"><a href="/schemes/flat/">Flat</a></span>
+        <span class="comp">for Komodo 10</span>
+        <div class="content">
+            Flat color scheme
+        </div>
+    </div>
+    <div class="container scheme" id="materia">
         <span class="title"><a href="/schemes/materia/">Materia</a></span>
         <span class="comp">for Komodo 10</span>
         <div class="content">
             Material-based color scheme
         </div>
     </div>
-
+<script>
+    search("schemes");
+</script>
         </main>
         <footer>
             <div class="copyright">
