@@ -9,7 +9,7 @@ do (w = window, $ = jQuery) ->
                 $("#search-result").empty()
                 string = $(e.target).val().toLowerCase()
                 return if string.length <= 0
-                regex = new RegExp string
+                regex = new RegExp string, "i"
                 $tpl ="""
 <div class='result'>
     <span class='result-name'>
@@ -18,10 +18,10 @@ do (w = window, $ = jQuery) ->
 </div>
 """
                 for item in search
-                    if item.name.toLowerCase().search(regex) > -1 ||
-                       item.desc.toLowerCase().search(regex) > -1 ||
-                       (item.tags? && item.tags.toLowerCase().search(regex) > -1)
-                        console.log "Adding #{item.name}"
+                    if item.name.search(regex) > -1 || 
+                       item.desc.search(regex) > -1 || 
+                       (item.tags? && item.tags.search(regex) > -1) ||
+                       (item.lang? && item.lang.search(regex) > -1)
                         $_tpl = $tpl
                                 .replace('%url', item.url)
                                 .replace('%desc', item.desc)
