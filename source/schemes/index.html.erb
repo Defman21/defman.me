@@ -1,7 +1,15 @@
 ---
 title: Defman - Schemes
 og: no
+js: yes
+extra:
+    - schemes
 ---
+<% if current_page.children.length > 0 %>
+    <input id="search" placeholder="Search..."></input>
+    <div id="search-result">
+    </div>
+<% end %>
 <% current_page.children.each do |page| %>
     <div class="container scheme" id="<%= page.data.scheme.id %>">
         <span class="title"><%= link_to page.data.scheme.name, page.url %></span>
@@ -11,3 +19,6 @@ og: no
         </div>
     </div>
 <% end %>
+<script>
+    search("schemes");
+</script>
