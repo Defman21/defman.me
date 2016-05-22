@@ -20,7 +20,7 @@ do (w = window, $ = jQuery) ->
                 for item in search
                     if item.name.toLowerCase().search(regex) > -1 ||
                        item.desc.toLowerCase().search(regex) > -1 ||
-                       item.tags.toLowerCase().search(regex) > -1
+                       (item.tags? && item.tags.toLowerCase().search(regex) > -1)
                         console.log "Adding #{item.name}"
                         $_tpl = $tpl
                                 .replace('%url', item.url)
