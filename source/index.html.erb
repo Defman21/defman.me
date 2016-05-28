@@ -2,44 +2,37 @@
 title: Defman
 description: Web-developer, Komodo Forums moderator. I know Ruby, PHP and Python.
 js: on
+layout: base
 ---
-<div class="container" id="about">
-    <span class="title">About me</span>
-    <div class="content">
-        <p>I'm web-developer from Russia.</p>
-        <p>I know...
-            <ul>
-                <li>Ruby</li>
-                <li>PHP</li>
-                <li>Python</li>
-                <li><i class="fa fa-language"></i> Russian</li>
-                <li><i class="fa fa-language"></i> English</li>
-            </ul>
-        </p>
-        <p>I use...
-            <ul>
-                <li>Middleman and Sinatra</li>
-                <li>GitHub Pages</li>
-                <li><a href="//komodoide.com">Komodo IDE</a></li>
-                <li><a href="/materia">Materia</a> scheme in Terminal and the editor</li>
-                <li>Zsh</li>
-                <li>elementary OS</li>
-            </ul>
-        </p>
-    </div>
+<div class="background">
+    <div class="overlay"></div>
 </div>
-<div class="container" id="contact">
-    <span class="title">Contact</span>
-    <div class="content">
-        <ul nodots>
-            <% data.contacts.each do |service, data| %>
-                <li>
-                    <a href="<%= data[1] %><%= data[0] %>">
-                        <i class="fa fa-<%= data[2] %>"></i> <%= service.capitalize %>
-                    </a>
-                </li>
+<div class="cc">
+    <div class="main">
+        <div class="avatar">
+            <img src="https://avatars3.githubusercontent.com/u/7100645?v=3&s=460" alt="Gotov stat' contributorom vashey huini">
+        </div>
+        <div class="me">
+            Web-developer, Komodo Forums moderator. I know Ruby, PHP and Python.
+        </div>
+        <div class="pages">
+            <% data.pages.each do |page, data| %>
+                <div class="item">
+                    <%= link_to page.upcase, data[0] %>
+                </div>
             <% end %>
-        </ul>
+        </div>
+        <div class="contacts">
+            <% i = 0 %>
+            <% data.contacts.each do |service, data| %>
+                <% i += 1 %>
+                <div class="item">
+                    <%= link_to "<i class=\"fa fa-#{data[1]}\"></i>", "#{data[0]}" %>
+                </div>
+                <% if i == 4 %>
+                    <div class="splitter"></div>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 </div>
-

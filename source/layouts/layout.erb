@@ -1,55 +1,20 @@
-<!doctype html>
-<html>
-  <head prefix="og: http://ogp.me/ns#">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    
-    <% unless defined? current_page.data.og %>
-        <%= partial "og_meta" %>
-    <% end %>
-    
-    <meta name="theme-color" content="#263238">
-
-    <title><%= current_page.data.title %></title>
-
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-
-    <%= stylesheet_link_tag :index %>
-    <%= stylesheet_link_tag :"highlight/styles" %>
-    <%= stylesheet_link_tag :"font-awesome" %>
-    
-    <% if current_page.data.js %>
-        <%= javascript_include_tag :jquery %>
-        <%= javascript_include_tag :scrollTo %>
-        <%= javascript_include_tag :"main.lib" %>
-        
-        <% current_page.data.extra && current_page.data.extra.each do |js| %>
-            <%= javascript_include_tag :"#{js}" %>
-        <% end %>
-        
-    <% end %>
-  </head>
-
-  <body class="<%= page_classes %>">
-    <div class="wrap">
-        <header>
-            <div class="logo"><a href="/">Defman.me</a></div>
-            <nav>
-                <%= partial "header" %>
-            </nav>
-        </header>
-        <main>
-            <%= yield %>
-        </main>
-        <footer>
-            <div class="copyright">
-                defman.me &copy; 2016
-                <br>
-                Colors used: <a class="nonewline" href="/materia">Materia</a>
-            </div>
-        </footer>
-    </div>
-  </body>
-</html>
-
+<% wrap_layout :base do %>
+<div class="wrap">
+    <header>
+        <div class="logo"><a href="/">Defman.me</a></div>
+        <nav>
+            <%= partial "header" %>
+        </nav>
+    </header>
+    <main>
+        <%= yield %>
+    </main>
+    <footer>
+        <div class="copyright">
+            defman.me &copy; 2016
+            <br>
+            Colors used: <a class="nonewline" href="/materia">Materia</a>
+        </div>
+    </footer>
+</div>
+<% end %>
