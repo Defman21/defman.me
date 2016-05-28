@@ -27,6 +27,6 @@ activate :deploy do |deploy|
   deploy.build_before = true
 end
 
-activate :livereload
+activate :livereload, host: "dev.defman.me"
 activate :directory_indexes
 activate :defmanme
