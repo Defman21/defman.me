@@ -13,7 +13,7 @@ do (w = window, $ = jQuery) ->
                 $tpl ="""
 <div class='result'>
     <span class='result-name'>
-        <a href='%url'>%name <span class='result-desc'>%desc</span></a>
+        <a href='%url'><span class='result-link'>%name</span> <span class='result-desc'>%desc</span></a>
     </span>
 </div>
 """
