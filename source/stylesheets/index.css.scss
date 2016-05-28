@@ -137,6 +137,8 @@ main {
         background: $base01;
         border: 1px solid $base02;
         border-top: none;
+        max-height: 30%;
+        overflow-y: auto;
         
         .result {
             width: 100%;
@@ -239,7 +241,10 @@ footer {
         }
     }
     
-    #search-result a {
-        text-align: center;
+    #search-result {
+        max-height: 180px;
+        a {
+            text-align: center;
+        }
     }
 }
