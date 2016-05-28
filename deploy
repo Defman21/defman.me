@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+echo "Pushing current changes and deploying the site..."
+git push origin master
+middleman deploy
