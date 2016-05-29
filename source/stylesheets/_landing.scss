@@ -37,13 +37,8 @@
         display: block;
         overflow: hidden;
         border: 5px solid $base02;
-        @include trsn($transition);
         margin: 20px auto;
         margin-top: 0;
-        
-        &:hover {
-            border-color: $base08;
-        }
         
         img {
             width: 100%;
@@ -74,7 +69,6 @@
             
             a {
                 font-size: 1.3rem;
-                @include trsn($transition);
                 margin: 0 10px;
                 display: block;
                 color: $base04;
