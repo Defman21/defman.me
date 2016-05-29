@@ -193,7 +193,11 @@ main {
                 h#{$i} {
                     font-size: inspect(1.7 - $i/10) + "rem";
                 }
-            }           
+            }
+            
+            img {
+                max-width: 100%;
+            }
         }
     }
 }
