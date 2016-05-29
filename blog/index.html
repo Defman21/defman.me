@@ -24,24 +24,33 @@
         
   </head>
   <body class="blog blog_index">
+    <div class="overlay">
     <div class="wrap">
-    <header>
-        <div class="logo"><a href="/">Defman.me</a></div>
-        <nav>
-                <a id="blog" class="" href="/blog">BLOG</a>
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                    <a id="blog" class="" href="/blog">BLOG</a>
     <a id="projects" class="" href="/projects">PROJECTS</a>
     <a id="schemes" class="" href="/schemes">SCHEMES</a>
 
-        </nav>
-    </header>
-    <main>
-        <input id="search" placeholder="Search..." autocomplete=off></input>
+            </nav>
+        </header>
+        <main>
+            <input id="search" placeholder="Search..." autocomplete=off></input>
 <div id="search-result">
 </div>
 <script>
     search("articles");
 </script>
 
+    <div class="container article" id="">
+        <span class="title"><a href="/blog/komodo-color-picker/">Komodo Color Picker by babobski</a></span>
+        <span class="timestamp"><i class="fa fa-clock-o"></i> 2016/06/01 11:53</span>
+        <span class="tags"><i class="fa fa-tags"></i> komodo colorpicker add-on</span>
+        <div class="content">
+            Nice color picker that supports RGBA colors
+        </div>
+    </div>
     <div class="container article" id="">
         <span class="title"><a href="/blog/sinatra-app/">Sinatra + Rack + Rake + ActiveRecord</a></span>
         <span class="timestamp"><i class="fa fa-clock-o"></i> 2016/05/10 16:30</span>
@@ -51,15 +60,16 @@
         </div>
     </div>
 
-    </main>
-    <footer>
-        <div class="copyright">
-            defman.me &copy; 2016
-            <br>
-            Colors used: <a class="nonewline" href="/materia">Materia</a>
-        </div>
-    </footer>
+        </main>
+    </div>
 </div>
+<footer>
+    <div class="copyright">
+        defman.me &copy; 2016
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
 
   </body>
 </html>
