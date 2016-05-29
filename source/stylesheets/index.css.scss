@@ -3,7 +3,6 @@
 // colors
 @import "colors";
 // attributes
-$transition: all .2s ease;
 $wrap-width: 60%;
 
 @mixin user-select($property) {
@@ -11,13 +10,6 @@ $wrap-width: 60%;
     -moz-user-select: $property;
     -ms-user-select: $property;
     user-select: $property;
-}
-
-@mixin trsn($transition) {
-    -webkit-transition: $transition;
-    -moz-transition: $transition;
-    -ms-transition: $transition;
-    transition: $transition;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
@@ -43,6 +35,12 @@ ul {
     color: $selection-fg;
 }
 
+.overlay {
+    position: relative;
+    z-index: 2;
+    background: $background;
+}
+
 .wrap {
     width: $wrap-width;
     margin: 0 auto;
@@ -52,7 +50,6 @@ a {
     color: $links;
     text-decoration: none;
     outline: 0;
-    @include trsn($transition);
 
     &:hover, &.active {
         color: $highlight;
@@ -117,10 +114,8 @@ pre, code.prettyprint {
 }
 
 main {
-    z-index: 2;
-    background: $background;
     position: relative;
-    margin-bottom: 120px;
+    margin-bottom: 100px;
     box-sizing: border-box;
     
     #search {
@@ -143,11 +138,14 @@ main {
         .result {
             width: 100%;
             overflow: hidden;
-            @include trsn($transition);
             
             &:hover {
                 background: $base08;
                 color: $base07;
+                
+                .result-desc {
+                    color: $base07;
+                }
             }
             
             a {
@@ -201,14 +199,17 @@ main {
 }
 
 footer {
-    display: block;
+    display: flex;
+    height: 100px;
     position: fixed;
-    width: inherit;
-    padding: 10px 0;
+    width: 100%;
     bottom: 0;
     z-index: 1;
+    background: darken($base00, 2);
+    justify-content: center;
     
     .copyright {
+        align-self: center;
         text-align: center;
         text-transform: uppercase;
         color: $base03;

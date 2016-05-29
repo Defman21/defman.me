@@ -1,20 +1,22 @@
 <% wrap_layout :base do %>
-<div class="wrap">
-    <header>
-        <div class="logo"><a href="/">Defman.me</a></div>
-        <nav>
-            <%= partial "header" %>
-        </nav>
-    </header>
-    <main>
-        <%= yield %>
-    </main>
-    <footer>
-        <div class="copyright">
-            defman.me &copy; 2016
-            <br>
-            Colors used: <a class="nonewline" href="/materia">Materia</a>
-        </div>
-    </footer>
+<div class="overlay">
+    <div class="wrap">
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                <%= partial "header" %>
+            </nav>
+        </header>
+        <main>
+            <%= yield %>
+        </main>
+    </div>
 </div>
+<footer>
+    <div class="copyright">
+        defman.me &copy; 2016
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
 <% end %>
