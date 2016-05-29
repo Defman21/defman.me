@@ -6,6 +6,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .background {
@@ -36,9 +37,14 @@
         border-radius: 50%;
         display: block;
         overflow: hidden;
-        border: 5px solid $base02;
+        border: 2px solid $base02;
         margin: 20px auto;
         margin-top: 0;
+        transition: all .3s ease;
+        
+        &:hover {
+            border-radius: 0;
+        }
         
         img {
             width: 100%;
@@ -47,8 +53,6 @@
     }
     
     .me {
-        border-top: 1px solid $base02;
-        border-bottom: 1px solid $base02;
         margin: 10px auto;
         padding: 30px 10px;
         -webkit-box-sizing: border-box;
@@ -58,8 +62,6 @@
     }
     
     .contacts, .pages {
-        text-align: center;
-        
         .splitter {
             display: none;
         }
@@ -80,10 +82,12 @@
         }
     }
     
-    .pages {
-        border-bottom: 1px solid $base02;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+    .h-splitter {
+        border-top: 1px solid $base02;
+        margin: 7px auto;
+        display: block;
+        min-width: 90px;
+        max-width: 90px;
     }
 }
 
@@ -93,9 +97,19 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 560px) {
     .cc {
         width: 80%;
+    }
+    
+    .main .me {
+        margin: 10px 0;
+        padding: 20px 0;
+    }
+    
+    .pages .item {
+        display: block !important;
+        margin: 10px auto;
     }
     
     .splitter {
