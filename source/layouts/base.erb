@@ -19,6 +19,10 @@
     <%= stylesheet_link_tag :"highlight/styles" %>
     <%= stylesheet_link_tag :"font-awesome" %>
     
+    <% current_page.data.css && current_page.data.css.each do |css| %>
+        <%= stylesheet_link_tag :"#{css}" %>
+    <% end %>
+    
     <% if current_page.data.js %>
         <%= javascript_include_tag :jquery %>
         <%= javascript_include_tag :scrollTo %>
