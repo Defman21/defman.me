@@ -1,7 +1,6 @@
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
-page "materia.html", layout: false
 
 page 'projects/index.html', layout: :layout
 page 'projects/*', layout: :project
@@ -10,6 +9,7 @@ page 'schemes/*', layout: :scheme
 page 'blog/index.html', layout: :layout
 page 'blog/*', layout: :blog
 
+page '404.html', directory_index: false
 
 set :index_file, "index.html"
 

@@ -1,5 +1,5 @@
 do (w = window, $ = jQuery) ->
-    w.search = (json) ->
+    w.search = (json, display_type = false) ->
         search = []
         $.getJSON("/json/#{json}.json", (result) ->
             for item in result
@@ -22,8 +22,10 @@ do (w = window, $ = jQuery) ->
                        item.desc.search(regex) > -1 || 
                        (item.tags? && item.tags.search(regex) > -1) ||
                        (item.lang? && item.lang.search(regex) > -1)
+                        $name = item.name
+                        $name += " (#{item.type if display_type})"
                         $_tpl = $tpl
                                 .replace('%url', item.url)
                                 .replace('%desc', item.desc)
-                                .replace '%name', item.name
+                                .replace '%name', $name
                         $("#search-result").append $ $_tpl
