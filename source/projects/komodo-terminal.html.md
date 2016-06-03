@@ -5,7 +5,7 @@ project:
     id: komodo-terminal-butterfly
     repo: komodo-terminal-butterfly
     name: Komodo Terminal Butterfly
-    lang: JavaScript
+    lang: javascript
 tags: komodo terminal butterfly add-on 
 ---
 

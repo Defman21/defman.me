@@ -5,7 +5,8 @@ project:
     id: komodo-scheme-to-interface
     repo: komodo-scheme-to-interface
     name: Scheme to Interface project
-    lang: Ruby
+    lang: ruby
+tags: komodo schemes interface ui
 ---
 
 Scheme To Interface
