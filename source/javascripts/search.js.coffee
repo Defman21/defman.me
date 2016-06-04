@@ -5,6 +5,7 @@ do (w = window, $ = jQuery) ->
             for item in result
                 search.push item
         ).then ->
+            $("#search").focus()
             $("#search").keyup (e) ->
                 $("#search-result").empty()
                 string = $(e.target).val().toLowerCase()
