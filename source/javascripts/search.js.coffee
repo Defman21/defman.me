@@ -21,9 +21,10 @@ do (w = window, $ = jQuery) ->
                     if item.name.search(regex) > -1 || 
                        item.desc.search(regex) > -1 || 
                        (item.tags? && item.tags.search(regex) > -1) ||
-                       (item.lang? && item.lang.search(regex) > -1)
+                       (item.lang? && item.lang.search(regex) > -1) ||
+                       (item.type? && item.type.search(regex) > -1)
                         $name = item.name
-                        $name += " (#{item.type if display_type})"
+                        $name += " (#{item.type})" if display_type
                         $_tpl = $tpl
                                 .replace('%url', item.url)
                                 .replace('%desc', item.desc)
