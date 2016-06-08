@@ -1,13 +1,13 @@
 ---
-title: Defman - Blog
+title: Ebal rot
 og: no
 js: yes
 extra:
     - search
+layout: :layout
 ---
 <%= partial "search", locals: {file: "articles"} %>
-<% sorted = current_page.children.sort_by { |page| page.data.date } .reverse! %>
-<% sorted[0...5].each do |page| %>
+<% blogs.each do |page| %>
     <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
     <div class="container article" id="<%= page.data.url %>">
         <span class="title"><%= link_to page.data.title, page.url %></span>
@@ -18,15 +18,11 @@ extra:
         </div>
     </div>
 <% end %>
-<% if sorted.length > 5 %>
-    <%= link_to "Next", "/blog/pages/2" %>
-<% end %>
-<% if sorted.length == 0 %>
-    <div class="container" id="no-content">
-        <span class="title">No content</span>
-        <div class="content">
-            There should be a 404 error, but it was not found.
-            The content is not found as well.
-        </div>
-    </div>
+<% unless last %>
+    <% unless first %>
+        <%= link_to "Prev", "/blog/pages/#{page-1}" %>
+    <% end %>
+<%= link_to "Next", "/blog/pages/#{page+1}" %>
+<% else %>
+<%= link_to "Prev", "/blog/pages/#{page-1}" %>
 <% end %>
