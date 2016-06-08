@@ -33,9 +33,9 @@ ready do
   $blogs = 5
   blogs = sitemap.resources.select do |p|
     if p.metadata[:options][:layout] == :blog and p.source_file.include? "md"
-      return true
+      true
     end
-    return false
+    false
   end
   offset = 0
   if blogs.length > $blogs
