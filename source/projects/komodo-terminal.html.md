@@ -1,6 +1,7 @@
 ---
 title: Projects - Komodo Terminal Butterfly
 description: Docks the Butterfly terminal in Komodo
+id: project-komodo-terminal-butterfly
 project:
     id: komodo-terminal-butterfly
     repo: komodo-terminal-butterfly

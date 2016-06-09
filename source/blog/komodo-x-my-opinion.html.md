@@ -3,7 +3,6 @@ title: Komodo X - My Opinion
 description: My opinion about Komodo X
 date: 201606080225
 id: 201606080225-komodo-x-my-opinion
-comments: on
 tags: komodo opinion x 10
 links:
     Komodo IDE:

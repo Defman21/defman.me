@@ -1,12 +1,12 @@
 ---
-title: Ebal rot
+title: Defman's Blog
 og: no
 js: yes
 extra:
     - search
 layout: :layout
 ---
-<%= partial "search", locals: {file: "articles"} %>
+<%= partial :search, locals: {file: "articles"} %>
 <% blogs.each do |page| %>
     <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
     <div class="container article" id="<%= page.data.url %>">

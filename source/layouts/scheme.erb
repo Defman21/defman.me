@@ -15,7 +15,8 @@
             <p>
                 <a class="package" href="//komodoide.com/packages/schemes/<%= current_page.data.scheme.id %>"><i class="fa fa-download"></i> Package</a>
             </p>
-            <%= partial "_links" %>
+            <%= partial :links %>
         </div>
+        <%= partial :comments %>
     </div>
 <% end %>

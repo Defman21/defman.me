@@ -3,7 +3,6 @@ title: Komodo Color Picker by babobski
 description: Nice color picker that supports RGBA colors
 date: 201606011153
 id: 201606011153-komodo-color-picker
-comments: on
 tags: komodo colorpicker add-on
 links:
     RGBA Colorpicker:

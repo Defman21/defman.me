@@ -1,6 +1,7 @@
 ---
 title: Schemes - Oceanicnext
 description: Oceanicnext color scheme for Komodo X
+id: scheme-oceanicnext
 scheme:
     id: oceanicnext
     repo: oceanicnext-komodo

@@ -3,7 +3,6 @@ title: My Top 5 monospaced fonts
 description: My top 5 monospaced fonts for Linux
 date: 201606081948
 id: 201606081948-my-top-5-monospaced-fonts
-comments: on
 tags: fonts top 5 monospace
 links:
     Hack:

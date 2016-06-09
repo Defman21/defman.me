@@ -1,6 +1,7 @@
 ---
 title: Schemes - Flat
 description: Flat color scheme
+id: scheme-flat
 scheme:
     id: flat
     repo: komodo-flat

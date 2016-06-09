@@ -1,6 +1,7 @@
 ---
 title: Schemes - Materia
 description: Material-based color scheme
+id: scheme-materia
 scheme:
     id: materia
     repo: materia-komodo

@@ -1,6 +1,7 @@
 ---
 title: Projects - Xemmet
 description: Emmet for Komodo X
+id: project-komodo-xemmet
 project:
     id: komodo-xemmet
     repo: Xemmet

@@ -1,6 +1,7 @@
 ---
 title: Projects - Scheme to Interface project
 description: This tool allows you to convert Komodo 9 color scheme to Komodo 10.
+id: project-scheme-to-interface
 project:
     id: komodo-scheme-to-interface
     repo: komodo-scheme-to-interface

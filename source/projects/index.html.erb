@@ -7,7 +7,7 @@ name: Defman's Projects
 extra:
     - search
 ---
-<%= partial "search", locals: {file: "projects"} %>
+<%= partial :search, locals: {file: "projects"} %>
 <% current_page.children.each do |page| %>
     <div class="container project" id="<%= page.data.project.id %>">
         <span class="title"><%= link_to page.data.project.name, page.url %></span>

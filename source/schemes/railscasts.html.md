@@ -1,6 +1,7 @@
 ---
 title: Schemes - Railscasts
 description: Railscasts color scheme for Komodo X
+id: scheme-railscasts
 scheme:
     id: railscasts
     repo: railscasts-scheme
