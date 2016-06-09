@@ -68,7 +68,7 @@ PHP, Python, Ruby, Node.js, JavaScript (Chrome Remote Debugging), Tcl and Perl
 I've tried PHP and Python debugging I can say it's pretty good! I don't
 remember any issues with that.
 
-At the time when I've swiched to Ruby, Komodo didn't support Ruby 2.x
+At the time when I've switched to Ruby, Komodo didn't support Ruby 2.x
 debugging. But now it does it pretty damn good! I use it regularly for
 debugging my CLI tools, bots, etc.
 
