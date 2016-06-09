@@ -69,7 +69,7 @@ I've tried PHP and Python debugging I can say it's pretty good! I don't
 remember any issues with that.
 
 At the time when I've swiched to Ruby, Komodo didn't support Ruby 2.x
-debugging. But not it does it pretty damn good! I use it regularly for
+debugging. But now it does it pretty damn good! I use it regularly for
 debugging my CLI tools, bots, etc.
 
 # Commando
