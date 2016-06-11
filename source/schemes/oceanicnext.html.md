@@ -14,7 +14,7 @@ Oceanicnext
 
 Oceanicnext color scheme for Komodo X.
 
-![Image](/images/oceanicnext.png)
+![Image](oceanicnext.png)
 
 # Installation
 
