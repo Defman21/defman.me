@@ -18,6 +18,13 @@ set :index_file, "index.html"
 activate :syntax
 set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
+set :site_url, "http://dev.defman.me:4567"
+
+set :fonts_dir, "assets/fonts"
+set :images_dir, "assets/images"
+set :js_dir, "assets/javascripts"
+set :css_dir, "assets/stylesheets"
+set :layouts_dir, "assets/layouts"
 
 configure :build do
   activate :minify_css

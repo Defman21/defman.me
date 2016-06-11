@@ -7,7 +7,7 @@ name: Defman's Blog
 extra:
     - search
 ---
-<%= partial :search, locals: {file: "articles"} %>
+<%= partial "partials/search", locals: {file: "articles"} %>
 <% sorted = current_page.children.sort_by { |page| page.data.date } .reverse! %>
 <% sorted[0...5].each do |page| %>
     <% y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures %>
