@@ -10,6 +10,7 @@ page 'blog/index.html', layout: :layout
 page 'blog/*', layout: :blog
 
 ignore '/blog/pages/page.html'
+ignore 'partials/*'
 
 page '404.html', directory_index: false
 
