@@ -1,6 +1,6 @@
 ---
 title: Defman
-description: Web-developer, Komodo Forums moderator. I know Ruby, PHP and Python.
+description: Web Developer & Software Engineer
 js: on
 layout: base
 type: profile
@@ -29,26 +29,20 @@ css:
             <img src="https://avatars3.githubusercontent.com/u/7100645?v=3&s=460" alt="Gotov stat' contributorom vashey huini">
         </div>
         <div class="me">
-            Web-developer, Komodo Forums moderator. I know Ruby, PHP and Python.
+            Web Developer & Software Engineer
+        </div>
+        <div class="contacts">
+            <% data.contacts.each do |service, data| %>
+                <div class="item">
+                    <%= link_to "<i class=\"fa fa-#{data[1]}\"></i>", "#{data[0]}" %>
+                </div>
+            <% end %>
         </div>
         <div class="pages">
             <% data.pages.each do |page, data| %>
                 <div class="item">
                     <%= link_to page.upcase, data[0] %>
                 </div>
-            <% end %>
-        </div>
-        <div class="h-splitter"></div>
-        <div class="contacts">
-            <% i = 0 %>
-            <% data.contacts.each do |service, data| %>
-                <% i += 1 %>
-                <div class="item">
-                    <%= link_to "<i class=\"fa fa-#{data[1]}\"></i>", "#{data[0]}" %>
-                </div>
-                <% if i == 4 %>
-                    <div class="splitter"></div>
-                <% end %>
             <% end %>
         </div>
     </div>

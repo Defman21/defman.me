@@ -53,10 +53,9 @@ body {
 }
 
 .main {
-    padding: 20px 0;
     animation: 1s appear;
     background: $base07;
-    padding: 50px;
+    padding: 0 50px;
     box-sizing: border-box;
     box-shadow: 0 15px 15px 5px rgba($base00, 0.05);
     max-width: 560px;
@@ -65,9 +64,8 @@ body {
         max-height: 150px;
         display: block;
         overflow: hidden;
-        border: 2px solid $base02;
+        border: 2px solid $base04;
         margin: 20px auto;
-        margin-top: 0;
         transform-origin: top center;
         
         img {
@@ -86,8 +84,10 @@ body {
         color: $base02;
         font-size: 1.1rem;
     }
-    
+        
     .contacts, .pages {
+        margin: 20px 0;
+        
         .splitter {
             display: none;
         }
@@ -96,7 +96,7 @@ body {
             display: inline-block;
             
             a {
-                font-size: 1.3rem;
+                font-size: 1rem;
                 margin: 0 10px;
                 display: block;
                 color: $links;
