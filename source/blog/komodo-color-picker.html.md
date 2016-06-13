@@ -9,8 +9,6 @@ links:
         href: //github.com/babobski/RGBA-Colorpicker
         fa: github
 ---
-### Description
-
 In Komodo X, the default color picker got some improvements, but it still does
 not support RGBA. (the preview popup supports it, but you can't adjust the
 transparency with the picker itself)

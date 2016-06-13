@@ -9,10 +9,6 @@ project:
     lang: javascript
 tags: komodo emmet html css fast coding
 ---
-
-Xemmet
-======
-
 Emmet for Komodo X.
 
 This add-on implements only Expand Abbreviation and Wrap Selection features

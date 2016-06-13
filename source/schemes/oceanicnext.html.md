@@ -9,9 +9,6 @@ scheme:
     comp: 10
 ---
 
-Oceanicnext
-==========
-
 Oceanicnext color scheme for Komodo X.
 
 ![Image](oceanicnext.png)

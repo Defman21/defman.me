@@ -9,10 +9,6 @@ project:
     lang: ruby
 tags: komodo schemes interface ui
 ---
-
-Scheme To Interface
-===
-
 This tool allows you to convert Komodo 9 color scheme to Komodo 10.
 The difference between them is `InterfaceStyles` block, which you
 can configure to change style of different Komodo UI elements.

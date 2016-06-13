@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     
-    <meta name="theme-color" content="#263238">
+    <meta name="theme-color" content="#FFFFFF">
 
     <title><%= current_page.data.title %></title>
     
@@ -14,10 +14,10 @@
     <% end %>
 
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-
-    <%= stylesheet_link_tag :index %>
-    <%= stylesheet_link_tag :"highlight/styles" %>
     <%= stylesheet_link_tag :"font-awesome" %>
+    <% if content_for?(:layout) %>
+        <%= yield_content :layout %>
+    <% end %>
     
     <% current_page.data.css && current_page.data.css.each do |css| %>
         <%= stylesheet_link_tag :"#{css}" %>

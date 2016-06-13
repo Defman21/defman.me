@@ -13,7 +13,7 @@ extra:
         <span class="title"><%= link_to page.data.project.name, page.url %></span>
         <span class="language"><%= page.data.project.lang %></span>
         <span class="tags"><i class="fa fa-tags"></i> <%= page.data.tags || "no tags" %></span>
-        <div class="content">
+        <div class="content description">
             <%= truncate_with_ellipses page.data.description, 150 %>
         </div>
     </div>

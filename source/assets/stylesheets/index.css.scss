@@ -1,8 +1,8 @@
 @charset "utf-8";
 @import "normalize";
-// colors
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 @import "colors";
-// attributes
+
 $wrap-width: 60%;
 
 @mixin user-select($property) {
@@ -11,8 +11,6 @@ $wrap-width: 60%;
     -ms-user-select: $property;
     user-select: $property;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
 body {
     font: 1.2rem "Lato", "Source Sans Pro", sans-serif;
@@ -56,14 +54,8 @@ a {
     }
 }
 
-ul[nodots] {
-    list-style: none;
-}
-
 header, main {
     padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -98,18 +90,15 @@ header {
 }
 
 pre, code.prettyprint {
-    background: $code;
     font-size: 0.9rem;
     font-family: "Hack", "Source Code Pro", monospace;
     overflow-y: auto;
+    color: $base03;
+    border: 1px solid $base04;
+    padding: 5px;
     
     & > code {
         display: block;
-        padding: 5px;
-    }
-    
-    &.prettyprint {
-        padding: 5px;
     }
 }
 
@@ -119,18 +108,16 @@ main {
     box-sizing: border-box;
     
     #search {
-        background: $base01;
-        border: 1px solid $base02;
+        border: 1px solid $base04;
         border-bottom: none;
-        color: $base07;
+        color: $base01;
         width: 100%;
         padding: 5px;
         box-sizing: border-box;
     }
     
     #search-result {
-        background: $base01;
-        border: 1px solid $base02;
+        border: 1px solid $base04;
         border-top: none;
         max-height: 30%;
         overflow-y: auto;
@@ -140,16 +127,11 @@ main {
             overflow: hidden;
             
             &:hover {
-                background: $base08;
-                color: $base07;
-                
-                .result-desc {
-                    color: $base06;
-                }
+                background: $base06;
             }
             
             a {
-                color: $base07;
+                color: $base02;
                 display: block;
                 padding: 5px;
                 box-sizing: border-box;
@@ -165,6 +147,11 @@ main {
     
     .container {
         padding: 20px 0;
+        border-bottom: 1px solid rgba($base06, 0.4);
+        
+        &:last-of-type {
+            border-bottom: none;
+        }
 
         .title {
             font-size: 1.5rem;
@@ -181,20 +168,33 @@ main {
             cursor: default;
             color: $subtext;
             margin-bottom: 5px;
+            margin-top: 5px;
             margin-right: 10px;
         }
 
         .content {
+            &.description {
+                color: $description;
+            }
             :first-child {
-                margin-top: 0px;
+                margin-top: 2px;
             }
             h1, h2, h3, h4, h5, h6 {
                 font-weight: normal;
+                text-transform: uppercase;
+                display: inline-block;
+                margin: 0;
+                cursor: default;
+                border-bottom: 1px solid rgba($base04, 0.4);
+                
+                &:hover {
+                    border-bottom-color: $base08;
+                }
             }
 
             @for $i from 1 through 6 {
                 h#{$i} {
-                    font-size: inspect(1.7 - $i/10) + "rem";
+                    font-size: inspect(1.5 - $i/10) + "rem";
                 }
             }
             
@@ -212,8 +212,17 @@ footer {
     width: 100%;
     bottom: 0;
     z-index: 1;
-    background: darken($base00, 2);
     justify-content: center;
+    
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: rgba($base04, 0.4);
+    }
     
     .copyright {
         align-self: center;
@@ -256,5 +265,3 @@ footer {
         }
     }
 }
-
-@import "landing";

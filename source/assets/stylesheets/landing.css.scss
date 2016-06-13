@@ -1,6 +1,14 @@
+@import "colors";
+@import "normalize";
+
+body {
+    height: 100vh;
+}
+
 .cc {
-    display: table;
+    display: flex;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 40%;
     margin: 0 auto;
@@ -22,24 +30,45 @@
     .overlay {
         width: inherit;
         height: inherit;
-        background: rgba($base01, 0.96);
+        background: rgba($background, 0.92);
+    }
+}
+
+@keyframes appear {
+    from {
+        transform: scale(0);
+    }
+    
+    50% {
+        transform: scale(0);
+    }
+    
+    82.5% {
+        transform: scale(1.05);
+    }
+    
+    to {
+        transform: scale(1);
     }
 }
 
 .main {
-    display: table-cell;
-    vertical-align: middle;
     padding: 20px 0;
-    
+    animation: 1s appear;
+    background: $base07;
+    padding: 50px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 15px 5px rgba($base00, 0.05);
+    max-width: 560px;
     .avatar {
         max-width: 150px;
         max-height: 150px;
-        border-radius: 50%;
         display: block;
         overflow: hidden;
         border: 2px solid $base02;
         margin: 20px auto;
         margin-top: 0;
+        transform-origin: top center;
         
         img {
             width: 100%;
@@ -54,6 +83,8 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         text-align: center;
+        color: $base02;
+        font-size: 1.1rem;
     }
     
     .contacts, .pages {
@@ -68,7 +99,8 @@
                 font-size: 1.3rem;
                 margin: 0 10px;
                 display: block;
-                color: $base04;
+                color: $links;
+                text-decoration: none;
                 
                 &:hover {
                     color: $base08;
@@ -78,7 +110,7 @@
     }
     
     .h-splitter {
-        border-top: 1px solid $base02;
+        border-top: 1px solid $base04;
         margin: 7px auto;
         display: block;
         min-width: 90px;
@@ -94,16 +126,12 @@
 
 @media screen and (max-width: 560px) {
     .cc {
-        width: 80%;
+        width: 100%;
+        margin-top: 40px;
     }
     
     .background {
-        background: $base00;
-    }
-    
-    .main .me {
-        margin: 10px 0;
-        padding: 20px 0;
+        background: none;
     }
     
     .pages .item {

@@ -9,8 +9,6 @@ project:
     lang: javascript
 tags: komodo terminal butterfly add-on 
 ---
-
-
 This adds a tabbed terminal to the bottom panel in Komodo. It is powered by
 butterfly.
 

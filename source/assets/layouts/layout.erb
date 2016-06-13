@@ -1,4 +1,8 @@
 <% wrap_layout :base do %>
+<% content_for :layout do %>
+    <%= stylesheet_link_tag :index %>
+    <%= stylesheet_link_tag :"highlight/styles" %>
+<% end %>
 <div class="overlay">
     <div class="wrap">
         <header>
