@@ -1,3 +1,3 @@
 <% data.pages.each do |name, page| %>
-    <%= link_to name.upcase, page[0], id: name, class: "/#{current_page.url.split('/')[1]}/" == name ? "active" : "" %>
+    <%= link_to name.upcase, page[0], id: name, class: "#{current_page.url.split('/')[1]}" == name ? "active" : "" %>
 <% end %>
