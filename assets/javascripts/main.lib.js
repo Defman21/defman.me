@@ -1,1 +1,1 @@
-(function(){!function(t){return t("main a").each(function(){return"http"===t(this)[0].href.slice(0,4)?t(this).attr("target","_blank"):void 0})}(jQuery)}).call(this);
+(function(){!function(e){return e(document).ready(function(){var n;return n=!1,e(".open-preview").on("click",function(){return n?(e(".preview").removeClass("open").addClass("close"),n=!1,e(this).html("Open preview")):(e(".preview").removeClass("close").addClass("open"),n=!0,e(this).html("Close preview"))})})}(jQuery)}).call(this);

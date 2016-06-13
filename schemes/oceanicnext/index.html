@@ -24,6 +24,11 @@
 
     
     
+            <script src="/assets/javascripts/jquery.js"></script>
+    <script src="/assets/javascripts/scrollTo.js"></script>
+    <script src="/assets/javascripts/main.lib.js"></script>
+
+    
   </head>
   <body class="schemes schemes_oceanicnext schemes_oceanicnext_index">
     <div class="overlay">
@@ -52,6 +57,84 @@
 
 <p><a href="https://github.com/voronianski/oceanic-next-color-scheme">Original scheme</a></p>
 
+            
+            <h1 class="open-preview">Open preview</h1>
+            <div class="preview">    
+                <style type="text/css">
+pre code
+{
+    background: #1b2b34;
+    color: #c0c5ce;
+}
+.ruby .k { color: #c594c5 }
+.ruby .kn { color: #c594c5 }
+.ruby .n { color: #cdd3de }
+.ruby .kp { color: #cdd3de }
+.ruby .nn { color: #cdd3de }
+.ruby .bp { color: #ec5f67 }
+.ruby .s { color: #99c794 }
+.ruby .s1 { color: #99c794 }
+.ruby .s2 { color: #99c794 }
+.ruby .sb { color: #99c794 }
+.ruby .sx { color: #99c794 }
+.ruby .sr { color: #5fb3b3 }
+.ruby .nc { color: #fac863 }
+.ruby .nf { color: #6699cc }
+.ruby .c { color: #65737e }
+.ruby .cm { color: #65737e }
+.ruby .o { color: #6699cc }
+.ruby .mi { color: #f99157 }
+.ruby .vc { color: #c0c5ce }
+.ruby .ss { color: #c0c5ce }
+.ruby .vi { color: #c0c5ce }
+.ruby .no { color: #c0c5ce }
+.ruby .sh { color: #c0c5ce }
+</style>
+<pre class="highlight ruby"><code><span class="c1">#  Fruit salad recipe</span>
+<span class="c1"># Let's build a fruit-salad maker</span>
+<span class="c1"># This snippet just shows various parts of Ruby speech.</span>
+
+<span class="k">module</span> <span class="nn">Salad</span>
+  <span class="k">class</span> <span class="nc">Fruit</span>
+    <span class="vc">@@class_var</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kp">attr</span> <span class="ss">:symbol</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+      <span class="vi">@instance_var</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">fruit_list</span><span class="p">.</span><span class="nf">zip</span><span class="p">(</span><span class="n">counts</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="vi">@instance_var</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="p">}</span> <span class="c1"># block code</span>
+    <span class="k">end</span>
+    <span class="k">def</span> <span class="nf">mix</span><span class="p">()</span>
+      <span class="nb">print</span> <span class="s2">"double-quoted string"</span>
+      <span class="nb">print</span> <span class="s1">'single-quoted string'</span>
+      <span class="nb">print</span> <span class="sb">`command`</span>
+      <span class="nb">print</span> <span class="sx">%Q(Q string)</span>
+      <span class="nb">print</span> <span class="sx">%q(q string)</span>
+      <span class="nb">print</span> <span class="sr">%r(reg ex)</span>
+      <span class="nb">print</span> <span class="sx">%x(backquoted string)</span>
+      <span class="n">regex</span> <span class="o">=</span> <span class="sr">/pattern/isx</span>
+      <span class="vc">@@class_var</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="sx">%w(guava rambutan longan mangosteen)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="no">Salad</span><span class="o">::</span><span class="no">Fruit</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="o">&lt;&lt;</span><span class="no">abc</span><span class="sh">
+here document
+</span><span class="no">abc</span>
+
+<span class="cm">=begin
+rubydoc
+block comment
+=end</span>
+
+<span class="cp">__END__
+end section
+
+</span></code></pre>
+
+            </div>
         </div>
         <div class="links">
             <p>
