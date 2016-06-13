@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+  <head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    
+    <meta name="theme-color" content="#FFFFFF">
+
+    <title>Schemes - Forest</title>
+    
+        <meta name="description" content="Base16 Atelier Forest light color scheme for Komodo.">
+<meta property="og:title" content="Schemes - Forest">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Base16 Atelier Forest light color scheme for Komodo.">
+<meta property="og:site_name" content="Defman.me">
+<meta property="og:url" content="//defman.me/schemes/forest/">
+
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+            <script src="/assets/javascripts/jquery.js"></script>
+    <script src="/assets/javascripts/scrollTo.js"></script>
+    <script src="/assets/javascripts/main.lib.js"></script>
+
+    
+  </head>
+  <body class="schemes schemes_forest schemes_forest_index">
+    <div class="overlay">
+    <div class="wrap">
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                    <a href="/blog" id="blog" class="">BLOG</a>
+    <a href="/projects" id="projects" class="">PROJECTS</a>
+    <a href="/schemes" id="schemes" class="active">SCHEMES</a>
+
+            </nav>
+        </header>
+        <main>
+                <div class="container scheme" id="forest">
+        <span class="title">Forest</span>
+        <span class="comp">for Komodo 10</span>
+        <div class="content">
+            <p>Base16 Atelier Forest light color scheme for Komodo.</p>
+
+<h2>How to install?</h2>
+
+<p>Using Commando Packages, find &ldquo;Forest&rdquo; and press Enter to install it.</p>
+
+            
+            <h1 class="open-preview">Open preview</h1>
+            <div class="preview">    
+                <style type="text/css">
+pre code
+{
+    background: #f1efee;
+    color: #68615e;
+}
+.ruby .k { color: #6666ea }
+.ruby .kn { color: #6666ea }
+.ruby .n { color: #68615e }
+.ruby .kp { color: #68615e }
+.ruby .nn { color: #68615e }
+.ruby .nb { color: #68615e }
+.ruby .bp { color: #f22c40 }
+.ruby .s { color: #7b9726 }
+.ruby .s1 { color: #7b9726 }
+.ruby .s2 { color: #7b9726 }
+.ruby .sb { color: #7b9726 }
+.ruby .sx { color: #7b9726 }
+.ruby .sr { color: #3d97b8 }
+.ruby .nc { color: #c38418 }
+.ruby .nf { color: #407ee7 }
+.ruby .c { color: #9c9491 }
+.ruby .cm { color: #9c9491 }
+.ruby .o { color: #407ee7 }
+.ruby .mi { color: #df5320 }
+.ruby .vc { color: #68615e }
+.ruby .ss { color: #68615e }
+.ruby .vi { color: #68615e }
+.ruby .no { color: #68615e }
+.ruby .sh { color: #68615e }
+</style>
+<pre class="highlight ruby"><code><span class="c1">#  Fruit salad recipe</span>
+<span class="c1"># Let's build a fruit-salad maker</span>
+<span class="c1"># This snippet just shows various parts of Ruby speech.</span>
+
+<span class="k">module</span> <span class="nn">Salad</span>
+  <span class="k">class</span> <span class="nc">Fruit</span>
+    <span class="vc">@@class_var</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kp">attr</span> <span class="ss">:symbol</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+      <span class="vi">@instance_var</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">fruit_list</span><span class="p">.</span><span class="nf">zip</span><span class="p">(</span><span class="n">counts</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span> <span class="vi">@instance_var</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="p">}</span> <span class="c1"># block code</span>
+    <span class="k">end</span>
+    <span class="k">def</span> <span class="nf">mix</span><span class="p">()</span>
+      <span class="nb">print</span> <span class="s2">"double-quoted string"</span>
+      <span class="nb">print</span> <span class="s1">'single-quoted string'</span>
+      <span class="nb">print</span> <span class="sb">`command`</span>
+      <span class="nb">print</span> <span class="sx">%Q(Q string)</span>
+      <span class="nb">print</span> <span class="sx">%q(q string)</span>
+      <span class="nb">print</span> <span class="sr">%r(reg ex)</span>
+      <span class="nb">print</span> <span class="sx">%x(backquoted string)</span>
+      <span class="n">regex</span> <span class="o">=</span> <span class="sr">/pattern/isx</span>
+      <span class="vc">@@class_var</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="sx">%w(guava rambutan longan mangosteen)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="no">Salad</span><span class="o">::</span><span class="no">Fruit</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="o">&lt;&lt;</span><span class="no">abc</span><span class="sh">
+here document
+</span><span class="no">abc</span>
+
+<span class="cm">=begin
+rubydoc
+block comment
+=end</span>
+
+<span class="cp">__END__
+end section
+
+</span></code></pre>
+
+            </div>
+        </div>
+        <div class="links">
+            <p>
+                <a class="github" href="//github.com/Defman21/forest-komodo"><i class="fa fa-github"></i> Source code</a>
+            </p>
+            <p>
+                <a class="github" href="//github.com/Defman21/forest-komodo/releases/latest"><i class="fa fa-github"></i> Latest release</a>
+            </p>
+            <p>
+                <a class="package" href="//komodoide.com/packages/schemes/forest"><i class="fa fa-download"></i> Package</a>
+            </p>
+            
+        </div>
+            <div class="comments">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "http://defman.me/schemes/forest/";
+                this.page.identifier = "scheme-forest";
+            };
+            (function() {
+                var d = document, s = d.createElement('script');
+
+                s.src = '//defman.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+    </div>
+
+        </main>
+    </div>
+</div>
+<footer>
+    <div class="copyright">
+        defman.me &copy; 2016
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
+
+  </body>
+</html>
+
