@@ -1,9 +1,19 @@
 <% wrap_layout :layout do %>
+<% content_for :layout_js do %>
+    <%= javascript_include_tag :jquery %>
+    <%= javascript_include_tag :scrollTo %>
+    <%= javascript_include_tag :"main.lib" %>
+<% end %>
     <div class="container scheme" id="<%= current_page.data.scheme.id %>">
         <span class="title"><%= current_page.data.scheme.name %></span>
         <span class="comp">for Komodo <%= current_page.data.scheme.comp %></span>
         <div class="content">
             <%= yield %>
+            
+            <h1 class="open-preview">Open preview</h1>
+            <div class="preview">    
+                <%= partial "partials/scheme-preview", locals: {ksf: current_page.data.scheme.id} %>
+            </div>
         </div>
         <div class="links">
             <p>

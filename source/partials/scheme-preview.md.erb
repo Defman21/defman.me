@@ -1,0 +1,95 @@
+<% colors = ksf(ksf) %>
+<% if colors.ready %>
+<style type="text/css">
+<%
+common = colors.color(['CommonStyles', 'default_fixed', 'fore'])
+keywords = colors.color_for('keywords', 'Ruby')
+class_vars = colors.color_for('class variables', 'Ruby')
+instance_vars = colors.color_for('instance variables', 'Ruby')
+classes = colors.color_for('classes', 'Ruby')
+strings = colors.color_for('strings', 'Ruby')
+functions = colors.color_for('functions', 'Ruby')
+keywords2 = colors.color_for('keywords2', 'Ruby')
+comments = colors.color_for('comments', 'Ruby')
+operators = colors.color_for('operators', 'Ruby')
+numbers = colors.color_for('numbers', 'Ruby')
+identifiers = colors.color_for('identifiers', 'Ruby')
+symbols = colors.color_for('symbols', 'Ruby')
+regex = colors.color_for('regex', 'Ruby')
+hdocs = colors.color_for('here documents', 'Ruby')
+%>
+pre code
+{
+    background: <%= colors.color(['CommonStyles', 'default_fixed', 'back']) %>;
+    color: <%=common%>;
+}
+.ruby .k { color: <%=keywords%> }
+.ruby .kn { color: <%=keywords%> }
+.ruby .n { color: <%=identifiers%> }
+.ruby .kp { color: <%=identifiers%> }
+.ruby .nn { color: <%=identifiers%> }
+.ruby .bp { color: <%=keywords2%> }
+.ruby .s { color: <%=strings%> }
+.ruby .s1 { color: <%=strings%> }
+.ruby .s2 { color: <%=strings%> }
+.ruby .sb { color: <%=strings%> }
+.ruby .sx { color: <%=strings%> }
+.ruby .sr { color: <%=regex%> }
+.ruby .nc { color: <%=classes%> }
+.ruby .nf { color: <%=functions%> }
+.ruby .c { color: <%=comments%> }
+.ruby .cm { color: <%=comments%> }
+.ruby .o { color: <%=operators%> }
+.ruby .mi { color: <%=numbers%> }
+.ruby .vc { color: <%=class_vars%> }
+.ruby .ss { color: <%=symbols%> }
+.ruby .vi { color: <%=instance_vars%> }
+.ruby .no { color: <%=hdocs%> }
+.ruby .sh { color: <%=hdocs%> }
+</style>
+
+```ruby
+#  Fruit salad recipe
+# Let's build a fruit-salad maker
+# This snippet just shows various parts of Ruby speech.
+
+module Salad
+  class Fruit
+    @@class_var = 0
+    attr :symbol
+    def initialize(fruit_list, counts)
+      @instance_var = {}
+      fruit_list.zip(counts).each { |a, b| @instance_var[a] = b } # block code
+    end
+    def mix()
+      print "double-quoted string"
+      print 'single-quoted string'
+      print `command`
+      print %Q(Q string)
+      print %q(q string)
+      print %r(reg ex)
+      print %x(backquoted string)
+      regex = /pattern/isx
+      @@class_var += 1
+    end
+  end
+end
+
+fruit_list = %w(guava rambutan longan mangosteen)
+counts = [3, 4, 1, 5]
+fruits = Salad::Fruit.new(fruit_list, counts)
+
+print <<abc
+here document
+abc
+
+=begin
+rubydoc
+block comment
+=end
+
+__END__
+end section
+    
+```
+<% end %>

@@ -23,6 +23,10 @@
         <%= stylesheet_link_tag :"#{css}" %>
     <% end %>
     
+    <% if content_for?(:layout_js) %>
+        <%= yield_content :layout_js %>
+    <% end %>
+    
     <% if current_page.data.js %>
         <%= javascript_include_tag :jquery %>
         <%= javascript_include_tag :scrollTo %>

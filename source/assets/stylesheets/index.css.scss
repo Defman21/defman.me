@@ -89,16 +89,65 @@ header {
     }
 }
 
+
 pre, code.prettyprint {
     font-size: 0.9rem;
     font-family: "Hack", "Source Code Pro", monospace;
     overflow-y: auto;
     color: $base03;
     border: 1px solid $base04;
+    margin: 0;
     padding: 5px;
-    
     & > code {
         display: block;
+    }
+}
+
+@keyframes open-preview {
+    from {
+        max-height: 0;
+    }
+    
+    to {
+        max-height: 640px;
+    }
+}
+
+@keyframes close-preview {
+    from {
+        max-height: 640px;
+    }
+    
+    to {
+        max-height: 0px;
+    }
+}
+
+.open-preview {
+    cursor: pointer !important;
+}
+
+.preview {
+    max-height: 0;
+    margin-top: 5px;
+    transform-origin: top center;
+    overflow-y: auto;
+    
+    &.open {
+        animation: 1s open-preview ease forwards;
+    }
+    
+    &.close {
+        animation: 1s close-preview ease forwards;
+    }
+    
+    & > pre, code.prettyprint {
+        border: none;
+        margin: 0;
+        padding: 0;
+        & > code {
+            padding: 5px;
+        }
     }
 }
 
@@ -176,7 +225,7 @@ main {
             &.description {
                 color: $description;
             }
-            :first-child {
+            & > :first-child {
                 margin-top: 2px;
             }
             h1, h2, h3, h4, h5, h6 {

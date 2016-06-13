@@ -1,3 +1,12 @@
 do ($ = jQuery) ->
-  $("main a").each ->
-    $(@).attr "target", "_blank" if $(@)[0].href[0..3] == "http"
+  $(document).ready ->
+    opened = no
+    $('.open-preview').on 'click', ->
+      if not opened
+        $('.preview').removeClass('close').addClass 'open'
+        opened = yes
+        $(this).html "Close preview"
+      else
+        $('.preview').removeClass('open').addClass 'close'
+        opened = no
+        $(this).html "Open preview"
