@@ -28,7 +28,7 @@ $palette: $color01,
         width: 64px;
         height: 64px;
         margin: 0.3em;
-        cursor: pointer;
+        cursor: default;
     }
     
     @for $i from 1 through length($palette) {
