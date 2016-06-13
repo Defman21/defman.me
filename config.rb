@@ -39,12 +39,14 @@ end
 
 ready do
   $blogs = 5
-  blogs = sitemap.resources.select do |p|
-    if p.metadata[:options][:layout] == :blog and p.source_file.include? "md"
+  blogs = sitemap.resources.select do |blog|
+    if blog.path.start_with?("blog") and blog.source_file.include? "md"
       true
+    else
+      false
     end
-    false
   end
+  blogs = blogs.sort_by { |page| page.data.date }.reverse!
   offset = 0
   if blogs.length > $blogs
     first, last = false, false
