@@ -1,1 +1,0 @@
-(function(){!function(r){var o,t;return o=function(){var o;return o=r(this).attr("id").split("-")[1],console.log(o),r(".base-"+o).addClass("hover")},t=function(){var o;return o=r(this).attr("id").split("-")[1],console.log(o),r(".base-"+o).removeClass("hover")},r(".color").hover(o,t)}(jQuery)}).call(this);
