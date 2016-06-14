@@ -10,8 +10,8 @@
         <div class="content">
             <%= yield %>
             
-            <h1 class="button-preview open">preview <i class="fa fa-chevron-down"></i></h1>
-            <div class="preview">    
+            <h1 class="button-preview">preview <i class="fa fa-chevron-down"></i></h1>
+            <div class="preview">
                 <%= partial "partials/scheme-preview", locals: {ksf: current_page.data.scheme.id} %>
             </div>
         </div>
