@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    
+    <meta name="theme-color" content="#FFFFFF">
+
+    <title>Git 2.9: What's new?</title>
+    
+        <meta name="description" content="Git 2.9 has been released. There are some cool features that I want to show.">
+<meta property="og:title" content="Git 2.9: What's new?">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Git 2.9 has been released. There are some cool features that I want to show.">
+<meta property="og:site_name" content="Defman.me">
+<meta property="og:url" content="//defman.me/blog/git-2-9-whats-new/">
+    <meta property="article:author" content="Sergey Kislyakov">
+        <meta property="article:tag" content="git">
+
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+    
+  </head>
+  <body class="blog blog_git-2-9-whats-new blog_git-2-9-whats-new_index">
+    <div class="overlay">
+    <div class="wrap">
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                    <a href="/blog" id="blog" class="active">BLOG</a>
+    <a href="/projects" id="projects" class="">PROJECTS</a>
+    <a href="/schemes" id="schemes" class="">SCHEMES</a>
+
+            </nav>
+        </header>
+        <main>
+                <div class="container article" id="201606141727-git-2-9-whats-new">
+        <span class="title">Git 2.9: What's new?</span>
+        <span class="timestamp"><i class="fa fa-clock-o"></i> 2016/06/14 17:27</span>
+        <span class="tags"><i class="fa fa-tags"></i> git</span>
+        <div class="content">
+            <p>As you may know, git 2.9 has been released yesterday. I&rsquo;ve switched from 2.7
+to this version because there are some interesting features.</p>
+
+<h1>Faster submodules</h1>
+
+<p>Git 2.8 introduced a new option called <code class="prettyprint">--jobs</code> that allows to do specific
+tasks in parallel (<code class="prettyprint">git fetch</code> in 2.8). In 2.9, this option has been added
+to <code class="prettyprint">git clone --recurse-submodules</code> and <code class="prettyprint">git submodule update</code>.
+Now you can use this to clone or update submodules much faster. You can set
+<code class="prettyprint">submodule.fetchJobs</code> to always process submodules in parallel.</p>
+
+<h1>Better diffs</h1>
+
+<p>In git 2.9, it&rsquo;s diff engine learned a new heuristic. You can read about it
+<a href="//github.com/blog/2188-git-2-9-has-been-released">there</a>, to enable it you can pass <code class="prettyprint">--compaction-heuristic</code> option to git or
+set <code class="prettyprint">diff.compactionHeuristic</code> to <code class="prettyprint">1</code>.</p>
+
+<h1>Testing all the commits with rebase -x</h1>
+
+<p><code class="prettyprint">rebase</code> is a powerful tool for editing commits (squashing, removing, etc.).
+Now it supports <code class="prettyprint">-x</code> option which will execute specific command at each commit.</p>
+
+<p>For example, you have 5 commits. If you run <code class="prettyprint">git rebase -x &#39;my test command&#39;</code>,
+git will execute it for each commit and if it will fail (exit code != 0), git
+will suggest you to fix the problem, commit it (<code class="prettyprint">-a --amend</code>) and continue
+the rebase.</p>
+
+<p>You can see the release notes <a href="//github.com/git/git/blob/v2.9.0/Documentation/RelNotes/2.9.0.txt">here</a></p>
+
+<p>Happy hacking!</p>
+
+        </div>
+        <div class="links">
+            
+        </div>
+            <div class="comments">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "http://defman.me/blog/git-2-9-whats-new/";
+                this.page.identifier = "201606141727-git-2-9-whats-new";
+            };
+            (function() {
+                var d = document, s = d.createElement('script');
+
+                s.src = '//defman.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+    </div>
+
+        </main>
+    </div>
+</div>
+<footer>
+    <div class="copyright">
+        <a href="https://github.com/Defman21/defman.me">defman.me &copy; 2016</a>
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
+
+  </body>
+</html>
+
