@@ -178,7 +178,7 @@ main {
             overflow: hidden;
             
             &:hover {
-                background: $base06;
+                background: $search-highlight;
             }
             
             a {
@@ -227,9 +227,11 @@ main {
             &.description {
                 color: $description;
             }
+            
             & > :first-child {
                 margin-top: 2px;
             }
+            
             h1, h2, h3, h4, h5, h6 {
                 font-weight: normal;
                 text-transform: uppercase;
