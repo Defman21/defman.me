@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    
+    <meta name="theme-color" content="#FFFFFF">
+
+    <title>How to make git diff looks better</title>
+    
+        <meta name="description" content="Wondering How to make git diff looks a bit better? This article can help you with it!">
+<meta property="og:title" content="How to make git diff looks better">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Wondering How to make git diff looks a bit better? This article can help you with it!">
+<meta property="og:site_name" content="Defman.me">
+<meta property="og:url" content="//defman.me/blog/how-to-make-git-diff-looks-better/">
+    <meta property="article:author" content="Sergey Kislyakov">
+        <meta property="article:tag" content="git">
+
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+    
+  </head>
+  <body class="blog blog_how-to-make-git-diff-looks-better blog_how-to-make-git-diff-looks-better_index">
+    <div class="overlay">
+    <div class="wrap">
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                    <a href="/blog" id="blog" class="active">BLOG</a>
+    <a href="/projects" id="projects" class="">PROJECTS</a>
+    <a href="/schemes" id="schemes" class="">SCHEMES</a>
+
+            </nav>
+        </header>
+        <main>
+                <div class="container article" id="201606141833-how-to-make-git-diff-looks-better">
+        <span class="title">How to make git diff looks better</span>
+        <span class="timestamp"><i class="fa fa-clock-o"></i> 2016/06/14 18:33</span>
+        <span class="tags"><i class="fa fa-tags"></i> git</span>
+        <div class="content">
+            <p>By default, <code class="prettyprint">git diff</code> looks not that good as it could be. If you use GitHub,
+you can see how good it can looks. We&rsquo;ll try to achieve something similar to
+Github&rsquo;s diff.</p>
+
+<h1>Diff-highlight</h1>
+
+<p><code class="prettyprint">diff-highlight</code> is a contributed tool which shows better diff by comparing
+strings by character.
+So, if your diff looks like:</p>
+<pre class="highlight diff"><code><span class="gd">- hello, world
+</span><span class="gi">+ hello, people
+</span></code></pre>
+
+<p>It will highlight <code class="prettyprint">world</code> as old (red background) and <code class="prettyprint">people</code> as new
+(green background).</p>
+
+<p><a href="//github.com/git/git/blob/master/contrib/diff-highlight/diff-highlight">You can grab the script here</a> and install it by placing it to <code class="prettyprint">/usr/bin/</code></p>
+
+<h1>Diff-so-fancy</h1>
+
+<p>This project makes diff looks <strong>much</strong> better!</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/39191/13622719/7cc7c54c-e555-11e5-86c4-7045d91af041.png" alt="screen" /></p>
+
+<p>On the left side, it&rsquo;s the default diff. On the right side, it&rsquo;s the diff
+with <code class="prettyprint">diff-so-fancy</code>.</p>
+
+<p>You can install it by <code class="prettyprint">npm install -g diff-so-fancy</code>. This will install <code class="prettyprint">diff-
+highlight</code> as well.</p>
+
+<p>For more info, see the <a href="//github.com/so-fancy/diff-so-fancy">github project</a>.</p>
+
+<p>I&rsquo;m using Forest scheme for terminal, so the config suggested by diff-so-fancy
+looks not that good. I&rsquo;ve picked some nice colors, so if you&rsquo;re using Forest
+as well, enter these commands instead of the suggested:</p>
+<pre class="highlight shell"><code>git config --global color.diff-highlight.oldNormal <span class="s2">"red"</span> 
+git config --global color.diff-highlight.oldHighlight <span class="s2">"red 217"</span>
+git config --global color.diff-highlight.newNormal <span class="s2">"green"</span>
+git config --global color.diff-highlight.newHighlight <span class="s2">"green 157"</span>
+</code></pre>
+
+<p>Happy diffing! :D</p>
+
+        </div>
+        <div class="links">
+            
+        </div>
+            <div class="comments">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "http://defman.me/blog/how-to-make-git-diff-looks-better/";
+                this.page.identifier = "201606141833-how-to-make-git-diff-looks-better";
+            };
+            (function() {
+                var d = document, s = d.createElement('script');
+
+                s.src = '//defman.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+    </div>
+
+        </main>
+    </div>
+</div>
+<footer>
+    <div class="copyright">
+        <a href="https://github.com/Defman21/defman.me">defman.me &copy; 2016</a>
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
+
+  </body>
+</html>
+
