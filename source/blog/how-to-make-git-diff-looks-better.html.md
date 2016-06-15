@@ -50,6 +50,8 @@ git config --global color.diff-highlight.newNormal "green"
 git config --global color.diff-highlight.newHighlight "green 157"
 ```
 
+![git diff forest](git-diff-forest.png)
+
 Happy diffing! :D
 
 [1]: //github.com/git/git/blob/master/contrib/diff-highlight/diff-highlight
