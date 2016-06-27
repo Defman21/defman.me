@@ -6,15 +6,16 @@
                 this.page.url = "http://defman.me<%= current_page.url %>";
                 this.page.identifier = "<%= current_page.data.id %>";
             };
-            (function() {
+            var loadDisqusComments = (function() {
                 var d = document, s = d.createElement('script');
 
                 s.src = '//defman.disqus.com/embed.js';
 
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
-            })();
+            });
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
+    <%= javascript_include_tag :lazyload %>
 <% end %>
