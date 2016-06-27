@@ -136,17 +136,18 @@ You can download it regardless of your distro/OS</p>
                 this.page.url = "http://defman.me/blog/my-top-5-monospaced-fonts/";
                 this.page.identifier = "201606081948-my-top-5-monospaced-fonts";
             };
-            (function() {
+            var loadDisqusComments = (function() {
                 var d = document, s = d.createElement('script');
 
                 s.src = '//defman.disqus.com/embed.js';
 
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
-            })();
+            });
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
+    <script src="/assets/javascripts/lazyload.js"></script>
 
     </div>
 

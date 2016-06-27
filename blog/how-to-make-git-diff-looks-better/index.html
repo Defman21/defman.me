@@ -102,17 +102,18 @@ git config --global color.diff-highlight.newHighlight <span class="s2">"green 15
                 this.page.url = "http://defman.me/blog/how-to-make-git-diff-looks-better/";
                 this.page.identifier = "201606141833-how-to-make-git-diff-looks-better";
             };
-            (function() {
+            var loadDisqusComments = (function() {
                 var d = document, s = d.createElement('script');
 
                 s.src = '//defman.disqus.com/embed.js';
 
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
-            })();
+            });
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
+    <script src="/assets/javascripts/lazyload.js"></script>
 
     </div>
 
