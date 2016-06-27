@@ -7,10 +7,14 @@ do ->
     eb = r.bottom
     (et > 0) && (eb <= window.innerHeight)
   
-  document.onscroll = ->
+  _loadComments = ->
     if _isScrolledIntoView(elem) and not DisqusCommentsLoaded
       DisqusCommentsLoaded = yes
       if loadDisqusComments?
         do loadDisqusComments
-    else
-      console.log "already loaded"
+  
+  document.addEventListener 'DOMContentLoaded', ->
+    _loadComments()
+  
+  document.onscroll = ->
+    _loadComments()
