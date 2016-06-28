@@ -146,6 +146,7 @@ end section
             
         </div>
             <div class="comments">
+        <div id="comments_loading"># comments are loading, please wait</div>
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function () {
@@ -153,6 +154,7 @@ end section
                 this.page.identifier = "scheme-flat";
             };
             var loadDisqusComments = (function() {
+                (e=document.getElementById('comments_loading')).parentNode.removeChild(e);
                 var d = document, s = d.createElement('script');
 
                 s.src = '//defman.disqus.com/embed.js';
