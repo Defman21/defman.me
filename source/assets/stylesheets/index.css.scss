@@ -301,6 +301,15 @@ main {
                 }
             }
         }
+        
+        .comments {
+            #comments_loading {
+                text-align: center;
+                font-size: 2rem;
+                color: $base06;
+                text-transform: uppercase;
+            }
+        }
     }
 }
 

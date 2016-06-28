@@ -11,7 +11,9 @@ do ->
     if _isScrolledIntoView(elem) and not DisqusCommentsLoaded
       DisqusCommentsLoaded = yes
       if loadDisqusComments?
-        do loadDisqusComments
+        setTimeout ->
+          do loadDisqusComments
+        , 500
   
   document.addEventListener 'DOMContentLoaded', ->
     _loadComments()

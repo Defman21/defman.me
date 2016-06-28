@@ -1,5 +1,6 @@
 <% unless current_page.data.comments == false %>
     <div class="comments">
+        <div id="comments_loading"># comments are loading, please wait</div>
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function () {
@@ -7,6 +8,7 @@
                 this.page.identifier = "<%= current_page.data.id %>";
             };
             var loadDisqusComments = (function() {
+                (e=document.getElementById('comments_loading')).parentNode.removeChild(e);
                 var d = document, s = d.createElement('script');
 
                 s.src = '//defman.disqus.com/embed.js';
