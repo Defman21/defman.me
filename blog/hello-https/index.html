@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    
+    <meta name="theme-color" content="#FFFFFF">
+
+    <title>Hello HTTPS</title>
+    
+        <meta name="description" content="Finally defman.me is now available at https://defman.me (no http anymore)">
+<meta property="og:title" content="Hello HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Finally defman.me is now available at https://defman.me (no http anymore)">
+<meta property="og:site_name" content="Defman.me">
+<meta property="og:url" content="//defman.me/blog/hello-https/">
+    <meta property="article:author" content="Sergey Kislyakov">
+        <meta property="article:tag" content="https">
+        <meta property="article:tag" content="security">
+        <meta property="article:tag" content="letsencrypt">
+
+
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+    
+  </head>
+  <body class="blog blog_hello-https blog_hello-https_index">
+    <div class="overlay">
+    <div class="wrap">
+        <header>
+            <div class="logo"><a href="/">Defman.me</a></div>
+            <nav>
+                    <a href="/blog" id="blog" class="active">BLOG</a>
+    <a href="/projects" id="projects" class="">PROJECTS</a>
+    <a href="/schemes" id="schemes" class="">SCHEMES</a>
+
+            </nav>
+        </header>
+        <main>
+                <div class="container article" id="201606290925-hello-https">
+        <span class="title">Hello HTTPS</span>
+        <span class="timestamp"><i class="fa fa-clock-o"></i> 2016/06/29 09:25</span>
+        <span class="tags"><i class="fa fa-tags"></i> https security letsencrypt</span>
+        <div class="content">
+            <p>Today I&rsquo;ve decided to provide some security on my web-site. I know it&rsquo;s static
+and so, but there are comments which makes browser thinks there are some
+inputs that are being sent to the server over insecure protocol.</p>
+
+<p>Well, this is not that hard as it could be, buts it&rsquo;s a bit expensive:
+I had to buy a VPS for that to proxy everything from https://defman.me to
+https://defman21.github.io (there&rsquo;s some CNAME magic and I don&rsquo;t want to dig in
+it, it just works). But I really wanted HTTPS on my web-site so I think it&rsquo;s
+worth it.</p>
+
+        </div>
+        <div class="links">
+            
+        </div>
+            <div class="comments">
+        <div id="comments_loading"># comments are loading, please wait</div>
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.page.url = "http://defman.me/blog/hello-https/";
+                this.page.identifier = "201606290925-hello-https";
+            };
+            var loadDisqusComments = (function() {
+                (e=document.getElementById('comments_loading')).parentNode.removeChild(e);
+                var d = document, s = d.createElement('script');
+
+                s.src = '//defman.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+    <script src="/assets/javascripts/lazyload.js"></script>
+
+    </div>
+
+        </main>
+    </div>
+</div>
+<footer>
+    <div class="copyright">
+        <a href="https://github.com/Defman21/defman.me">defman.me &copy; 2016</a>
+        <br>
+        Colors used: <a class="nonewline" href="/materia">Materia</a>
+    </div>
+</footer>
+
+  </body>
+</html>
+
