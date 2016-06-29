@@ -14,3 +14,7 @@ I had to buy a VPS for that to proxy everything from https://defman.me to
 https://defman21.github.io (there's some CNAME magic and I don't want to dig in
 it, it just works). But I really wanted HTTPS on my web-site so I think it's
 worth it.
+
+My site was rated as "A+":
+
+[![HTTPS Rate](https-test.png)](https://www.ssllabs.com/ssltest/analyze.html?d=defman.me)
