@@ -28,15 +28,10 @@
     <% if content_for?(:layout_js) %>
         <%= yield_content :layout_js %>
     <% end %>
-    
-    <% if current_page.data.js %>
-        <%= javascript_include_tag :jquery %>
-        <%= javascript_include_tag :"main.lib" %>
-        
-        <% current_page.data.extra && current_page.data.extra.each do |js| %>
-            <%= javascript_include_tag :"#{js}" %>
-        <% end %>
-        
+    <%= javascript_include_tag :jquery %>
+    <%= javascript_include_tag :"main.lib" %>
+    <% current_page.data.js && current_page.data.js.each do |js| %>
+        <%= javascript_include_tag :"#{js}" %>
     <% end %>
     <script>
     (function(i,s,o,g,r,l,c,x,a,m){if(l.getItem('donttrackme')!=null){i.ga=()=>{};return c.log(x)};i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
