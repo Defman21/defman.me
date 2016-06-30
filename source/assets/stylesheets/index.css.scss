@@ -343,6 +343,8 @@ footer {
         
         .checkbox {
             position: relative;
+            cursor: pointer;
+            
             &:before {
                 content: "";
                 width: 13px;
