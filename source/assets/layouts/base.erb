@@ -12,13 +12,15 @@
     <% unless defined? current_page.data.og %>
         <%= partial "partials/og_meta" %>
     <% end %>
-
+    <%= stylesheet_link_tag :base %>
+  </head>
+  <body class="<%= page_classes %>">
+    <%= yield %>
     <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag :"font-awesome" %>
     <% if content_for?(:layout) %>
         <%= yield_content :layout %>
     <% end %>
-    
     <% current_page.data.css && current_page.data.css.each do |css| %>
         <%= stylesheet_link_tag :"#{css}" %>
     <% end %>
@@ -29,7 +31,6 @@
     
     <% if current_page.data.js %>
         <%= javascript_include_tag :jquery %>
-        <%= javascript_include_tag :scrollTo %>
         <%= javascript_include_tag :"main.lib" %>
         
         <% current_page.data.extra && current_page.data.extra.each do |js| %>
@@ -37,9 +38,6 @@
         <% end %>
         
     <% end %>
-  </head>
-  <body class="<%= page_classes %>">
-    <%= yield %>
   </body>
 </html>
 
