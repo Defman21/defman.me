@@ -4,6 +4,37 @@ require 'json'
 
 # Extension namespace
 
+module Middleman
+  module Util
+    
+    module_function
+    
+    def asset_path(app, kind, source, options={})
+      return source if source.to_s.include?('//') || source.to_s.start_with?('data:')
+
+      asset_folder = case kind
+      when :css
+        app.config[:css_dir]
+      when :js
+        app.config[:js_dir]
+      when :images
+        app.config[:images_dir]
+      when :fonts
+        app.config[:fonts_dir]
+      else
+        kind.to_s
+      end
+
+      source = source.to_s.tr(' ', '')
+      ignore_extension = (kind == :images || kind == :fonts) # don't append extension
+      source << ".#{kind}?#{Time.new.to_i}" unless ignore_extension || source.end_with?(".#{kind}")
+      asset_folder = '' if source.start_with?('/') # absolute path
+
+      asset_url(app, source, asset_folder, options)
+    end
+  end
+end
+
 class DefmanMe < ::Middleman::Extension
 
   option :style, '...', 'Truncate style'
