@@ -1,7 +1,6 @@
 <% wrap_layout :layout do %>
 <% content_for :layout_js do %>
     <%= javascript_include_tag :jquery %>
-    <%= javascript_include_tag :scrollTo %>
     <%= javascript_include_tag :"main.lib" %>
 <% end %>
     <div class="container scheme" id="<%= current_page.data.scheme.id %>">
