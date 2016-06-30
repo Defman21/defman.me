@@ -9,21 +9,7 @@
 
     <title>404?!</title>
     
-
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
-            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
-    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
-
-    
-    
-    
-        <script src="/assets/javascripts/jquery.js"></script>
-        <script src="/assets/javascripts/scrollTo.js"></script>
-        <script src="/assets/javascripts/main.lib.js"></script>
-        
-            <script src="/assets/javascripts/search.js"></script>
-        
+    <link href="/assets/stylesheets/base.css" rel="stylesheet" />
   </head>
   <body class="x404">
     <div class="overlay">
@@ -42,9 +28,11 @@
 <div id="search-result">
 </div>
 <script>
-    search("all", true);
+    search_config = {
+        type: "all",
+        show_type: true
+    };
 </script>
-
 <div class="container" id="lost-soul">
     <span class="title">404 - you're lost</span>
     <span class="timestamp"><i class="fa fa-clock-o"></i> 404</span>
@@ -64,6 +52,18 @@
     </div>
 </footer>
 
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+        <script src="/assets/javascripts/jquery.js"></script>
+        <script src="/assets/javascripts/main.lib.js"></script>
+        
+            <script src="/assets/javascripts/search.js"></script>
+        
   </body>
 </html>
 

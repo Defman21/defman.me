@@ -16,21 +16,7 @@
 <meta property="og:site_name" content="Defman's Schemes">
 <meta property="og:url" content="//defman.me/schemes/">
 
-
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
-            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
-    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
-
-    
-    
-    
-        <script src="/assets/javascripts/jquery.js"></script>
-        <script src="/assets/javascripts/scrollTo.js"></script>
-        <script src="/assets/javascripts/main.lib.js"></script>
-        
-            <script src="/assets/javascripts/search.js"></script>
-        
+    <link href="/assets/stylesheets/base.css" rel="stylesheet" />
   </head>
   <body class="schemes schemes_index">
     <div class="overlay">
@@ -49,9 +35,11 @@
 <div id="search-result">
 </div>
 <script>
-    search("schemes", false);
+    search_config = {
+        type: "schemes",
+        show_type: false
+    };
 </script>
-
     <div class="container scheme" id="forest">
         <span class="title"><a href="/schemes/forest/">Forest</a></span>
         <span class="comp">for Komodo 10</span>
@@ -99,6 +87,18 @@
     </div>
 </footer>
 
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/assets/stylesheets/font-awesome.css" rel="stylesheet" />
+            <link href="/assets/stylesheets/index.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/highlight/styles.css" rel="stylesheet" />
+
+    
+    
+        <script src="/assets/javascripts/jquery.js"></script>
+        <script src="/assets/javascripts/main.lib.js"></script>
+        
+            <script src="/assets/javascripts/search.js"></script>
+        
   </body>
 </html>
 
