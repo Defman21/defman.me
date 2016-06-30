@@ -198,7 +198,7 @@ pre, code.prettyprint {
 
 main {
     position: relative;
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     box-sizing: border-box;
     
     #search {
@@ -314,7 +314,7 @@ main {
 
 footer {
     display: flex;
-    height: 100px;
+    height: 120px;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -337,6 +337,39 @@ footer {
         text-transform: uppercase;
         color: $base03;
         font-size: 0.8rem;
+    }
+    
+    .dont-track-me {
+        
+        .checkbox {
+            position: relative;
+            &:before {
+                content: "";
+                width: 13px;
+                height: 13px;
+                display: inline-block;
+                position: absolute;
+                top: 1px;
+                left: -20px;
+                border: 1px solid $base04;
+            }
+            
+            &.checked:before {
+                background: lighten($base0B, 20);
+            }
+        }
+        
+        .description {
+            opacity: 0.2;
+            display: block;
+            font-size: 0.7rem;
+        }
+        
+        &:hover {
+            .description {
+                opacity: 1;
+            }
+        }
     }
 }
 
