@@ -1,0 +1,227 @@
+@import "../normalize";
+
+$background:      #303030;
+$background-dark: darken($background, 5);
+$foreground:      #E5E5E5;
+$foreground-dark: darken($foreground, 35);
+
+$width: 60%;
+$width-mobile: 95%;
+
+$links: #EAA46B;
+$links-active: #fff;
+$tabs: $links;
+$tabs-active: #fff;
+$margins: 30px;
+$paddings: $margins;
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    width: 100%;
+    padding-bottom: ($height / $width) * 100%;
+    display: block;
+}
+
+body {
+    font: 1rem Roboto, sans-serif;
+    background: $background;
+    color: $foreground;
+    background-image: url(/assets/images/background.png);
+    background-size: contain;
+}
+
+a {
+    text-decoration: none;
+    color: $links;
+    
+    &:hover {
+        color: $links-active;
+    }
+}
+
+ul {
+    list-style: square;
+}
+
+::-moz-selection {
+    background: rgba($links, 0.4);
+}
+
+::selection {
+    background: rgba($links, 0.4);
+}
+
+.center {
+    width: $width;
+    max-width: 1080px;
+    margin: 0 auto;
+    background: rgba($background, 0.85);
+    min-height: 100vh;
+    box-shadow: 0 0 35px 10px rgba($background-dark, 0.4);
+    padding: 30px 0;
+    padding-top: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: $paddings;
+    .title {
+        font-size: 3rem;
+        font-weight: 500;
+        display: block;
+    }
+    
+    .description {
+        color: $foreground-dark;
+        margin: $margins 0;
+    }
+    
+    border-bottom: 2px dashed $background-dark;
+}
+
+.block {
+    padding: 20px 10px;
+    box-sizing: border-box;
+    
+    .title {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    
+    .text {
+        line-height: 2rem;
+        
+        .frame {
+            background: $background-dark;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            
+            &.open {
+                @include aspect-ratio(16, 9);
+            }
+            
+            &.close {
+                padding-top: 0;
+            }
+        }
+    }
+    
+    .subblock {
+        &:not(:last-of-type) {
+            margin-bottom: $margins;
+        }
+        .title {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+.screencasts {
+    #tabs {
+        .tab {
+            font-size: 1rem;
+            padding: 1rem;
+            line-height: 1rem;
+            color: $tabs;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 25%;
+            margin-left: -4px;
+            text-align: center;
+            
+            &.active {
+                color: $tabs-active;
+            }
+        }
+    }
+    
+    #panes {
+        position: relative;
+        margin-top: 5px;
+        
+        .frame {
+            position: absolute;
+            width: 100%;
+            position: relative;
+            padding-top: 0;
+            transform-origin: top center;
+            visibility: hidden;
+            
+            .content {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
+            
+            &.active {
+                @include aspect-ratio(16, 9);
+                visibility: visible;
+            }
+        }
+    }
+}
+
+#download {
+    text-align: center;
+}
+
+#download-btn {
+    display: inline-block;
+    a {
+        font-size: 1.5rem;
+        color: $links;
+        display: inline-block;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: block;
+        
+        &:hover {
+            color: $links-active;
+        }
+    }
+}
+
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: $foreground-dark;
+}
+
+#links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+pre, code, kbd
+{
+    background: #2b2b2b;
+    color: #e6e1dc;
+    padding: 3px;
+    overflow-y: auto;
+    
+    & > code {
+        padding: 0;
+    }
+    
+    .nt { color: #EAA46B }
+    .na { color: #69BAE5 }
+    .s { color: #6AE883 }
+}
+
+@media screen and (max-width: 720px) {
+    .center {
+        width: $width-mobile;
+    }
+}

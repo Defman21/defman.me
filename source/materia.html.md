@@ -1,7 +1,6 @@
 ---
 title: Defman - Materia
 description: Materia colors
-js: on
 layout: layout
 css:
     - palette

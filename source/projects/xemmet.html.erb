@@ -1,0 +1,159 @@
+---
+title: Xemmet - Emmet for Komodo X
+type: website
+description: Xemmet - Emmet for Komodo X
+name: Xemmet - Emmet for Komodo X
+project:
+    id: komodo-xemmet
+    repo: Xemmet
+    name: Xemmet
+    lang: javascript
+tags: komodo emmet html css fast coding
+layout: :base
+css:
+    - xemmet/index.css
+js:
+    - xemmet/main.js
+---
+<div class="center">
+    <div class="header">
+        <span class="title">Xemmet</span>
+        <div class="description">the essential toolkit for web-developers using <a href="//komodoide.com">Komodo</a></div>
+    </div>
+    <div class="block">
+        <span class="title" id="features">Features</span>
+        <div class="text">
+            <ul>
+                <div id="expand-abbreviation" class="subblock">
+                    <span class="title">Expand Abbreviation <a href="#expand-abbreviation">
+                        <i class="fa fa-link"></i>
+                    </a></span>
+                    <div class="description">
+                        You can easily expand <code>.block>ul>li{Item $$}*4</code> to
+                        <% code 'html' do %>
+<div class="block">
+    <ul>
+        <li>Item 01</li>
+        <li>Item 02</li>
+        <li>Item 03</li>
+        <li>Item 04</li>
+    </ul>
+</div>
+                        <% end %>
+                        To do that, put your caret after Emmet abbreviation and
+                        press <kbd>Tab</kbd>.
+                    </div>
+                </div>
+                <div id="wrap-selection" class="subblock">
+                    <span class="title">Wrap Selection <a href="#wrap-selection">
+                        <i class="fa fa-link"></i>
+                    </a></span>
+                    <div class="description">
+                        Wrap Selection is a re-work of original Emmet feature.
+                        It's using your editor instead of a prompt window.
+                        You can select any text, press <kbd>Ctrl+Tab</kbd>
+                        and type an abbreviation you want to wrap your text
+                        with.
+                        <br/>
+                        For example, if you type <code>.div>.article>.title</code>,
+                        your text will be wrapped with:
+                        <% code 'html' do %>
+<div class="div">
+    <div class="article">
+        <div class="title">{Your text}</div>
+    </div>
+</div>
+                        <% end %>
+                        Xemmet looks for <code>{}</code> in your abbreviation
+                        and it will put your text at this place. If there's
+                        no such brackets, Xemmet will automatically add them to
+                        your abbreviation.
+                    </div>
+                </div>
+                <div class="subblock">
+                    <span id="toolbox-integration" class="title">Toolbox Integration <a href="#toolbox-integration">
+                        <i class="fa fa-link"></i>
+                    </a></span>
+                    <div class="description">
+                        Unlike in Emmet, where you have to define your snippets
+                        in a special file, Xemmet provides a very simple way
+                        to define them. You can create a snippet that Xemmet
+                        will recognize right in your Toolbox.
+                        <br/>
+                        The snippet should starts with <code>xemmet_</code>
+                        in its name and be in <code>Abbreviations</code> folder.
+                        I'd recommend to create <code>html</code> and
+                        <code>css</code> folders under
+                        <code>Abbreviations</code> for faster search and easier
+                        control over your snippets. You can override default
+                        snippets of course. You can view the default snippets
+                        in <code>content/extra/snippets.js</code>.
+                        <br/>
+                        This is disabled by default because this <b>could</b>
+                        cause some lags. It works fine for me, but my PC
+                        is pretty strong.
+                    </div>
+                </div>
+                <div class="subblock">
+                    <span id="flexible-settings" class="title">Flexible Settings <a href="#flexible-settings">
+                        <i class="fa fa-link"></i>
+                    </a></span>
+                    <div class="description">
+                        Xemmet provides different settings to customize when
+                        and how it should works. You can find them under
+                        <code>Editor - Smart Editing</code>.
+                        These settings are pretty understandable except for
+                        <code>Search for built-in snippets recursively</code>.
+                        In Xemmet, some of the default snippets refers to
+                        another. For example, <code>menuc</code> refers
+                        to <code>menucontext</code> snippet. If the checkbox
+                        is not active, <code>menucontext</code> will be
+                        expanded to a HTML element which is kinda invalid.
+                        This checkbox will enable recursive searching in
+                        snippets to avoid this.
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="block" id="screencasts">
+        <span class="title">Screencasts</span>
+        <div class="text">
+            <div class="screencasts">
+                <span class="screencasts-soon">Soon!</span>
+                <!--<div id="tabs">
+                    <span data-tab-id="1" class="tab active">Expand Abbreviation</span>
+                    <span data-tab-id="2" class="tab">Wrap Selection</span>
+                    <span data-tab-id="3" class="tab">Toolbox Integration</span>
+                    <span data-tab-id="4" class="tab">Flexible Settings</span>
+                </div>
+                <div id="panes">
+                    <div class="frame active" data-frame-id="1">
+                        <div class="content"></div>
+                    </div>
+                    <div class="frame" data-frame-id="2">
+                        <div class="content">2</div>
+                    </div>
+                    <div class="frame" data-frame-id="3">
+                        <div class="content">3</div>
+                    </div>
+                    <div class="frame" data-frame-id="4">
+                        <div class="content">4</div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="block" id="download">
+        <div class="text">
+            <div id="download-btn">
+                <a href="//komodoide.com/packages/addons/xemmet">
+                    <i class="fa fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        Xemmet &copy; 2016 by Defman21
+    </div>
+</div>

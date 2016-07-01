@@ -8,6 +8,7 @@ js:
 ---
 <%= partial "partials/search", locals: {file: "projects"} %>
 <% current_page.children.each do |page| %>
+<% next unless page.data.project %>
     <div class="container project" id="<%= page.data.project.id %>">
         <span class="title"><%= link_to page.data.project.name, page.url %></span>
         <span class="language"><%= page.data.project.lang %></span>
