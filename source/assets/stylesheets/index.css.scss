@@ -13,8 +13,8 @@ $footer-height: 100px;
 }
 
 body {
-    font: 1.2rem Roboto, Lato, "Source Sans Pro", sans-serif;
-    line-height: 1.8rem;
+    font: 1rem Roboto, Lato, "Source Sans Pro", sans-serif;
+    line-height: 1.5rem;
     background: $background;
     color: $foreground;
 }
@@ -69,8 +69,8 @@ header {
     }
 
     .logo {
-        font-size: 1.5rem;
         cursor: default;
+        font-size: 1.3rem;
     }
 
     nav {
@@ -203,23 +203,26 @@ main {
     box-sizing: border-box;
     
     #search {
-        border: 1px solid $base04;
-        border-bottom: none;
+        border: 1px solid $base06;
         color: $base01;
         width: 100%;
         padding: 5px;
         box-sizing: border-box;
+        border-radius: 3px;
     }
     
     #search-result {
-        border: 1px solid $base04;
-        border-top: none;
+        border: 1px solid $base06;
         max-height: 30%;
         overflow-y: auto;
+        border-radius: 3px;
+        margin-top: 10px;
+        display: none;
         
         .result {
             width: 100%;
             overflow: hidden;
+            background: $base07;
             
             &:hover {
                 background: $search-highlight;
@@ -241,12 +244,14 @@ main {
     }
     
     .container {
-        padding: 20px 0;
-        border-bottom: 1px solid rgba($base06, 0.4);
-        
-        &:last-of-type {
-            border-bottom: none;
-        }
+        margin: 20px 0;
+        padding: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: $base07;
+        border: 1px solid $base06;
+        border-radius: 3px;
 
         .title {
             font-size: 1.5rem;
@@ -279,7 +284,6 @@ main {
             h1, h2, h3, h4, h5, h6 {
                 font-weight: normal;
                 text-transform: uppercase;
-                display: inline-block;
                 cursor: default;
             }
 
@@ -313,6 +317,22 @@ main {
     }
 }
 
+
+.pagination {
+    a {
+        background: $base07;
+        padding: 5px;
+        border: 1px solid $base06;
+        border-radius: 3px;
+        display: inline-block;
+        margin-right: 5px;
+        
+        &:hover {
+            border-color: $highlight;
+        }
+    }
+}
+
 footer {
     display: flex;
     height: $footer-height;
@@ -321,17 +341,7 @@ footer {
     bottom: 0;
     z-index: 1;
     justify-content: center;
-    
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: rgba($base04, 0.4);
-    }
-    
+
     .copyright {
         align-self: center;
         text-align: center;
