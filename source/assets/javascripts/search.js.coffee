@@ -12,7 +12,10 @@ do (w = window, $ = jQuery) ->
         $("#search").keyup (e) ->
           $("#search-result").empty()
           string = $(e.target).val().toLowerCase()
-          return if string.length <= 0
+          if string.length <= 0
+            $("#search-result").css 'display', 'none'
+            return
+          $("#search-result").css 'display', 'block'
           regex = new RegExp string, "i"
           $tpl ="""
 <div class='result'>
@@ -22,11 +25,11 @@ do (w = window, $ = jQuery) ->
 </div>
 """
           for item in results
-            if item.name.search(regex) > -1 || 
-              item.desc.search(regex) > -1 || 
-              (item.tags? && item.tags.search(regex) > -1) ||
-              (item.lang? && item.lang.search(regex) > -1) ||
-              (item.type? && item.type.search(regex) > -1)
+            search = "#{item.name} #{item.desc}"
+            search += " #{item.tags}" if item.tags?
+            search += " #{item.lang}" if item.lang?
+            search += " #{item.type}" if item.type?
+            if search.search(regex) > -1
                 $desc = item.name
                 $desc += " (#{item.type})" if display_type
                 $_tpl = $tpl
@@ -34,4 +37,6 @@ do (w = window, $ = jQuery) ->
                         .replace('%desc', $desc)
                         .replace '%name', item.name
                 $("#search-result").append $ $_tpl
+            else if $("#search-result").children().length == 0
+              $("#search-result").css 'display', 'none'
   do search
