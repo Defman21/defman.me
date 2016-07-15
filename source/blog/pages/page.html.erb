@@ -1,7 +1,7 @@
 ---
 title: Defman's Blog
 og: no
-extra:
+js:
     - search
 layout: :layout
 ---
@@ -20,10 +20,10 @@ layout: :layout
 <div class="pagination">
     <% unless last %>
         <% unless first %>
-            <%= link_to "Prev", "/blog/pages/#{page-1}" %>
+            <%= link_to "<=", "/blog/pages/#{page-1}" %>
         <% end %>
-    <%= link_to "Next", "/blog/pages/#{page+1}" %>
+    <%= link_to "=>", "/blog/pages/#{page+1}" %>
     <% else %>
-    <%= link_to "Prev", "/blog/pages/#{page-1}" %>
+    <%= link_to "<=", "/blog/pages/#{page-1}" %>
     <% end %>
 </div>

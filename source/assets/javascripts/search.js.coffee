@@ -10,6 +10,7 @@ do (w = window, $ = jQuery) ->
       ).then ->
         $("#search").focus()
         $("#search").keyup (e) ->
+          found = no
           $("#search-result").empty()
           string = $(e.target).val().toLowerCase()
           if string.length <= 0
@@ -29,14 +30,20 @@ do (w = window, $ = jQuery) ->
             search += " #{item.tags}" if item.tags?
             search += " #{item.lang}" if item.lang?
             search += " #{item.type}" if item.type?
+            search = search.toLowerCase()
             if search.search(regex) > -1
-                $desc = item.name
+                $desc = item.desc
                 $desc += " (#{item.type})" if display_type
                 $_tpl = $tpl
                         .replace('%url', item.url)
                         .replace('%desc', $desc)
                         .replace '%name', item.name
+                found = yes
                 $("#search-result").append $ $_tpl
-            else if $("#search-result").children().length == 0
-              $("#search-result").css 'display', 'none'
+          unless found
+            $_tpl = $tpl
+                    .replace('%url', "#")
+                    .replace('%desc', "No results found")
+                    .replace '%name', "No results"
+            $("#search-result").append $ $_tpl
   do search
