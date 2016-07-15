@@ -203,19 +203,21 @@ main {
     box-sizing: border-box;
     
     #search {
-        border: 1px solid $base06;
+        border: none;
+        border-bottom: 1px solid $base06;
         color: $base01;
         width: 100%;
         padding: 5px;
         box-sizing: border-box;
-        border-radius: 3px;
+        
+        &:focus {
+            border-bottom-color: $base08;
+        }
     }
     
     #search-result {
-        border: 1px solid $base06;
         max-height: 30%;
         overflow-y: auto;
-        border-radius: 3px;
         margin-top: 10px;
         display: none;
         
@@ -223,9 +225,14 @@ main {
             width: 100%;
             overflow: hidden;
             background: $base07;
+            border-left: 1px solid $base06;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
             
             &:hover {
                 background: $search-highlight;
+                border-left-color: $base08;
             }
             
             a {
@@ -244,14 +251,12 @@ main {
     }
     
     .container {
-        margin: 20px 0;
-        padding: 20px;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        background: $base07;
-        border: 1px solid $base06;
-        border-radius: 3px;
+        padding: 40px 0;
+        border-bottom: 1px solid darken($base07, 4);
+        
+        &:last-of-type {
+            border-bottom: none;
+        }
 
         .title {
             font-size: 1.5rem;
