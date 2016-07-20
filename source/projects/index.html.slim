@@ -1,0 +1,18 @@
+---
+title: Defman's Projects
+type: website
+description: Defman's Project - different projects for different things.
+name: Defman's Projects
+js:
+    - search
+---
+= partial "partials/search", locals: {file: "projects"}
+- current_page.children.each do |page|
+    - next unless page.data.project
+    .container.project id=page.data.project.id
+        span.title = link_to page.data.project.name, page.url
+        span.language = page.data.project.lang
+        span.tags
+            i.fa.fa-tags>
+            = page.data.tags
+        .content.description = truncate_with_ellipses page.data.description, 150

@@ -1,0 +1,17 @@
+ruby:
+    resources = children('blog').select do |resource|
+        resource.metadata[:options][:layout] != :layout
+    end
+    
+    articles = []
+    
+    resources.each do |resource|
+        articles << {
+            name: resource.metadata[:page][:title],
+            regex: resource.metadata[:page][:title],
+            url: resource.url,
+            desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
+            tags: resource.metadata[:page][:tags] || ""
+        }
+    end
+= articles.to_json

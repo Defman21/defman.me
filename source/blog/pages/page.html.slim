@@ -1,0 +1,27 @@
+---
+title: Defman's Blog
+og: no
+js:
+    - search
+layout: :layout
+---
+= partial "partials/search", locals: {file: "articles"}
+- blogs.each do |page|
+    - y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures
+    .container.article id=page.data.url
+        span.title = link_to page.data.title, page.url
+        span.timestamp
+            i.fa.fa-clock-o>
+            = "#{y}/#{m}/#{d} #{h}:#{min}"
+        span.tags
+            i.fa.fa-tags>
+            = page.data.tags
+        .content
+            = truncate_with_ellipses page.data.description, 150
+.pagination
+    - unless last
+        - unless first
+            = link_to "<=", "/blog/pages/#{page - 1}"
+        = link_to "=>", "/blog/pages/#{page + 1}"
+    - else
+        = link_to "<=", "/blog/pages/#{page - 1}"

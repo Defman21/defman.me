@@ -1,0 +1,13 @@
+= wrap_layout :layout do
+    .container.article id=current_page.data.id
+        span.title = current_page.data.title
+        - y, m, d, h, min = current_page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures
+        span.timestamp
+            i.fa.fa-clock-o>
+            = "#{y}/#{m}/#{d} #{h}:#{min}"
+        span.tags
+            i.fa.fa-tags>
+            = current_page.data.tags
+        .content = yield
+        .links = partial "partials/links"
+    .container.comments = partial "partials/comments"

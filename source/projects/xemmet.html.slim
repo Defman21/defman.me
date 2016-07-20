@@ -1,0 +1,142 @@
+---
+title: Xemmet - Emmet for Komodo X
+type: website
+description: Xemmet - Emmet for Komodo X
+name: Xemmet - Emmet for Komodo X
+project:
+    id: komodo-xemmet
+    repo: Xemmet
+    name: Xemmet
+    lang: javascript
+tags: komodo emmet html css fast coding
+layout: :base
+css:
+    - xemmet/index.css
+js:
+    - xemmet/main.js
+---
+.center
+    .header
+        span.title Xemmet
+        .description
+            ' the essential toolkit for web-developers using
+            = link_to "Komodo", "//komodoide.com"
+    .block#features
+        span.title Features
+        .text
+            .subblock#expand-abbreviation
+                span.title
+                    ' Expand Abbreviation
+                    = link_to "<i class='fa fa-link'></i>", "#expand-abbreviation"
+                .description
+                    | You can easily expand <code>.block>ul>li{Item $$}*4</code> to
+                    = code 'html' do
+                        |
+                            <div class="block">
+                                <ul>
+                                    <li>Item 01</li>
+                                    <li>Item 02</li>
+                                    <li>Item 03</li>
+                                    <li>Item 04</li>
+                                </ul>
+                            </div>
+                    |
+                        To do that, put your caret after Emmet abbreviation and
+                        press <kbd>Tab</kbd>.
+            .subblock#wrap-selection
+                span.title
+                    ' Wrap Selection
+                    = link_to "<i class='fa fa-link'></i>", "#wrap-selection"
+                .description
+                    |
+                        Wrap Selection is a re-work of original Emmet feature.
+                        It's using your editor instead of a prompt window.
+                        You can select any text, press <kbd>Ctrl+Tab</kbd>
+                        and type an abbreviation you want to wrap your text
+                        with.
+                    br
+                    |
+                        For example, if you type
+                        <code>.div>.article>.title</code>, your text will be
+                        wrapped with:
+                    = code 'html' do
+                        |
+                            <div class="div">
+                                <div class="article">
+                                    <div class="title">{Your text}</div>
+                                </div>
+                            </div>
+                    |
+                        Xemmet looks for <code>{}</code> in your abbreviation
+                        and it will put your text at this place. If there's
+                        no such brackets, Xemmet will automatically add them to
+                        your abbreviation.
+            .subblock#toolbox-integration
+                span.title
+                    ' Toolbox Integration
+                    = link_to "<i class='fa fa-link'></i>", "#toolbox-integration"
+                .description
+                    |
+                        Unlike in Emmet, where you have to define your snippets
+                        in a special file, Xemmet provides a very simple way
+                        to define them. You can create a snippet that Xemmet
+                        will recognize right in your Toolbox.
+                    br
+                    |
+                        The snippet should starts with <code>xemmet_</code>
+                        in its name and be in <code>Abbreviations</code> folder.
+                        I'd recommend to create <code>html</code> and
+                        <code>css</code> folders under
+                        <code>Abbreviations</code> for faster search and easier
+                        control over your snippets. You can override default
+                        snippets of course. You can view the default snippets
+                        in <code>content/extra/snippets.js</code>.
+                    br
+                    |
+                        This is disabled by default because this <b>could</b>
+                        cause some lags. It works fine for me, but my PC
+                        is pretty strong.
+            .subblock#flexible-settings
+                span.title
+                    ' Flexible Settings
+                    = link_to "<i class='fa fa-link'></i>", "#flexible-settings"
+                .description
+                    |
+                        Xemmet provides different settings to customize when
+                        and how it should works. You can find them under
+                        <code>Editor - Smart Editing</code>.
+                        These settings are pretty understandable except for
+                        <code>Search for built-in snippets recursively</code>.
+                        In Xemmet, some of the default snippets refers to
+                        another. For example, <code>menuc</code> refers
+                        to <code>menucontext</code> snippet. If the checkbox
+                        is not active, <code>menucontext</code> will be
+                        expanded to a HTML element which is kinda invalid.
+                        This checkbox will enable recursive searching in
+                        snippets to avoid this.
+    .block#screencasts
+        span.title Screencasts
+        .text
+            .screencasts
+                span.screencasts-soon Soon!
+                /#tabs
+                    span.tab.active data-tab-id='1" Expand Abbreviation
+                    span.tab.active data-tab-id='2" Wrap Selection
+                    span.tab.active data-tab-id='3" Toolbox Integration
+                    span.tab.active data-tab-id='4" Flexible Settings
+                /#panes
+                    .frame.active data-frame-id="1"
+                        .content
+                    .frame.active data-frame-id="2"
+                        .content
+                    .frame.active data-frame-id="3"
+                        .content
+                    .frame.active data-frame-id="4"
+                        .content
+    .block#download
+        .text
+            #download-btn
+                = link_to "<i class='fa fa-download'></i> Download", "//komodoide.com/packages/addons/xemmet"
+    .copyright
+        ' Xemmet &copy; 2016 by
+        = link_to "Defman21", "/"
