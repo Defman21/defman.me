@@ -82,6 +82,11 @@ ul {
     border-bottom: 2px dashed $background-dark;
 }
 
+#download {
+    padding-top: $paddings;
+    border-top: 2px dashed $background-dark;
+}
+
 .block {
     padding: 20px 10px;
     box-sizing: border-box;
