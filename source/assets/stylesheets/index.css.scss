@@ -90,17 +90,21 @@ header {
 }
 
 
-pre, code.prettyprint {
+pre, code {
     font-size: 0.9rem;
     font-family: "Hack", "Source Code Pro", monospace;
     color: $base03;
-    border: 1px solid $base04;
     margin: 0;
     padding: 5px;
-    overflow-y: auto;
-    white-space: nowrap;
     
-    & > code {
+    &.prettyprint {
+        background: rgba($base0D, 0.07);
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    &.highlight > code {
+        border: 1px solid $base04;
         display: block;
         overflow-x: auto;
         white-space: pre;
@@ -303,10 +307,10 @@ main {
             }
             
             a {
-                border-bottom: 1px dashed $base02;
+                background: rgba($base08, 0.07);
                 
-                &:hover {
-                    border-bottom-color: $highlight;
+                & > img {
+                    display: block;
                 }
             }
         }
