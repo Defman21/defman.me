@@ -1,6 +1,6 @@
 do ->
   DisqusCommentsLoaded = no
-  elem = document.getElementsByClassName('links')[0]
+  elem = document.getElementsByClassName('comments')[0]
   _isScrolledIntoView = (e) ->
     r = e.getBoundingClientRect()
     et = r.top

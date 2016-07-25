@@ -7,7 +7,11 @@ project:
     repo: komodo-terminal-butterfly
     name: Komodo Terminal Butterfly
     lang: javascript
-tags: komodo terminal butterfly add-on 
+tags: komodo terminal butterfly add-on
+links:
+    Package:
+        href: //komodoide.com/packages/terminal
+        fa: archive
 ---
 This adds a tabbed terminal to the bottom panel in Komodo. It is powered by
 butterfly.

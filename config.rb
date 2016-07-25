@@ -19,7 +19,6 @@ set :index_file, "index.html"
 activate :syntax
 set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
-set :site_url, "http://dev.defman.me:4567"
 
 set :fonts_dir, "assets/fonts"
 set :images_dir, "assets/images"
@@ -75,6 +74,6 @@ ready do
   end
 end
 
-activate :livereload, host: "dev.defman.me"
+activate :livereload
 activate :directory_indexes
 activate :defmanme

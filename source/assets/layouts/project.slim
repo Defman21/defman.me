@@ -1,5 +1,5 @@
 = wrap_layout :layout do
-    .container.project id=current_page.data.project.id
+    .container.project.fullpage id=current_page.data.project.id
         span.title = current_page.data.project.name
         span.language = current_page.data.project.lang
         span.tags
@@ -7,14 +7,5 @@
             = current_page.data.tags
         .content
             = yield
-        .links
-            p
-                a.github href="//github.com/Defman21/#{current_page.data.project.repo}"
-                    i.fa.fa-github>
-                    | Source Code
-            p
-                a.github href="//github.com/Defman21/#{current_page.data.project.repo}/releases/latest"
-                    i.fa.fa-github>
-                    | Latest release
-            = partial "partials/links"
+        = partial "partials/links"
     .container.comments = partial "partials/comments"

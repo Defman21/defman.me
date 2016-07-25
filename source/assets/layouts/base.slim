@@ -19,6 +19,7 @@ html
     body
         = yield
         = stylesheet_link_tag "font-awesome"
+        = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
         - if content_for? :base
                 = stylesheet_link_tag :index
                 = stylesheet_link_tag "highlight/styles"

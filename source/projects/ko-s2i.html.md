@@ -8,6 +8,10 @@ project:
     name: Scheme to Interface project
     lang: ruby
 tags: komodo schemes interface ui
+links:
+    Github:
+        href: //github.com/Defman21/komodo-scheme-to-interface
+        fa: github
 ---
 This tool allows you to convert Komodo 9 color scheme to Komodo 10.
 The difference between them is `InterfaceStyles` block, which you

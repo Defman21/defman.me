@@ -1,5 +1,5 @@
 = wrap_layout :layout do
-    .container.scheme id=current_page.data.scheme.id
+    .container.scheme.fullpage id=current_page.data.scheme.id
         span.title = current_page.data.scheme.name
         span.comp = "for Komodo #{current_page.data.scheme.comp}"
         .content
@@ -9,18 +9,5 @@
                 i.fa.fa-chevron-down
             .preview
                 = partial "partials/scheme_preview", locals: {ksf: current_page.data.scheme.id}
-        .links
-            p
-                a.github href="//github.com/Defman21/#{current_page.data.scheme.repo}"
-                    i.fa.fa-github>
-                    | Source code
-            p
-                a.github href="//github.com/Defman21/#{current_page.data.scheme.repo}/releases/latest"
-                    i.fa.fa-github>
-                    | Latest release
-            p
-                a.package href="//komodoide.com/packages/schemes/#{current_page.data.scheme.id}"
-                    i.fa.fa-download>
-                    | Package
-            = partial "partials/links"
+        = partial "partials/links"
     .container.comments = partial "partials/comments"

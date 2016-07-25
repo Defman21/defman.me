@@ -1,6 +1,8 @@
 @charset "utf-8";
 @import "normalize";
 @import "colors";
+@import "animations";
+@import "preview";
 
 $wrap-width: 60%;
 $footer-height: 100px;
@@ -91,11 +93,11 @@ header {
 
 
 pre, code {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-family: "Hack", "Source Code Pro", monospace;
     color: $base03;
     margin: 0;
-    padding: 5px;
+    padding: 2px;
     
     &.prettyprint {
         background: rgba($base0D, 0.07);
@@ -108,96 +110,6 @@ pre, code {
         display: block;
         overflow-x: auto;
         white-space: pre;
-    }
-}
-
-@keyframes open-preview {
-    from {
-        max-height: 0;
-    }
-    
-    to {
-        max-height: 640px;
-    }
-}
-
-@keyframes close-preview {
-    from {
-        max-height: 640px;
-    }
-    
-    to {
-        max-height: 0px;
-    }
-}
-
-@keyframes icon-rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    
-    to {
-        transform: rotate(-180deg);
-    }
-}
-
-@keyframes icon-rotate-i {
-    from {
-        transform: rotate(-180deg);
-    }
-    
-    to {
-        transform: rotate(-360deg);
-    }
-}
-
-.button-preview {
-    cursor: pointer !important;
-    
-    i {
-        font-size: 0.9rem;
-        vertical-align: 0.2rem;
-        transform-origin: center 0.5rem;
-        transform: translateZ(0);
-    }
-    
-    &.close {
-        i {
-            animation: .3s icon-rotate ease forwards;
-        }
-    }
-    
-    &.open {
-        i {
-            animation: .3s icon-rotate-i ease forwards;
-        }
-    }
-}
-
-.preview {
-    max-height: 0;
-    margin-top: 5px;
-    transform-origin: top center;
-    overflow-y: auto;
-    transform: translateZ(0);
-    
-    &.open {
-        animation: 1s open-preview ease forwards;
-    }
-    
-    &.close {
-        animation: 1s close-preview ease forwards;
-    }
-    
-    & > pre, code.prettyprint {
-        border: none;
-        margin: 0;
-        padding: 0;
-        white-space: pre;
-        & > code {
-            padding: 5px;
-            overflow-x: auto;
-        }
     }
 }
 
@@ -247,7 +159,7 @@ main {
                 
                 .result-desc {
                     color: $base03;
-                    font-size: 0.9rem;
+                    font-size: 1rem;
                     display: block;
                 }
             }
@@ -257,6 +169,96 @@ main {
     .container {
         padding: 40px 0;
         border-bottom: 1px solid darken($base07, 4);
+        
+        &.fullpage {
+            font-family: "Roboto Slab", sans-serif;
+            text-align: center;
+            
+            .title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                text-align: center;
+                line-height: 2rem;
+            }
+            
+            .timestamp, .language, .comp, .tags {
+                margin-top: 0;
+                margin-bottom: 0;
+                font-family: Roboto, sans-serif;
+            }
+            
+            .content {
+                text-align: left;
+                margin: 0 auto;
+                margin-top: 1rem;
+                font-size: 1rem;
+                line-height: 2rem;
+                
+                    & > :first-child {
+                    margin-top: 2px;
+                }
+                
+                h1, h2, h3, h4, h5, h6 {
+                    font-weight: normal;
+                    text-transform: uppercase;
+                    cursor: default;
+                }
+    
+                @for $i from 1 through 6 {
+                    h#{$i} {
+                        font-size: inspect(1.5 - $i/10) + "rem";
+                    }
+                }
+                
+                img {
+                    max-width: 100%;
+                }
+                
+                a {
+                    text-decoration: underline;
+                    
+                    & > img {
+                        display: block;
+                    }
+                }
+            }
+            
+            .links {
+                .links-line {
+                    position: relative;
+                    display: block;
+                    
+                    .links-span {
+                        background: $base07;
+                        z-index: 9999;
+                        position: relative;
+                        font-size: 1.3rem;
+                    }
+                    
+                    &:before, &:after {
+                        position: absolute;
+                        z-index: 9998;
+                        top: 50%;
+                        width: 45%;
+                        height: 1px;
+                        background: darken($base07, 4);
+                        content: " ";
+                    }
+                    
+                    &:before {
+                        left: 0;
+                    }
+                    
+                    &:after {
+                        right: 0;
+                    }
+                }
+                
+                p {
+                    text-align: left;
+                }
+            }
+        }
         
         &:last-of-type {
             border-bottom: none;
@@ -272,7 +274,7 @@ main {
         .timestamp, .language, .comp, .tags {
             font-size: 0.7rem;
             display: inline-block;
-            line-height: 1.1rem;
+            line-height: 1rem;
             text-transform: uppercase;
             cursor: default;
             color: $subtext;
@@ -284,34 +286,6 @@ main {
         .content {
             &.description {
                 color: $description;
-            }
-            
-            & > :first-child {
-                margin-top: 2px;
-            }
-            
-            h1, h2, h3, h4, h5, h6 {
-                font-weight: normal;
-                text-transform: uppercase;
-                cursor: default;
-            }
-
-            @for $i from 1 through 6 {
-                h#{$i} {
-                    font-size: inspect(1.5 - $i/10) + "rem";
-                }
-            }
-            
-            img {
-                max-width: 100%;
-            }
-            
-            a {
-                background: rgba($base08, 0.07);
-                
-                & > img {
-                    display: block;
-                }
             }
         }
         
@@ -325,7 +299,6 @@ main {
         }
     }
 }
-
 
 .pagination {
     a {
@@ -354,7 +327,7 @@ footer {
         text-align: center;
         text-transform: uppercase;
         color: $base03;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 
