@@ -21,6 +21,16 @@ body {
     color: $foreground;
 }
 
+a {
+    color: $links;
+    text-decoration: none;
+    outline: 0;
+
+    &:hover, &.active {
+        color: $highlight;
+    }
+}
+
 ul {
     list-style-type: square;
 }
@@ -46,16 +56,6 @@ ul {
     margin: 0 auto;
 }
 
-a {
-    color: $links;
-    text-decoration: none;
-    outline: 0;
-
-    &:hover, &.active {
-        color: $highlight;
-    }
-}
-
 header, main {
     padding: 10px;
     box-sizing: border-box;
@@ -70,9 +70,11 @@ header {
         display: inline-block;
     }
 
-    .logo {
-        cursor: default;
+    .logo a {
         font-size: 1.3rem;
+        &:hover {
+            color: $links;
+        }
     }
 
     nav {
@@ -83,6 +85,25 @@ header {
         a {
             display: inline-block;
             margin: 0 10px;
+            position: relative;
+            &:hover { color: $links }
+            
+            &:before, &:after {
+                content: " ";
+                position: absolute;
+                bottom: -2px;
+                width: 0;
+                height: 1px;
+                background: $base08;
+                transition: all .15s ease;
+            }
+            
+            &:before { left: 50% }
+            &:after { right: 50% }
+            
+            &:hover:before, &:hover:after {
+                width: 50%;
+            }
         }
 
         a:last-of-type {
@@ -90,7 +111,6 @@ header {
         }
     }
 }
-
 
 pre, code {
     font-size: 1rem;
@@ -125,6 +145,7 @@ main {
         width: 100%;
         padding: 5px;
         box-sizing: border-box;
+        outline: none;
         
         &:focus {
             border-bottom-color: $base08;
