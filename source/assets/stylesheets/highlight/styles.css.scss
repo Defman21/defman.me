@@ -1,39 +1,46 @@
 @import "../colors";
 
+$fore: #777777;
+$back: #F9F6ED;
+$namespace: #886BE5;
+$string: #CC5B5F;
+$string-inline: #65BC9F;
+$identifier: $fore;
+$keyword: #7BAF46;
+$class: #3096C9;
+$comment: #ADADAD;
+
 .highlight {
-    &.plaintext code {
-        color: $base01;
+    & > code {
+        color: $fore;
+        background: $back;
     }
     
-    .n, .nb, .no {
-        color: $base01;
+    .n, .nb, .no, .ss, .s {
+        color: $namespace;
     }
     
     .kp {
-        color: $base09;
+        color: $keyword;
     }
     
     .s1, .s2, .gi {
-        color: $base0B;
+        color: $string;
     }
     
     .k, .nf, .p, .pi, .nt, .vi, .sr {
-        color: $base0E;
+        color: $identifier;
     }
     
     .nc {
-        color: $base0A;
-    }
-    
-    .ss, .s {
-        color: $base0B;
+        color: $class;
     }
     
     .c1 {
-        color: $base03;
+        color: $comment;
     }
     
     .mi, .si, .na, .gd {
-        color: $base08;
+        color: $string-inline;
     }
 }
