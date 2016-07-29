@@ -17,7 +17,7 @@ Create this script in your `$HOME` directory:
 FILE="$HOME/tmp.png"
 
 PROGRAM="$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_CLASS | awk -F: 'BEGIN { FS="="; } {print $2}' | awk 'match($1,/[a-z-]+/) {print substr($1,RSTART,RLENGTH)}')"
-GTKVERSION="$(ldd /usr/bin/$PROGRAM | grep gtk | awk '{print $1;}')"
+GTKVERSION="$(ldd /usr/bin/$PROGRAM | grep gtk | awk '{print $1;}' | head -n 1)"
 
 SCRPROGRAM="gnome-screenshot $1 -e none -f $FILE"
 
