@@ -1,0 +1,1 @@
+(function(){!function(n){return n(document).ready(function(){})}(jQuery)}).call(this);
