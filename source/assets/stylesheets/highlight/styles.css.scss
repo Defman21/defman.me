@@ -1,4 +1,4 @@
-@import "../colors";
+@import "../base16";
 
 $fore: #777777;
 $back: #F9F6ED;
@@ -11,9 +11,15 @@ $class: #3096C9;
 $comment: #ADADAD;
 
 .highlight {
+    background: $back;
+    overflow: auto;
+    padding: 5px;
+    line-height: 1.5rem;
+    box-sizing: border-box;
+    
+    
     & > code {
         color: $fore;
-        background: $back;
     }
     
     .n, .nb, .no, .ss, .s {

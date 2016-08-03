@@ -1,4 +1,4 @@
-@import "colors";
+@import "base16";
 
 $color01: $base08;
 $color02: $base09;
@@ -39,8 +39,7 @@ $palette: $color01,
     
 }
 
-.code {
-    background: $code;
+pre {
     display: block;
     padding: 0 10px;
     font-family: "Hack", monospace;

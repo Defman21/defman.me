@@ -1,12 +1,10 @@
 = wrap_layout :layout do
     .container.scheme.fullpage id=current_page.data.scheme.id
         span.title = current_page.data.scheme.name
-        span.comp = "for Komodo #{current_page.data.scheme.comp}"
+        .infobar
+            span.comp = "for Komodo #{current_page.data.scheme.comp}"
         .content
             = yield
-            h1.button-preview
-                ' preview
-                i.fa.fa-chevron-down
             .preview
                 = partial "partials/scheme_preview", locals: {ksf: current_page.data.scheme.id}
         = partial "partials/links"

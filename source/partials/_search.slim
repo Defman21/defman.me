@@ -1,7 +1,8 @@
-input#search placeholder="Search" autocomplete="off"
-#search-result
-javascript:
-    search_config = {
-        type: "#{file}",
-        show_type: #{file == "all"}
-    };
+#search
+    input placeholder="Search" autocomplete="off"
+    #results
+    javascript:
+        search_config = {
+            type: "#{file}",
+            show_type: #{file == "all"}
+        };

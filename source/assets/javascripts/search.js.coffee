@@ -8,20 +8,20 @@ do (w = window, $ = jQuery) ->
       for item in result
         results.push item
       ).then ->
-        $("#search").focus()
-        $("#search").keyup (e) ->
+        $("#search input").focus()
+        $("#search input").keyup (e) ->
           found = no
-          $("#search-result").empty()
+          $("#results").empty()
           string = $(e.target).val().toLowerCase()
           if string.length <= 0
-            $("#search-result").css 'display', 'none'
+            $("#results").css 'display', 'none'
             return
-          $("#search-result").css 'display', 'block'
+          $("#results").css 'display', 'block'
           regex = new RegExp string, "i"
           $tpl ="""
 <div class='result'>
-  <span class='result-name'>
-    <a href='%url'><span class='result-link'>%name</span> <span class='result-desc'>%desc</span></a>
+  <span class='title'>
+    <a href='%url'><span class='link'>%name</span> <span class='description'>%desc</span></a>
   </span>
 </div>
 """
@@ -39,11 +39,11 @@ do (w = window, $ = jQuery) ->
                         .replace('%desc', $desc)
                         .replace '%name', item.name
                 found = yes
-                $("#search-result").append $ $_tpl
+                $("#results").append $ $_tpl
           unless found
             $_tpl = $tpl
                     .replace('%url', "#")
                     .replace('%desc', "No results found")
                     .replace '%name', "No results"
-            $("#search-result").append $ $_tpl
+            $("#results").append $ $_tpl
   do search

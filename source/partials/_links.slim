@@ -1,7 +1,5 @@
 - if current_page.data.links
     .links
-        span.links-line
-            span.links-span Links
         - current_page.data.links.each do |link|
             ruby:
                 name = link[0]

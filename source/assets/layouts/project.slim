@@ -1,10 +1,11 @@
 = wrap_layout :layout do
     .container.project.fullpage id=current_page.data.project.id
         span.title = current_page.data.project.name
-        span.language = current_page.data.project.lang
-        span.tags
-            i.fa.fa-tags>
-            = current_page.data.tags
+        .infobar
+            span.language = current_page.data.project.lang
+            span.tags
+                i.fa.fa-tags>
+                = current_page.data.tags
         .content
             = yield
         = partial "partials/links"

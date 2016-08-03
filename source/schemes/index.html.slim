@@ -9,5 +9,6 @@ js:
 - current_page.children.each do |page|
     .container.scheme id=page.data.scheme.id
         span.title = link_to page.data.scheme.name, page.url
-        span.comp = "for Komodo #{page.data.scheme.comp}"
+        .infobar
+            span.comp = "for Komodo #{page.data.scheme.comp}"
         .content.description = truncate_with_ellipses page.data.description, 150
