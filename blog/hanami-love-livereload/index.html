@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#FFFFFF" name="theme-color" /><title>Livereload and Hanami</title><meta content="A guide how to make LiveReload work in Hanami" name="description" /><meta content="Livereload and Hanami" property="og:title" /><meta content="article" property="og:type" /><meta content="A guide how to make LiveReload work in Hanami" property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/hanami-love-livereload/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="hanami" property="article:tag" /><meta content="livereload" property="article:tag" /><meta content="ruby" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1470423343" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1470423343" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1470423343" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#FFFFFF" name="theme-color" /><title>Livereload and Hanami</title><meta content="A guide how to make LiveReload work in Hanami" name="description" /><meta content="Livereload and Hanami" property="og:title" /><meta content="article" property="og:type" /><meta content="A guide how to make LiveReload work in Hanami" property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/hanami-love-livereload/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="hanami" property="article:tag" /><meta content="livereload" property="article:tag" /><meta content="ruby" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1470653317" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1470653317" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1470653317" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -11,7 +11,7 @@ Hanami.</p>
 <p>Add that to your <code class="prettyprint">Gemfile</code>:</p>
 <pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'guard'</span>
 <span class="n">gem</span> <span class="s1">'guard-livereload'</span><span class="p">,</span> <span class="s1">'~&gt; 2.5'</span><span class="p">,</span> <span class="ss">require: </span><span class="kp">false</span>
-<span class="n">gem</span> <span class="s1">'rack-livereload'</span>
+<span class="n">gem</span> <span class="s1">'rack-livereload'</span> <span class="c1"># if you don't want to use browser extension</span>
 </code></pre>
 
 <p>Then run <code class="prettyprint">bundle install</code>.</p>
@@ -53,7 +53,20 @@ to:</p>
 Once something will be changed there, <code class="prettyprint">guard-livereload</code> will sent a <code class="prettyprint">RELOAD</code>
 signal to our browser: <code class="prettyprint">RELOAD /assets/&lt;file&gt;</code>.</p>
 
-<h1>Enabling rack-livereload</h1>
+<h1>Enabling LiveReload</h1>
+
+<h2>Browser extension (preferred)</h2>
+
+<p>Install the corresponding extension for your browser:</p>
+
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">Chrome</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/livereload/">Firefox</a></li>
+</ul>
+
+<p>You can find more ways to install it on the <a href="//livereload.com">official website</a>.</p>
+
+<h2>Rack gem</h2>
 
 <p>Add this code to <code class="prettyprint">/config.ru</code> before <code class="prettyprint">run Hanami::Container.new</code>:</p>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'rack-livereload'</span>
@@ -62,7 +75,7 @@ signal to our browser: <code class="prettyprint">RELOAD /assets/&lt;file&gt;</co
 
 <p>This will enable <code class="prettyprint">rack-livereload</code> globally.</p>
 
-<h1>Fixing Content Security Policy</h1>
+<h3>Fixing Content Security Policy</h3>
 
 <p>If you run <code class="prettyprint">guard</code> and <code class="prettyprint">hanami server</code> and try to open your site, you&rsquo;ll see
 Content Security Policy error in your console. The problem here is <code class="prettyprint">guard</code> will
@@ -70,20 +83,33 @@ host it&rsquo;s own <code class="prettyprint">livereload.js</code> at <code clas
 trying to inject it. But <code class="prettyprint">hanami</code> does not allow including scripts and
 connecting to WebSockets from external resources.</p>
 
-<p>We&rsquo;ll disable CSP for development environment.</p>
+<p>We&rsquo;ll change CSP to allow loading inline scripts and scripts from <code class="prettyprint">localhost:35729</code>.</p>
 
-<p>Change <code class="prettyprint">configure :development</code> in <code class="prettyprint">apps/&lt;app&gt;/application.rb</code> to:</p>
-<pre class="highlight ruby"><code><span class="n">configure</span> <span class="ss">:development</span> <span class="k">do</span>
-  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-  <span class="nf">security</span><span class="p">.</span><span class="nf">content_security_policy</span> <span class="sx">%{}</span>
-  <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
-<span class="nf">end</span>
+<p>Change <code class="prettyprint">security.content_security_policy %{...}</code> in <code class="prettyprint">apps/&lt;app&gt;/application.rb</code> to:</p>
+<pre class="highlight ruby"><code><span class="n">security</span><span class="p">.</span><span class="nf">content_security_policy</span> <span class="sx">%{
+  ...
+  script-src 'self' http://localhost:35729/ 'unsafe-inline';
+  connect-src 'self' ws://localhost:35729/;
+  ...
+}</span>
+<span class="k">end</span>
 </code></pre>
+
+<p>We allowed inline scripts because <code class="prettyprint">rack-livereload</code> injects some variables in
+this way for <code class="prettyprint">livereload.js</code>
+(such as <code class="prettyprint">RACK_LIVERELOAD_PORT</code> and <code class="prettyprint">WEB_SOCKET_SWF_LOCATION</code>).</p>
+
+<p>We allowed scripts from <code class="prettyprint">localhost:35729</code> and connections to <code class="prettyprint">localhost:35729</code>.
+<code class="prettyprint">livereload.js</code> will be trying to connect to <code class="prettyprint">ws://localhost:35729</code>. That&rsquo;s why
+we allow to do it in CSP.</p>
 
 <h1>Testing LiveReload</h1>
 
-<p>run <code class="prettyprint">guard</code> and <code class="prettyprint">hanami server</code>. Open <code class="prettyprint">localhost:2300</code> and change any resource
+<p>Run <code class="prettyprint">guard</code> and <code class="prettyprint">hanami server</code>. Open <code class="prettyprint">localhost:2300</code> and change any resource
 (a css file for example). Your changes should be applied immediately.</p>
+
+<p>If you&rsquo;re using the extension for browser, don&rsquo;t forget to connect to the
+livereload server by clicking on the toolbar button.</p>
 
 <p>Have fun! :)</p>
 </div></div><div class="container comments"><div class="comments"><div id="comments_loading">Comments are loading</div><div id="disqus_thread"></div><script>var disqus_config = function () {
@@ -98,4 +124,4 @@ var loadDisqusComments = (function() {
 
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
-});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript><script src="/assets/javascripts/lazyload.js?1470423343"></script></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a><br />Colors used: <a href="/materia">Materia</a></div></footer></div><script src="/assets/javascripts/jquery.js?1470423343"></script><script src="/assets/javascripts/main.js?1470423343"></script></body></html>
+});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript><script src="/assets/javascripts/lazyload.js?1470653317"></script></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a><br />Colors used: <a href="/materia">Materia</a></div></footer></div><script src="/assets/javascripts/jquery.js?1470653317"></script><script src="/assets/javascripts/main.js?1470653317"></script></body></html>
