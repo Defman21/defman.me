@@ -16,7 +16,7 @@ Add that to your `Gemfile`:
 ```ruby
 gem 'guard'
 gem 'guard-livereload', '~> 2.5', require: false
-gem 'rack-livereload'
+gem 'rack-livereload' # if you don't want to use browser extension
 ```
 
 Then run `bundle install`.
@@ -60,7 +60,18 @@ This config make Guard watch for `./apps/<app_name>/assets/<folder>/<file>`.
 Once something will be changed there, `guard-livereload` will sent a `RELOAD`
 signal to our browser: `RELOAD /assets/<file>`.
 
-# Enabling rack-livereload
+# Enabling LiveReload
+
+## Browser extension (preferred)
+
+Install the corresponding extension for your browser:
+
+* [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+* [Firefox](https://addons.mozilla.org/en-US/firefox/addon/livereload/)
+
+You can find more ways to install it on the [official website](//livereload.com).
+
+## Rack gem
 
 Add this code to `/config.ru` before `run Hanami::Container.new`:
 
@@ -71,7 +82,7 @@ use Rack::LiveReload
 
 This will enable `rack-livereload` globally.
 
-# Fixing Content Security Policy
+### Fixing Content Security Policy
 
 If you run `guard` and `hanami server` and try to open your site, you'll see
 Content Security Policy error in your console. The problem here is `guard` will
@@ -79,21 +90,34 @@ host it's own `livereload.js` at `localhost:35729` and `rack-livereload` will be
 trying to inject it. But `hanami` does not allow including scripts and
 connecting to WebSockets from external resources.
 
-We'll disable CSP for development environment.
+We'll change CSP to allow loading inline scripts and scripts from `localhost:35729`.
 
-Change `configure :development` in `apps/<app>/application.rb` to:
+Change `security.content_security_policy %{...}` in `apps/<app>/application.rb` to:
 
 ```ruby
-configure :development do
+security.content_security_policy %{
   ...
-  security.content_security_policy %{}
+  script-src 'self' http://localhost:35729/ 'unsafe-inline';
+  connect-src 'self' ws://localhost:35729/;
   ...
+}
 end
 ```
 
+We allowed inline scripts because `rack-livereload` injects some variables in
+this way for `livereload.js`
+(such as `RACK_LIVERELOAD_PORT` and `WEB_SOCKET_SWF_LOCATION`).
+
+We allowed scripts from `localhost:35729` and connections to `localhost:35729`.
+`livereload.js` will be trying to connect to `ws://localhost:35729`. That's why
+we allow to do it in CSP.
+
 # Testing LiveReload
 
-run `guard` and `hanami server`. Open `localhost:2300` and change any resource
+Run `guard` and `hanami server`. Open `localhost:2300` and change any resource
 (a css file for example). Your changes should be applied immediately.
+
+If you're using the extension for browser, don't forget to connect to the
+livereload server by clicking on the toolbar button.
 
 Have fun! :)
