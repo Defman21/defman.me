@@ -1,1 +1,1 @@
-(function(){!function(n){return n(document).ready(function(){})}(jQuery)}).call(this);
+(function(){!function(t){return t(document).ready(function(){return t("a.tag").click(function(){var n;return n=t(this).html(),t("input").val(n).trigger("keyup")})})}(jQuery)}).call(this);
