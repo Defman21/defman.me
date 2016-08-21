@@ -5,7 +5,7 @@
             span.language = current_page.data.project.lang
             span.tags
                 i.fa.fa-tags>
-                = current_page.data.tags
+                = current_page.data.tags.gsub " ", ", "
         .content
             = yield
         = partial "partials/links"

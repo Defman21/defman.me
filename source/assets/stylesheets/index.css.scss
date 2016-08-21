@@ -1,4 +1,5 @@
 @import "variables";
+@import "normalize";
 
 body {
     font: $font-normal Roboto;
@@ -9,6 +10,7 @@ body {
 a {
     color: $special;
     text-decoration: none;
+    outline: 0;
 }
 
 code.prettyprint {
@@ -28,13 +30,19 @@ img {
 header, main { margin-bottom: $margin-normal; }
 
 header {
+    width: 100%;
+    padding: $padding-big 0;
+    box-shadow: 0 0 8px 3px rgba($foreground, 0.04);
+    
     .logo {
-        font-size: $font-big;
+        font-size: $font-normal;
+        text-transform: uppercase;
         display: inline-block;
+        margin-right: $margin-big;
     }
     
     nav {
-        margin-top: $margin-normal;
+        display: inline-block;
         
         a {
             margin-right: $margin-big;
@@ -42,17 +50,13 @@ header {
             color: $foreground;
             transition: all $transition ease;
             
-            &:hover {
-                color: $special;
-            }
-            
             &:before, &:after {
                 content: " ";
                 position: absolute;
-                bottom: 0;
+                bottom: -1px;
                 width: 0;
                 height: 1px;
-                border-bottom: 1px solid $special;
+                border-bottom: 2px solid $special;
                 transition: all $transition ease;
             }
             
@@ -68,7 +72,8 @@ header {
     margin-bottom: $margin-normal;
     
     input {
-        border: 1px solid $inactive;
+        border: none;
+        border-left: 1px solid $inactive;
         padding: $padding-small;
         box-sizing: border-box;
         width: 100%;
@@ -83,6 +88,7 @@ header {
             padding: $padding-small 0;
             padding-left: $padding-normal;
             border-left: 1px solid $inactive;
+            transition: all 150ms ease;
             
             &:last-of-type {
                 margin-bottom: 0;
@@ -96,11 +102,11 @@ header {
             .description {
                 display: block;
                 color: $foreground-special;
+                padding-top: $padding-small;
             }
             
             &:hover {
                 border-left-color: $special;
-                background: $background-special;
             }
         }
     }
@@ -109,7 +115,6 @@ header {
 .container {
     margin-bottom: $margin-normal;
     padding-bottom: $padding-normal;
-    border-bottom: 1px solid $inactive;
     
     .title {
         font-size: $font-big;
@@ -118,7 +123,7 @@ header {
     }
     
     .infobar {
-        margin-bottom: $margin-small;
+        margin: $margin-normal 0;
         font-size: $font-small;
         
         span {
@@ -128,15 +133,16 @@ header {
     }
     
     .content {
-        p { line-height: 2rem; }
-    }
-    
-    .description { line-height: 2rem; }
-    
-    .content {
+        line-height: 1.5rem;
+        
+        p {
+            margin: 0;
+            margin-bottom: $margin-big;
+        }
+        
         @for $i from 1 through 6 {
             h#{$i} {
-                font-size: inspect(1.5 - $i/10) + "rem";
+                font-size: inspect(1.4 - $i/10) + "rem";
                 font-weight: normal;
             }
         }
@@ -151,4 +157,26 @@ header {
 footer {
     text-align: center;
     line-height: 2rem;
+    
+    a {
+        color: $foreground-special;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .overlay {
+        padding: $padding-small;
+        box-sizing: border-box;
+    }
+    header {
+        padding: $padding-normal $padding-small;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    header nav {
+        display: block;
+        margin-top: $margin-normal;
+    }
 }

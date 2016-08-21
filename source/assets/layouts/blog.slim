@@ -1,14 +1,14 @@
 = wrap_layout :layout do
     .container.article.fullpage id=current_page.data.id
         span.title = current_page.data.title
-        - y, m, d, h, min = current_page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures
+        - date = Date.strptime(current_page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
         .infobar
             span.timestamp
-                i.fa.fa-clock-o>
-                = "#{y}/#{m}/#{d} #{h}:#{min}"
+                i.fa.fa-calendar>
+                = date
             span.tags
                 i.fa.fa-tags>
-                = current_page.data.tags
+                = current_page.data.tags.gsub " ", ", "
         .content = yield
         = partial "partials/links"
     .container.comments = partial "partials/comments"

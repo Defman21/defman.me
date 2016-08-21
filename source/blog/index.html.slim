@@ -9,16 +9,16 @@ js:
 = partial "partials/search", locals: {file: "articles"}
 - sorted = current_page.children.sort_by { |page| page.data.date } .reverse!
 - sorted[0...5].each do |page|
-    - y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures
+    - date = Date.strptime(page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
     .container.artcicle id=page.data.url
         span.title = link_to page.data.title, page.url
         .infobar
             span.timestamp
-                i.fa.fa-clock-o>
-                = "#{y}/#{m}/#{d} #{h}:#{min}"
+                i.fa.fa-calendar>
+                = date
             span.tags
                 i.fa.fa-tags>
-                = page.data.tags
+                = page.data.tags.gsub " ", ", "
         .content.description
             = truncate_with_ellipses page.data.description, 150
 - if sorted.length > 5

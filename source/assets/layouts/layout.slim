@@ -1,14 +1,12 @@
 = wrap_layout :base do
     - content_for :base, ""
-    .overlay
-        header
+    header
+        .overlay
             .logo
                 = link_to "Defman.me", "/"
             nav = partial "partials/header"
+    .overlay
         main = yield
         footer
             .copyright
                 = link_to "defman.me &copy; 2016", "//github.com/Defman21/defman.me"
-                br
-                ' Colors used:
-                = link_to "Materia", "/materia"

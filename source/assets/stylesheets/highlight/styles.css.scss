@@ -1,21 +1,22 @@
 @import "../base16";
 
-$fore: #777777;
-$back: #F9F6ED;
-$namespace: #886BE5;
-$string: #CC5B5F;
+$fore: #3D3D3D;
+$back: #FFFFFF;
+$namespace: #3097A0;
+$string: #2F9E49;
 $string-inline: #65BC9F;
 $identifier: $fore;
-$keyword: #7BAF46;
-$class: #3096C9;
+$keyword: #7268CC;
+$class: #F47A0E;
 $comment: #ADADAD;
 
 .highlight {
     background: $back;
     overflow: auto;
     padding: 5px;
-    line-height: 1.5rem;
+    line-height: 1.2rem;
     box-sizing: border-box;
+    border-left: 1px solid $base05;
     
     
     & > code {
