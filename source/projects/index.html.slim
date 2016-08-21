@@ -15,5 +15,10 @@ js:
             span.language = page.data.project.lang
             span.tags
                 i.fa.fa-tags>
-                = page.data.tags.gsub " ", ", "
+                ruby:
+                    tags = []
+                    page.data.tags.split.each do |tag|
+                        tags << "<a class=\"tag\">#{tag}</a>"
+                    end
+                == tags.join ", "
         .content.description = truncate_with_ellipses page.data.description, 150

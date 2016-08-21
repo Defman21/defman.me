@@ -13,6 +13,10 @@ a {
     outline: 0;
 }
 
+input:focus {
+    outline: none;
+}
+
 code.prettyprint {
     background: $background-special;
 }
@@ -129,6 +133,10 @@ header {
         span {
             margin-right: $margin-normal;
             color: $foreground-special;
+            
+            a {
+                cursor: pointer;
+            }
         }
     }
     
