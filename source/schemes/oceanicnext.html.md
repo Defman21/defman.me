@@ -11,8 +11,6 @@ scheme:
 
 Oceanicnext color scheme for Komodo X.
 
-![Image](oceanicnext.png)
-
 # Installation
 
 Open Commando - Packages, find Oceanicnext and press Enter to install it.
