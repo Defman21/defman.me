@@ -1,1 +1,1 @@
-(function(){!function(t){return t(document).ready(function(){return t("a.tag").click(function(){var n;return n=t(this).html(),t("input").val(n).trigger("keyup")})})}(jQuery)}).call(this);
+(function(){!function(n){return n(document).ready(function(){return n("a.search-link").click(function(){var r;return r=n(this).data("search"),n("input").val(r).trigger("keyup")})})}(jQuery)}).call(this);
