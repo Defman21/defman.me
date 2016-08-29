@@ -10,7 +10,8 @@ ruby:
             name: resource.metadata[:page][:scheme][:name],
             regex: resource.metadata[:page][:scheme][:name],
             url: resource.url,
-            desc: truncate_with_ellipses(resource.metadata[:page][:description], 70)
+            desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
+            uuid: uuid
         }
     end
 = schemes.to_json

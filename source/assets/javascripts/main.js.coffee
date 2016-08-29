@@ -1,5 +1,5 @@
 do ($ = jQuery) ->
   $(document).ready ->
-    $("a.tag").click ->
-      text = $(this).html()
+    $("a.search-link").click ->
+      text = $(this).data 'search'
       $("input").val(text).trigger "keyup"

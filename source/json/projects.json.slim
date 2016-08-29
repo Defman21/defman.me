@@ -12,7 +12,8 @@ ruby:
             url: resource.url,
             desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
             tags: resource.metadata[:page][:tags] || "",
-            lang: resource.metadata[:page][:project][:lang]
+            lang: resource.metadata[:page][:project][:lang],
+            uuid: uuid
         }
     end
 = projects.to_json

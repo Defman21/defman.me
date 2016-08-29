@@ -12,7 +12,8 @@ ruby:
             url: resource.url,
             desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
             type: :article,
-            tags: resource.metadata[:page][:tags] || ""
+            tags: resource.metadata[:page][:tags] || "",
+            uuid: uuid
         }
     end
     
@@ -30,7 +31,8 @@ ruby:
             desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
             tags: resource.metadata[:page][:tags] || "",
             type: :project,
-            lang: resource.metadata[:page][:project][:lang]
+            lang: resource.metadata[:page][:project][:lang],
+            uuid: uuid
         }
     end
     
@@ -46,7 +48,8 @@ ruby:
             regex: resource.metadata[:page][:scheme][:name],
             url: resource.url,
             desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
-            type: :scheme
+            type: :scheme,
+            uuid: uuid
         }
     end
     

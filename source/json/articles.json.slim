@@ -11,7 +11,8 @@ ruby:
             regex: resource.metadata[:page][:title],
             url: resource.url,
             desc: truncate_with_ellipses(resource.metadata[:page][:description], 70),
-            tags: resource.metadata[:page][:tags] || ""
+            tags: resource.metadata[:page][:tags] || "",
+            uuid: uuid
         }
     end
 = articles.to_json

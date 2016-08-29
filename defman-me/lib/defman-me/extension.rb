@@ -1,6 +1,7 @@
 # Require core library
 require 'middleman-core'
 require 'json'
+require 'securerandom'
 
 # Extension namespace
 
@@ -213,6 +214,10 @@ print json.dumps(_export)
     
     def ksf(name)
       Scheme.new(name)
+    end
+    
+    def uuid
+      SecureRandom.uuid
     end
   end
 end

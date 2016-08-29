@@ -7,11 +7,14 @@ js:
 = partial "partials/search", locals: {file: "all"}
 .container#404
     span.title 404 - Not Found
-    span.timestamp
-        i.fa.fa-clock-o>
-        | 404
-    span.tags
-        i.fa.fa-tags>
-        | 404
+    .infobar
+        span.timestamp
+            i.fa.fa-clock-o>
+            | 404
+        span.tags
+            i.fa.fa-tags>
+            | 404
     .content
-        | There's nothing. It's 404. Use the search.
+        |
+            Oops, this page does not exist. You may want to try search some
+            <a href="#" class="search-link" data-search="type:article">articles</a>.
