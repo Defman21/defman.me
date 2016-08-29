@@ -9,6 +9,8 @@ $identifier: $fore;
 $keyword: #7268CC;
 $class: #F47A0E;
 $comment: #ADADAD;
+$git-deleted: #E02C2C;
+$git-inserted: #2F9E49;
 
 .highlight {
     background: $back;
@@ -47,7 +49,15 @@ $comment: #ADADAD;
         color: $comment;
     }
     
-    .mi, .si, .na, .gd {
+    .mi, .si, .na {
         color: $string-inline;
+    }
+    
+    .gd {
+        color: $git-deleted;
+    }
+    
+    .gi {
+        color: $git-inserted;
     }
 }
