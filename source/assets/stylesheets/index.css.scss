@@ -54,6 +54,10 @@ header {
             color: $foreground;
             transition: all $transition ease;
             
+            &:last-of-type {
+                margin-right: 0;
+            }
+            
             &:before, &:after {
                 content: " ";
                 position: absolute;
