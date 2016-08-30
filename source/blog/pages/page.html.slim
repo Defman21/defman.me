@@ -27,7 +27,14 @@ layout: :layout
 .pagination
     - unless last
         - unless first
-            = link_to "<=", "/blog/pages/#{page - 1}"
-        = link_to "=>", "/blog/pages/#{page + 1}"
+            = link_to "Previous page", "/blog/pages/#{page - 1}"
+        = link_to "Next page", "/blog/pages/#{page + 1}"
     - else
-        = link_to "<=", "/blog/pages/#{page - 1}"
+        ruby:
+            page = page - 1
+            url = if page > 1
+                    "/pages/#{page}"
+                else
+                    "/"
+            end
+        = link_to "Previous page", "/blog#{url}"

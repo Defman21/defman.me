@@ -61,7 +61,7 @@ header {
             &:before, &:after {
                 content: " ";
                 position: absolute;
-                bottom: -1px;
+                bottom: -5px;
                 width: 0;
                 height: 1px;
                 border-bottom: 2px solid $special;
@@ -81,7 +81,7 @@ header {
     
     input {
         border: none;
-        border-left: 1px solid $inactive;
+        border-left: 2px solid $inactive;
         padding: $padding-small;
         box-sizing: border-box;
         width: 100%;
@@ -94,18 +94,16 @@ header {
     
     #results {
         .result {
-            padding: $padding-small 0;
-            padding-left: $padding-normal;
-            border-left: 1px solid $inactive;
+            padding: $padding-normal $padding-small;
+            border-left: 2px solid $inactive;
             transition: all 150ms ease;
-            
-            &:last-of-type {
-                margin-bottom: 0;
-            }
+            box-sizing: border-box;
+            border-bottom-width: 0px;
             
             .link {
                 display: block;
                 color: $foreground;
+                transition: all 150ms ease;
             }
             
             .description {
@@ -115,7 +113,12 @@ header {
             }
             
             &:hover {
-                border-left-color: $special;
+                background: $background-special;
+                border-color: $special;
+                
+                .link {
+                    color: $special;
+                }
             }
         }
     }
@@ -158,6 +161,24 @@ header {
                 font-size: inspect(1.4 - $i/10) + "rem";
                 font-weight: normal;
             }
+        }
+    }
+}
+
+.pagination {
+    a {
+        padding: $padding-small $padding-normal;
+        padding-left: 0;
+        color: $foreground-special;
+        transition: all 150ms ease;
+        
+        i {
+            font-size: $font-small;
+            vertical-align: baseline;
+        }
+        
+        &:hover {
+            color: $special;
         }
     }
 }
