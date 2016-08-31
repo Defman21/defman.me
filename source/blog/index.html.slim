@@ -24,6 +24,9 @@ js:
                         tags << "<a class=\"tag search-link\" data-search='tag:#{tag}'>#{tag}</a>"
                     end
                 == tags.join ", "
+            span.readtime
+                i.fa.fa-clock-o>
+                = readtime page.source_file, true
         .content.description
             = truncate_with_ellipses page.data.description, 150
 - if sorted.length > 5

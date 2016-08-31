@@ -9,6 +9,9 @@
             span.tags
                 i.fa.fa-tags>
                 = current_page.data.tags.gsub " ", ", "
+            span.readtime
+                i.fa.fa-clock-o>
+                = readtime yield
         .content = yield
         = partial "partials/links"
     .container.comments = partial "partials/comments"

@@ -2,6 +2,8 @@
 require 'middleman-core'
 require 'json'
 require 'securerandom'
+require 'redcarpet'
+require 'nokogiri'
 
 # Extension namespace
 
@@ -218,6 +220,42 @@ print json.dumps(_export)
     
     def uuid
       SecureRandom.uuid
+    end
+    
+    def readtime(text, file = false)
+      reading_time = 265 # words per minute
+      if file
+        file = open(text)
+        text = file.read.split("---")[2]
+      end
+      
+      markdown = Redcarpet::Markdown.new Redcarpet::Render::HTML
+      html = Nokogiri::HTML markdown.render text
+      text = html.css(":not(img)")[0].text
+      imgs = html.css("img")
+      
+      num_words = text.split(%r/\W+/).length
+      
+      seconds = (num_words / reading_time * 60).ceil
+      
+      delta = 12
+      
+      imgs.each do |_|
+        seconds += delta
+        if delta > 3
+          delta -= 1
+        end
+      end
+      
+      def result(seconds)
+        minutes = (seconds / 60).ceil
+        if minutes < 1
+          minutes = 1
+        end
+        "#{minutes} min read"
+      end
+      
+      result seconds
     end
   end
 end
