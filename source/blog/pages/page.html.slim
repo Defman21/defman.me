@@ -7,13 +7,13 @@ layout: :layout
 ---
 = partial "partials/search", locals: {file: "articles"}
 - blogs.each do |page|
-    - y, m, d, h, min = page.data.date.to_s.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/i).captures
+    - date = Date.strptime(page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
     .container.article id=page.data.url
         span.title = link_to page.data.title, page.url
         .infobar
             span.timestamp
-                i.fa.fa-clock-o>
-                = "#{y}/#{m}/#{d} #{h}:#{min}"
+                i.fa.fa-calendar>
+                = date
             span.tags
                 i.fa.fa-tags>
                 ruby:
@@ -22,6 +22,9 @@ layout: :layout
                         tags << "<a class=\"tag search-link\" data-search='tag:#{tag}'>#{tag}</a>"
                     end
                 == tags.join ", "
+            span.readtime
+                i.fa.fa-clock-o>
+                = readtime page.source_file, true
         .content
             = truncate_with_ellipses page.data.description, 150
 .pagination
