@@ -4,7 +4,7 @@ $fore: #3D3D3D;
 $back: #FFFFFF;
 $namespace: #3097A0;
 $string: #2F9E49;
-$string-inline: #65BC9F;
+$string-inline: #39648C;
 $identifier: $fore;
 $keyword: #7268CC;
 $class: #F47A0E;
@@ -26,11 +26,11 @@ $git-inserted: #2F9E49;
         color: $fore;
     }
     
-    .n, .nb, .no, .ss, .s {
+    .n, .nb, .no, .ss, .s, .nx {
         color: $namespace;
     }
     
-    .kp {
+    .kp, .kc {
         color: $keyword;
     }
     
@@ -42,7 +42,7 @@ $git-inserted: #2F9E49;
         color: $identifier;
     }
     
-    .nc {
+    .nc, .kd {
         color: $class;
     }
     
