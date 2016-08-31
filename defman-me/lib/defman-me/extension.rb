@@ -229,10 +229,19 @@ print json.dumps(_export)
         text = file.read.split("---")[2]
       end
       
-      markdown = Redcarpet::Markdown.new Redcarpet::Render::HTML
+      markdown = Redcarpet::Markdown.new Redcarpet::Render::HTML,
+                 fenced_code_blocks: true, smartypants: true, prettify: true
       html = Nokogiri::HTML markdown.render text
-      text = html.css(":not(img)")[0].text
+      text = ""
+      html.css("p,h1,h2,h3,h4,h5,h6,a").each do |tag|
+        if ["h1", "h2", "h3", "h4", "h5", "h6", "a"].include? tag.name
+          text << tag.text + "."
+        end
+        text << tag.text
+      end
+      
       imgs = html.css("img")
+      codes = html.css("pre > code")
       
       num_words = text.split(%r/\W+/).length
       
@@ -244,6 +253,15 @@ print json.dumps(_export)
         seconds += delta
         if delta > 3
           delta -= 1
+        end
+      end
+      
+      code_delta = 45
+      
+      codes.each do |_|
+        seconds += code_delta
+        if code_delta > 3
+          code_delta -= 1
         end
       end
       
