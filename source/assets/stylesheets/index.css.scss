@@ -78,6 +78,7 @@ header {
 
 #search {
     margin-bottom: $margin-normal;
+    position: relative;
     
     input {
         border: none;
@@ -93,9 +94,15 @@ header {
     }
     
     #results {
+        border: 1px solid $inactive;
+        border-left-width: 2px;
+        background: $background;
+        position: absolute;
+        max-height: 40vh;
+        overflow-y: auto;
+        
         .result {
             padding: $padding-normal $padding-small;
-            border-left: 2px solid $inactive;
             transition: all 150ms ease;
             box-sizing: border-box;
             border-bottom-width: 0px;
@@ -145,6 +152,19 @@ header {
             a {
                 cursor: pointer;
             }
+        }
+        
+        .hidden-tags {
+            display: none;
+            
+            &.visible {
+                display: inline-block;
+            }
+        }
+        
+        .load-tags {
+            color: $foreground-special;
+            border-bottom: 1px dashed currentColor;
         }
     }
     

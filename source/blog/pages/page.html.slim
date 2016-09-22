@@ -11,6 +11,9 @@ layout: :layout
     .container.article id=page.data.url
         span.title = link_to page.data.title, page.url
         .infobar
+            span.readtime
+                i.fa.fa-clock-o>
+                = readtime page.source_file, true
             span.timestamp
                 i.fa.fa-calendar>
                 = date
@@ -21,10 +24,7 @@ layout: :layout
                     page.data.tags.split.each do |tag|
                         tags << "<a class=\"tag search-link\" data-search='tag:#{tag}'>#{tag}</a>"
                     end
-                == tags.join ", "
-            span.readtime
-                i.fa.fa-clock-o>
-                = readtime page.source_file, true
+                == tagify tags, 3
         .content
             = truncate_with_ellipses page.data.description, 150
 .pagination

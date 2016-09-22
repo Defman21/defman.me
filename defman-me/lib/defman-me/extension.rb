@@ -199,6 +199,15 @@ print json.dumps(_export)
   end
 
   helpers do
+    def tagify(tags, len)
+      if tags.length > len
+        %(#{tags[0..2].join ", "}, <div class='hidden-tags'>#{tags[3..tags.length].join(', ')}</div>
+        <a class='load-tags' href='#'>#{tags.length - len} more</a>)
+      else
+        tags.join ", "
+      end
+    end
+    
     def truncate_with_ellipses(string, length)
       opts = extensions[:defmanme].options
       if string.length > length
@@ -233,15 +242,15 @@ print json.dumps(_export)
                  fenced_code_blocks: true, smartypants: true, prettify: true
       html = Nokogiri::HTML markdown.render text
       text = ""
-      html.css("p,h1,h2,h3,h4,h5,h6,a").each do |tag|
+      html.css("p,h1,h2,h3,h4,h5,h6,a,pre,code").each do |tag|
         if ["h1", "h2", "h3", "h4", "h5", "h6", "a"].include? tag.name
           text << tag.text + "."
+        else
+          text << tag.text
         end
-        text << tag.text
       end
       
       imgs = html.css("img")
-      codes = html.css("pre > code")
       
       num_words = text.split(%r/\W+/).length
       
@@ -253,15 +262,6 @@ print json.dumps(_export)
         seconds += delta
         if delta > 3
           delta -= 1
-        end
-      end
-      
-      code_delta = 45
-      
-      codes.each do |_|
-        seconds += code_delta
-        if code_delta > 3
-          code_delta -= 1
         end
       end
       

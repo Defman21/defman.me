@@ -14,7 +14,7 @@ do (w = window, $ = jQuery) ->
           filters = []
           $("#results").empty()
           string = $(e.target).val().toLowerCase()
-          if string.length <= 0
+          if string.length <= 1
             $("#results").css 'display', 'none'
             return
           $("#results").css 'display', 'block'

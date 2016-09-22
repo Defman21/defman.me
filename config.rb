@@ -74,6 +74,6 @@ ready do
   end
 end
 
-activate :livereload
+#activate :livereload
 activate :directory_indexes
 activate :defmanme

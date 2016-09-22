@@ -12,7 +12,7 @@ js:
     .container.project id=page.data.project.id
         span.title = link_to page.data.project.name, page.url
         .infobar
-            span.language = page.data.project.lang
+            span.language = page.data.project.lang.capitalize
             span.tags
                 i.fa.fa-tags>
                 ruby:
@@ -20,5 +20,5 @@ js:
                     page.data.tags.split.each do |tag|
                         tags << "<a class=\"tag search-link\" data-search='tag:#{tag}'>#{tag}</a>"
                     end
-                == tags.join ", "
+                == tagify tags, 3
         .content.description = truncate_with_ellipses page.data.description, 150

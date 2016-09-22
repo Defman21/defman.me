@@ -2,7 +2,7 @@
     .container.project.fullpage id=current_page.data.project.id
         span.title = current_page.data.project.name
         .infobar
-            span.language = current_page.data.project.lang
+            span.language = current_page.data.project.lang.capitalize
             span.tags
                 i.fa.fa-tags>
                 = current_page.data.tags.gsub " ", ", "

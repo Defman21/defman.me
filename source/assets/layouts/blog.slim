@@ -3,15 +3,15 @@
         span.title = current_page.data.title
         - date = Date.strptime(current_page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
         .infobar
+            span.readtime
+                i.fa.fa-clock-o>
+                = readtime yield
             span.timestamp
                 i.fa.fa-calendar>
                 = date
             span.tags
                 i.fa.fa-tags>
                 = current_page.data.tags.gsub " ", ", "
-            span.readtime
-                i.fa.fa-clock-o>
-                = readtime yield
         .content = yield
         = partial "partials/links"
     .container.comments = partial "partials/comments"
