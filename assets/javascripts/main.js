@@ -1,1 +1,1 @@
-(function(){!function(n){return n(document).ready(function(){return n("a.search-link").click(function(){var r;return r=n(this).data("search"),n("input").val(r).trigger("keyup")})})}(jQuery)}).call(this);
+(function(){!function(n){return n(document).ready(function(){return n("a.search-link").click(function(){var t;return t=n(this).data("search"),n("input").val(t).trigger("keyup")}),n(".load-tags").click(function(){return n(".hidden-tags",n(this).parent()).css("display","inline-block"),n(this).remove()})})}(jQuery)}).call(this);
