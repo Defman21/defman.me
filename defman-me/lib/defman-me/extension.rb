@@ -202,7 +202,7 @@ print json.dumps(_export)
     def tagify(tags, len)
       if tags.length > len
         %(#{tags[0..2].join ", "}, <div class='hidden-tags'>#{tags[3..tags.length].join(', ')}</div>
-        <a class='load-tags' href='#'>#{tags.length - len} more</a>)
+        <a class='load-tags'>#{tags.length - len} more</a>)
       else
         tags.join ", "
       end
