@@ -1,17 +1,15 @@
 @import "../normalize";
 
-$background:      #303030;
-$background-dark: darken($background, 5);
-$foreground:      #E5E5E5;
-$foreground-dark: darken($foreground, 35);
+$background: #F7F7F7;
+$foreground: #353535;
 
 $width: 60%;
 $width-mobile: 95%;
 
-$links: #EAA46B;
-$links-active: #fff;
+$links: #59BFD6;
+$links-active: #141414;
 $tabs: $links;
-$tabs-active: #fff;
+$tabs-active: #141414;
 $margins: 30px;
 $paddings: $margins;
 
@@ -26,8 +24,6 @@ body {
     font: 1rem Roboto, sans-serif;
     background: $background;
     color: $foreground;
-    background-image: url(/assets/images/background.png);
-    background-size: contain;
 }
 
 a {
@@ -53,11 +49,10 @@ ul {
 
 .center {
     width: $width;
-    max-width: 1080px;
+    max-width: 960px;
     margin: 0 auto;
-    background: rgba($background, 0.85);
+    background: #FCFCFC;
     min-height: 100vh;
-    box-shadow: 0 0 35px 10px rgba($background-dark, 0.4);
     padding: 30px 0;
     padding-top: 0;
     box-sizing: border-box;
@@ -68,6 +63,7 @@ ul {
     text-align: center;
     text-transform: uppercase;
     padding-top: $paddings;
+    
     .title {
         font-size: 3rem;
         font-weight: 500;
@@ -75,16 +71,12 @@ ul {
     }
     
     .description {
-        color: $foreground-dark;
         margin: $margins 0;
     }
-    
-    border-bottom: 2px dashed $background-dark;
 }
 
 #download {
     padding-top: $paddings;
-    border-top: 2px dashed $background-dark;
 }
 
 .block {
@@ -94,13 +86,17 @@ ul {
     .title {
         font-size: 2rem;
         font-weight: 500;
+        
+        a {
+            font-size: 1rem;
+            vertical-align: top;
+        }
     }
     
     .text {
         line-height: 2rem;
         
         .frame {
-            background: $background-dark;
             display: block;
             margin: 0 auto;
             width: 100%;
@@ -111,6 +107,22 @@ ul {
             
             &.close {
                 padding-top: 0;
+            }
+        }
+        
+        .note {
+            color: #606060;
+            box-sizing: border-box;
+            padding-left: 5px;
+            border-left: 2px solid darken($background, 10);
+            background: darken($background, 3);
+            transition: all 150ms ease;
+            cursor: help;
+            
+            &:hover {
+                border-left-color: $links;
+                color: #303030;
+                background: darken($background, 2);
             }
         }
     }
@@ -200,7 +212,6 @@ ul {
     bottom: 10px;
     width: 100%;
     text-align: center;
-    color: $foreground-dark;
 }
 
 #links ul {
@@ -211,8 +222,6 @@ ul {
 
 pre, code, kbd
 {
-    background: #2b2b2b;
-    color: #e6e1dc;
     padding: 3px;
     overflow-y: auto;
     
@@ -220,9 +229,9 @@ pre, code, kbd
         padding: 0;
     }
     
-    .nt { color: #EAA46B }
+    .nt { color: #E86A6C }
     .na { color: #69BAE5 }
-    .s { color: #6AE883 }
+    .s { color: #A24CDB }
 }
 
 @media screen and (max-width: 720px) {
