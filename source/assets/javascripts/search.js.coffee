@@ -1,4 +1,14 @@
 do (w = window, $ = jQuery) ->
+  $(document).keyup (e) ->
+    if e.keyCode == 27
+      $("#results").empty().css 'display', 'none'
+  
+  $(document).click (e) ->
+    $("#results").css 'display', 'none'
+    
+  $(document).on 'click', '.result, #search input', (e) ->
+    e.stopPropagation()
+  
   search = () ->
     json = search_config.type
     display_type = search_config.show_type
@@ -9,7 +19,10 @@ do (w = window, $ = jQuery) ->
         results.push item
       ).then ->
         $("#search input").focus()
-        $("#search input").keyup (e) ->
+        $("#search input").focus (e) ->
+          if $(e.target).val().length > 0
+            doSearch(e)
+        doSearch = (e) ->
           found = no
           filters = []
           $("#results").empty()
@@ -60,4 +73,6 @@ do (w = window, $ = jQuery) ->
                     .replace('%desc', "No results found")
                     .replace '%name', "No results"
             $("#results").append $ $_tpl
+        $("#search input").keyup (e) -> doSearch(e)
+
   do search
