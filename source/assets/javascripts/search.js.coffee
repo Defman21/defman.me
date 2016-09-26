@@ -39,7 +39,10 @@ do (w = window, $ = jQuery) ->
               words.push search_item[1]
               filters.push search_item[0]
             else if search_item[0].length > 0
-              words.push search_item[0]
+              if search_item[0][0] == "@" # filter
+                filters.push search_item[0].substr(1)
+              else
+                words.push search_item[0]
           $tpl ="""
 <div class='result'>
   <span class='title'>
@@ -55,8 +58,9 @@ do (w = window, $ = jQuery) ->
             search += " #{item.type}" if item.type? && filters.indexOf("type") != -1
             search = "#{item.name} #{item.desc}" if search.length == 0
             search = search.toLowerCase()
-            words.forEach (w) ->
-              if search.indexOf(w) != -1 && already_found.indexOf(item.uuid) == -1
+            if filters.indexOf("strict") != -1
+              string = words.join " "
+              if search.indexOf(string) != -1 && already_found.indexOf(item.uuid) == -1
                 $desc = item.desc
                 $desc += " (#{item.type})" if display_type
                 $_tpl = $tpl
@@ -66,7 +70,19 @@ do (w = window, $ = jQuery) ->
                 $("#results").append $ $_tpl
                 already_found.push item.uuid
                 found = yes
-                return
+            else
+              words.forEach (w) ->
+                if search.indexOf(w) != -1 && already_found.indexOf(item.uuid) == -1
+                  $desc = item.desc
+                  $desc += " (#{item.type})" if display_type
+                  $_tpl = $tpl
+                          .replace('%url', item.url)
+                          .replace('%desc', $desc)
+                          .replace '%name', item.name
+                  $("#results").append $ $_tpl
+                  already_found.push item.uuid
+                  found = yes
+                  return
           unless found
             $_tpl = $tpl
                     .replace('%url', "#")
