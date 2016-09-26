@@ -27,6 +27,7 @@ layout: :layout
                 == tagify tags, 3
         .content
             = truncate_with_ellipses page.data.description, 150
+            a.read-more(href=page.url) Read more...
 .pagination
     - unless last
         - unless first

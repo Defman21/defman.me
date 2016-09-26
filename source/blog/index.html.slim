@@ -29,6 +29,7 @@ js:
                 == tagify tags, 3
         .content.description
             = truncate_with_ellipses page.data.description, 150
+            a.read-more(href=page.url) Read more...
 - if sorted.length > 5
     .pagination
         = link_to "Next page", '/blog/pages/2'

@@ -3,7 +3,7 @@ title: Better screenshots in elementary OS
 description: There are 2 different tools to make screenshots in eOS. We'll merge them into one to cover gtk2, gtk3 and qt apps.
 date: 201607231539
 id: 201607231539-elementary-os-screenshots
-tags: elementary bash sh script shell screenshots
+tags: elementary bash script shell screenshots
 links:
     Gist:
         href: //gist.github.com/Defman21/a0dcd8ad164928b4b7509f48ef5ee087
