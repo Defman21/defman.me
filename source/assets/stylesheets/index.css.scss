@@ -36,42 +36,38 @@ header, main { margin-bottom: $margin-normal; }
 header {
     width: 100%;
     padding: $padding-big 0;
-    box-shadow: 0 0 8px 3px rgba($foreground, 0.04);
+    box-shadow: 0 0 16px 6px rgba($foreground, 0.03);
+    
+    .overlay {
+        display: flex;
+        justify-content: flex-end;
+    }
     
     .logo {
         font-size: $font-normal;
         text-transform: uppercase;
-        display: inline-block;
         margin-right: $margin-big;
+        flex-grow: 1;
+        font-weight: 500;
+        
+        a { color: $foreground; }
     }
     
-    nav {
-        display: inline-block;
-        
+    nav {        
         a {
             margin-right: $margin-big;
             position: relative;
-            color: $foreground;
+            color: lighten($foreground, 25);
             transition: all $transition ease;
+            font-weight: 300;
             
             &:last-of-type {
                 margin-right: 0;
             }
             
-            &:before, &:after {
-                content: " ";
-                position: absolute;
-                bottom: -5px;
-                width: 0;
-                height: 1px;
-                border-bottom: 2px solid $special;
-                transition: all $transition ease;
+            &:hover {
+                color: $foreground;
             }
-            
-            &:before { left: 50%; }
-            &:after { right: 50%; }
-            
-            &:hover:before, &:hover:after { width: 50%; }
         }
     }
 }
@@ -81,12 +77,12 @@ header {
     position: relative;
     
     input {
-        border: none;
-        border-left: 2px solid $inactive;
+        border: 1px solid $inactive;
         padding: $padding-small;
         box-sizing: border-box;
         width: 100%;
         transition: all 150ms ease;
+        font-weight: 300;
         
         &:focus {
             border-color: $special;
@@ -95,9 +91,11 @@ header {
     
     #results {
         border: 1px solid $inactive;
-        border-left-width: 2px;
+        border-top: none;
         background: $background;
         position: absolute;
+        width: 100%;
+        box-sizing: border-box;
         max-height: 40vh;
         overflow-y: auto;
         
@@ -111,17 +109,18 @@ header {
                 display: block;
                 color: $foreground;
                 transition: all 150ms ease;
+                font-weight: 500;
             }
             
             .description {
                 display: block;
                 color: $foreground-special;
                 padding-top: $padding-small;
+                font-weight: 300;
             }
             
             &:hover {
                 background: $background-special;
-                border-color: $special;
                 
                 .link {
                     color: $special;
@@ -137,13 +136,20 @@ header {
     
     .title {
         font-size: $font-big;
+        text-transform: capitalize;
         display: block;
         margin-bottom: $margin-small;
+        font-weight: 500;
+        
+        a {
+            color: $foreground;
+        }
     }
     
     .infobar {
         margin: $margin-normal 0;
         font-size: $font-small;
+        font-weight: 300;
         
         span {
             margin-right: $margin-normal;
@@ -151,6 +157,7 @@ header {
             
             a {
                 cursor: pointer;
+                color: darken($foreground, 10);
             }
         }
         
@@ -163,13 +170,20 @@ header {
         }
         
         .load-tags {
-            color: $foreground-special;
+            color: $special;
             border-bottom: 1px dashed currentColor;
         }
     }
     
     .content {
         line-height: 1.5rem;
+        
+        a.read-more {
+            display: block;
+            margin-top: $margin-normal;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
         
         p {
             margin: 0;
@@ -191,6 +205,7 @@ header {
         padding-left: 0;
         color: $foreground-special;
         transition: all 150ms ease;
+        font-weight: 300;
         
         i {
             font-size: $font-small;
@@ -210,7 +225,8 @@ header {
 
 footer {
     text-align: center;
-    line-height: 2rem;
+    font-weight: 300;
+    padding: $padding-big 0;
     
     a {
         color: $foreground-special;
@@ -228,9 +244,15 @@ footer {
     }
 }
 
-@media screen and (max-width: 380px) {
-    header nav {
-        display: block;
-        margin-top: $margin-normal;
+@media screen and (max-width: 420px) {
+    header {
+        .overlay {
+            flex-wrap: wrap;
+            justify-content: center;
+            
+            .logo {
+                display: none;
+            }
+        }
     }
 }

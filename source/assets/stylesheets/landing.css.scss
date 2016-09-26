@@ -45,7 +45,7 @@ body {
     max-width: 560px;
     backface-visibility: hidden;
     transform: translateZ(0);
-    border-radius: 5px;
+    border-radius: 4px;
     
     .avatar {
         max-width: 150px;
@@ -87,11 +87,23 @@ body {
                 font-size: 1rem;
                 margin: 0 10px;
                 display: block;
-                color: $foreground;
+                color: lighten($foreground, 25);
                 text-decoration: none;
+                font-weight: 300;
+                transition: all $transition ease;
                 
                 &:hover {
                     color: $special;
+                }
+            }
+        }
+    }
+    
+    .contacts {
+        .item {
+            a {
+                &:hover {
+                    color: $foreground;
                 }
             }
         }
