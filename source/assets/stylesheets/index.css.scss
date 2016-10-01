@@ -7,6 +7,14 @@ body {
     color: $foreground;
 }
 
+::selection {
+    background: rgba($special, 0.1);
+}
+
+::-moz-selection {
+    background: rgba($special, 0.1);
+}
+
 a {
     color: $special;
     text-decoration: none;

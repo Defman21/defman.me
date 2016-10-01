@@ -7,6 +7,15 @@ body {
     background: $background;
 }
 
+::selection {
+    background: rgba($special, 0.1);
+}
+
+::-moz-selection {
+    background: rgba($special, 0.1);
+}
+
+
 .cc {
     display: flex;
     justify-content: center;
