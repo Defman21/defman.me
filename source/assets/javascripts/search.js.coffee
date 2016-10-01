@@ -22,7 +22,7 @@ do (w = window, $ = jQuery) ->
         $("#search input").focus (e) ->
           if $(e.target).val().length > 0
             doSearch(e)
-        doSearch = (e) ->
+        w.doSearch = (e) ->
           found = no
           filters = []
           $("#results").empty()
