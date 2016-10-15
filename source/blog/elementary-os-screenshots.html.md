@@ -12,29 +12,7 @@ links:
 
 Create this script in your `$HOME` directory:
 
-```sh
-#!/bin/sh
-FILE="$HOME/tmp.png"
-
-PROGRAM="$(xprop -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5) WM_CLASS | awk -F: 'BEGIN { FS="="; } {print $2}' | awk 'match($1,/[a-z-]+/) {print substr($1,RSTART,RLENGTH)}')"
-GTKVERSION="$(ldd /usr/bin/$PROGRAM | grep gtk | awk '{print $1;}' | head -n 1)"
-
-SCRPROGRAM="gnome-screenshot $1 -e none -f $FILE"
-
-if [ "$GTKVERSION" = "libgtk-3.so.0" ] && [ "$1" = "-w" ]
-then
-    SCRPROGRAM="screenshot-tool -w"
-    $SCRPROGRAM && cat "$FILE" | xclip -se c -t image/png && rm "$FILE"
-else
-    SHADOWSIZE="57x28+0+14"
-    if [ "$1" = "-a" ]; then
-        SHADOWSIZE="39x6+0+3"
-    fi
-    $SCRPROGRAM
-    convert "${FILE}" \( +clone -background black -shadow $SHADOWSIZE \) +swap -background transparent -layers merge +repage "$FILE"
-    cat "$FILE" | xclip -se c -t image/png && rm "$FILE"
-fi
-```
+<script src="https://gist.github.com/Defman21/a0dcd8ad164928b4b7509f48ef5ee087.js"></script>
 
 I'll explain it.
 
