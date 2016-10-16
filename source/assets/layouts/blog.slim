@@ -1,5 +1,5 @@
 = wrap_layout :layout do
-    .container.article.fullpage id=current_page.data.id
+    .container.article.page id=current_page.data.id
         span.title = current_page.data.title
         - date = Date.strptime(current_page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
         .infobar

@@ -81,6 +81,8 @@ header {
 }
 
 #search {
+    margin: 0 auto;
+    max-width: $content-width;
     margin-bottom: $margin-normal;
     position: relative;
     
@@ -138,72 +140,129 @@ header {
     }
 }
 
+main {
+    max-width: $content-width;
+    margin: 0 auto;
+}
+
 .container {
-    margin-bottom: $margin-normal;
-    padding-bottom: $padding-normal;
-    
-    .title {
-        font-size: $font-big;
-        text-transform: capitalize;
-        display: block;
-        margin-bottom: $margin-small;
-        font-weight: 500;
+    &.preview {
+        margin-bottom: $margin-big;
         
-        a {
-            color: $foreground;
-        }
-    }
-    
-    .infobar {
-        margin: $margin-normal 0;
-        font-size: $font-small;
-        font-weight: 300;
-        
-        span {
-            margin-right: $margin-normal;
-            color: $foreground-special;
+        .title {
+            font-size: $font-big;
+            font-weight: 500;
+            text-transform: capitalize;
             
             a {
-                cursor: pointer;
-                color: darken($foreground, 10);
+                color: inherit;
             }
         }
         
-        .hidden-tags {
-            display: none;
+        .infobar {
+            margin: $margin-small 0;
+            font-weight: 300;
+            font-size: $font-small;
             
-            &.visible {
-                display: inline-block;
+            span {
+                margin-right: $margin-normal;
+                color: $foreground-special;
+                
+                &.tags {
+                    .tag {
+                        cursor: pointer;
+                        color: inherit;
+                    }
+                    
+                    .hidden-tags {
+                        display: none;
+                    }
+                    
+                    .load-tags {
+                        cursor: pointer;
+                    }
+                }
             }
         }
         
-        .load-tags {
-            color: $special;
-            border-bottom: 1px dashed currentColor;
+        .content {
+            line-height: $lh-p-tag;
+            
+            .read-more {
+                display: block;
+                font-weight: 300;
+                font-size: $font-small;
+            }
         }
     }
     
-    .content {
-        line-height: 1.5rem;
-        
-        a.read-more {
-            display: block;
-            margin-top: $margin-normal;
-            font-size: 0.9rem;
-            font-weight: 300;
-        }
-        
-        p {
-            margin: 0;
-            margin-bottom: $margin-big;
-        }
-        
-        @for $i from 1 through 6 {
-            h#{$i} {
-                font-size: inspect(1.4 - $i/10) + "rem";
-                font-weight: normal;
+    &.page {
+        .title {
+            font-size: $font-big;
+            font-weight: 500;
+            text-transform: capitalize;
+            
+            a {
+                color: inherit;
             }
         }
+        
+        .infobar {
+            padding: $padding-small 0;
+            font-weight: 300;
+            font-size: $font-small;
+            
+            span {
+                margin-right: $margin-normal;
+                color: $foreground-special;
+                
+                &.tags {
+                    .tag {
+                        cursor: pointer;
+                        color: inherit;
+                    }
+                    
+                    .hidden-tags {
+                        display: none;
+                    }
+                    
+                    .load-tags {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        
+        .content {
+            margin-top: $margin-normal;
+            line-height: $lh-p-tag;
+            
+            p {
+                margin: 0;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: 500;
+                margin: 0;
+                margin-top: $margin-big;
+                margin-bottom: $margin-small;
+            }
+            
+            h1 {
+                font-size: $font-big;
+                text-transform: capitalize;
+            }
+            
+            h2 {
+                font-size: $font-bigger;
+                font-weight: 400;
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    &.comments {
+        margin-top: $margin-big;
     }
 }
 

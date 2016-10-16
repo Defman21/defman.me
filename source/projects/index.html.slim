@@ -9,7 +9,7 @@ js:
 = partial "partials/search", locals: {file: "projects"}
 - current_page.children.each do |page|
     - next unless page.data.project
-    .container.project id=page.data.project.id
+    .container.preview.project id=page.data.project.id
         span.title = link_to page.data.project.name, page.url
         .infobar
             span.language = page.data.project.lang.capitalize

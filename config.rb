@@ -15,6 +15,8 @@ ignore 'partials/*'
 page '404.html', directory_index: false
 
 set :index_file, "index.html"
+set :bind_address, "0.0.0.0"
+set :port, 8080
 
 activate :syntax
 set :markdown_engine, :redcarpet

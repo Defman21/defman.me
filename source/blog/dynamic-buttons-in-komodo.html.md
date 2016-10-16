@@ -21,7 +21,7 @@ cover things I want to describe:
 
 Let's get started!
 
-# Creating an userscript
+## Creating an userscript
 
 This step is pretty easy - open right pane, right click - Add - New Userscript.
 Name it somehow and close the popup. Then right click on the userscript -

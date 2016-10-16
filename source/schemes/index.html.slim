@@ -7,7 +7,7 @@ js:
 ---
 = partial "partials/search", locals: {file: "schemes"}
 - current_page.children.each do |page|
-    .container.scheme id=page.data.scheme.id
+    .container.preview.scheme id=page.data.scheme.id
         span.title = link_to page.data.scheme.name, page.url
         .infobar
             span.comp = "for Komodo #{page.data.scheme.comp}"

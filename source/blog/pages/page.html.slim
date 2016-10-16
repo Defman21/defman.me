@@ -8,7 +8,7 @@ layout: :layout
 = partial "partials/search", locals: {file: "articles"}
 - blogs.each do |page|
     - date = Date.strptime(page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
-    .container.article id=page.data.url
+    .container.preview.article id=page.data.url
         span.title = link_to page.data.title, page.url
         .infobar
             span.readtime

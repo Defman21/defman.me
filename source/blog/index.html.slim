@@ -10,7 +10,7 @@ js:
 - sorted = current_page.children.sort_by { |page| page.data.date } .reverse!
 - sorted[0...5].each do |page|
     - date = Date.strptime(page.data.date.to_s, '%Y%m%d%H%M').strftime "%B %d, %Y"
-    .container.artcicle id=page.data.url
+    .container.preview.artcicle id=page.data.url
         span.title = link_to page.data.title, page.url
         .infobar
             span.readtime

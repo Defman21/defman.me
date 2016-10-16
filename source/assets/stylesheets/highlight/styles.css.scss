@@ -1,13 +1,13 @@
-@import "../base16";
+@import "../variables";
 
-$fore: #3D3D3D;
-$back: #FFFFFF;
-$namespace: #965A92;
-$string: #61936D;
-$string-inline: #6B8193;
+$fore: $foreground;
+$back: $background;
+$namespace: #B249A7;
+$string: #479E5B;
+$string-inline: #45759B;
 $identifier: $fore;
-$keyword: #7E7AA5;
-$class: #A56D6D;
+$keyword: #6862AF;
+$class: #A85252;
 $comment: #ADADAD;
 $git-deleted: #D66D6D;
 $git-inserted: #73CE88;
@@ -15,12 +15,11 @@ $git-inserted: #73CE88;
 .highlight {
     background: $back;
     overflow: auto;
-    padding: 5px;
-    line-height: 1.2rem;
+    padding: $padding-small;
+    line-height: 1.7rem;
     box-sizing: border-box;
-    border-left: 1px solid $base05;
-    padding-left: 10px;
-    
+    border: 1px solid $inactive;
+    border-radius: 2px;
     
     & > code {
         color: $fore;

@@ -28,33 +28,10 @@ body {
     text-align: center;
 }
 
-@keyframes appear {
-    from {
-        transform: scale(0);
-    }
-    
-    50% {
-        transform: scale(0);
-    }
-    
-    82.5% {
-        transform: scale(1.05);
-    }
-    
-    to {
-        transform: scale(1);
-    }
-}
-
 .main {
-    animation: 1s appear;
     padding: 0 50px;
     box-sizing: border-box;
-    border: 1px solid $inactive;
     max-width: 560px;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    border-radius: 4px;
     
     .avatar {
         max-width: 150px;
@@ -83,7 +60,7 @@ body {
     }
         
     .contacts, .pages {
-        margin: 20px 0;
+        margin-bottom: 20px;
         
         .splitter {
             display: none;
@@ -136,7 +113,6 @@ body {
 @media screen and (max-width: 560px) {
     .cc {
         width: 100%;
-        margin-top: 40px;
     }
     
     .background {
