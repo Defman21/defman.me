@@ -24,9 +24,6 @@ css:
         .avatar
             = image_tag "avatar.png"
         .me Web Developer & Software Engineer
-        .contacts
-            - data.contacts.each do |service, data|
-                .item = link_to "<i class='fa fa-#{data[1]}'></i>", data[0]
         .pages
-            - data.pages.each do |page, data|
+            - data.pages.landing.each do |page, data|
                 .item = link_to page.upcase, data[0]

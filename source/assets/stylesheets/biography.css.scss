@@ -1,0 +1,109 @@
+@import "variables";
+@import "normalize";
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    margin: 0;
+    margin-top: $margin-big;
+    margin-bottom: $margin-small;
+}
+
+h1 {
+    font-size: $font-big;
+    text-transform: capitalize;
+}
+
+h2 {
+    font-size: $font-bigger;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+main {
+    padding: $padding-normal 0;
+    box-sizing: border-box;
+    
+    section {
+        margin: $margin-big 0;
+        
+        p {
+            margin: $margin-small 0;
+        }
+        
+        .link {
+            margin: $margin-small 0;
+            
+            &.github {
+                color: $foreground;
+            }
+            
+            &.blog {
+                color: $special;
+            }
+            
+            &.twitter {
+                color: #1DA1F2;
+            }
+            
+            &.telegram {
+                color: #6389a8;
+            }
+            
+            a {
+                font-size: $font-small;
+                position: relative;
+                width: auto;
+                color: $foreground-special;
+                transition: all 150ms ease;
+                
+                i {
+                    margin-right: $margin-small;
+                    
+                    &.fa-rss {
+                        font-size: 16px;
+                    }
+                    
+                    &.fa-paper-plane {
+                        font-size: 12px;
+                    }
+                }
+                
+                &:after {
+                    content: "→";
+                    position: absolute;
+                    transition: all 150ms ease;
+                    right: -($margin-normal);
+                    top: 0;
+                }
+                
+                &:hover {
+                    color: inherit;
+                    
+                    &:after {
+                        transform: translateX(50%);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    
+    li {
+        font-size: $font-small;
+        margin: $margin-normal 0;
+        
+        i {
+            margin-right: $margin-small;
+            color: $special;
+            
+            &.fa-globe {
+                font-size: 16px; // oh god
+            }
+        }
+    }
+}

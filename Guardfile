@@ -16,6 +16,7 @@ guard 'livereload', host: '127.0.0.1', grace_period: 0.5 do
     watch %r{/assets/([^\.]+)(?:\.#{ext})(?:\.\w+|$)} do |m|
       "/assets/#{m[1]}.#{type}"
     end
-    watch %r{/(blog|projects|partials|schemes)/.+\.(slim)$}
+    watch %r{data/.+}
+    watch %r{source/(?:(blog|projects|partials|schemes)/)?.+\.(slim|md)$}
   end
 end

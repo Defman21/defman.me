@@ -1,6 +1,15 @@
-blog:
-    - /blog
-projects:
-    - /projects
-schemes:
-    - /schemes
+landing:
+    blog:
+        - /blog
+    projects:
+        - /projects
+    biography:
+        - /biography
+
+header:
+    blog:
+        - /blog
+    projects:
+        - /projects
+    schemes:
+        - /schemes

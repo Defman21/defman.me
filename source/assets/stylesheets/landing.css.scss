@@ -59,12 +59,8 @@ body {
         font-size: 1.1rem;
     }
         
-    .contacts, .pages {
+    .pages {
         margin-bottom: 20px;
-        
-        .splitter {
-            display: none;
-        }
         
         .item {
             display: inline-block;
@@ -83,24 +79,6 @@ body {
                 }
             }
         }
-    }
-    
-    .contacts {
-        .item {
-            a {
-                &:hover {
-                    color: $foreground;
-                }
-            }
-        }
-    }
-    
-    .h-splitter {
-        border-top: 1px solid $inactive;
-        margin: 7px auto;
-        display: block;
-        min-width: 90px;
-        max-width: 90px;
     }
 }
 
@@ -122,12 +100,5 @@ body {
     .pages .item {
         display: block !important;
         margin: 10px auto;
-    }
-    
-    .splitter {
-        display: block !important;
-        width: 50%;
-        margin: 5px auto;
-        height: 1px;
     }
 }
