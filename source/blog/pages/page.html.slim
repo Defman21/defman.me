@@ -27,9 +27,10 @@ layout: :layout
                         tags << "<a class=\"tag search-link\" data-search='tag:#{tag}'>#{tag}</a>"
                     end
                 == tagify tags, 3
-        .content
+        .content.description
             = truncate_with_ellipses page.data.description, 150
-            a.read-more(href=page.url) Read more...
+            .read-more
+                a(href=page.url) Read more
 .pagination
     - unless last
         - unless first

@@ -189,9 +189,43 @@ main {
             line-height: $lh-p-tag;
             
             .read-more {
-                display: block;
-                font-weight: 300;
-                font-size: $font-small;
+                a {
+                    font-weight: 300;
+                    font-size: $font-small;
+                    position: relative;
+                    color: $special;
+                    transition: all 150ms ease;
+                    
+                    i {
+                        margin-right: $margin-small;
+                        
+                        &.fa-rss {
+                            font-size: 16px;
+                        }
+                        
+                        &.fa-paper-plane {
+                            font-size: 12px;
+                        }
+                    }
+                    
+                    &:after {
+                        content: "→";
+                        position: absolute;
+                        transition: all 150ms ease;
+                        right: -($margin-normal);
+                        line-height: normal;
+                        top: 0;
+                    }
+                    
+                    &:hover {
+                        color: inherit;
+                        
+                        &:after {
+                            transform: translateX(50%);
+                        }
+                    }
+                }
+
             }
         }
     }
