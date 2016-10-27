@@ -1,6 +1,7 @@
 - unless current_page.data.comments == false
     .comments
-        #comments_loading Comments are loading
+        #load_comments_wrapper
+            #load_comments Join the discussion
         #disqus_thread
         javascript:
             var disqus_config = function () {
@@ -8,7 +9,7 @@
                 this.page.identifier = "#{current_page.data.id}";
             };
             var loadDisqusComments = (function() {
-                (e=document.getElementById('comments_loading')).parentNode.removeChild(e);
+                (e=document.getElementById('load_comments_wrapper')).parentNode.removeChild(e);
                 var d = document, s = d.createElement('script');
     
                 s.src = '//defman.disqus.com/embed.js';
@@ -19,5 +20,3 @@
         noscript
             ' Please enable JavaScript to view the
             = link_to 'comments powered by Disqus', 'https://disqus.com/?ref_noscript'
-                
-        = javascript_include_tag :lazyload

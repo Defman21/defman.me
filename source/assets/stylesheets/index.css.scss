@@ -319,9 +319,18 @@ main {
     }
 }
 
-#comments_loading {
-    font-size: $font-big;
+#load_comments_wrapper {
     text-align: center;
+    
+    #load_comments {
+        font-size: $font-normal;
+        border: 1px solid $special;
+        color: $special;
+        display: inline-block;
+        padding: $padding-small;
+        border-radius: 2px;
+        cursor: pointer;
+    }
 }
 
 footer {

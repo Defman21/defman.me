@@ -11,3 +11,6 @@ do ($ = jQuery) ->
     $(".load-tags").click ->
       $(".hidden-tags", $(this).parent()).css 'display', 'inline-block'
       $(this).remove()
+    
+    $("#load_comments").click ->
+      do loadDisqusComments
