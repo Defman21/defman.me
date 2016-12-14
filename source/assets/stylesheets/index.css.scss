@@ -108,6 +108,7 @@ header {
         box-sizing: border-box;
         max-height: 40vh;
         overflow-y: auto;
+        z-index: 9999;
         
         .result {
             padding: $padding-normal $padding-small;
