@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#BA488A" name="theme-color" /><title>Install dnscrypt and configure it in elementary OS 0.4</title><meta content="A guide about how to install dnscrypt and configure it." name="description" /><meta content="Install dnscrypt and configure it in elementary OS 0.4" property="og:title" /><meta content="article" property="og:type" /><meta content="A guide about how to install dnscrypt and configure it." property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/dnscrypt-and-elementary-os/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="dnscrypt" property="article:tag" /><meta content="elementary" property="article:tag" /><meta content="os" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1481746851" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1481746851" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1481746851" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-52157854-2', 'auto');
+ga('send', 'pageview');</script></head><body><header><div class="overlay"><div class="logo"><a href="/">Defman.me</a></div><nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav></div></header><div class="overlay"><main><div class="container article page" id="201612142251-dnscrypt-and-elementary-os"><span class="title">Install dnscrypt and configure it in elementary OS 0.4</span><div class="infobar"><span class="readtime"><i class="fa fa-clock-o"></i> 1 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> December 14, 2016</span><span class="tags"><i class="fa fa-tags"></i> dnscrypt, elementary, os</span></div><div class="content"><p>The procedure of installing dnscrypt in elementary OS is not that hard, however
+it&rsquo;s not that obviously as well.</p>
+
+<h1>Installing dnscrypt</h1>
+
+<p>Just run:</p>
+<pre class="highlight shell"><code>sudo apt-get install dnscrypt-proxy
+</code></pre>
+
+<h2>Creating a systemd service</h2>
+
+<p>I&rsquo;d go with creating a systemd service to run dnscrypt.</p>
+
+<p>Create the <code class="prettyprint">/etc/systemd/system/dnscrypt.service</code> file with the following content:
+(you can use <code class="prettyprint">sudo nano /etc/systemd/system/dnscrypt.service</code> to create the file)</p>
+<pre class="highlight ini"><code><span class="nn">[Unit]</span>                                                      
+<span class="py">Description</span><span class="p">=</span><span class="s">DNScrypt</span>
+<span class="py">After</span><span class="p">=</span><span class="s">NetworkManager.service                </span>
+<span class="nn">[Service]</span>
+<span class="py">ExecStart</span><span class="p">=</span><span class="s">/usr/sbin/dnscrypt-proxy -R cisco -a 127.0.0.2:53</span>
+<span class="py">ExecReload</span><span class="p">=</span><span class="s">/bin/kill -HUP $MAINPID</span>
+
+<span class="nn">[Install]</span>
+<span class="py">WantedBy</span><span class="p">=</span><span class="s">basic.target</span>
+</code></pre>
+
+<p>You&rsquo;d replace <code class="prettyprint">cisco</code> with any other resolver you want. You can find the list
+of available resolvers <a href="https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-resolvers.csv">here</a>.</p>
+
+<p>Then, run:</p>
+<pre class="highlight plaintext"><code>sudo systemctl daemon-reload
+sudo systemctl start dnscrypt.service
+</code></pre>
+
+<p>It&rsquo;d start. To check it, run</p>
+<pre class="highlight plaintext"><code>sudo netstat -tulpn | grep dnscrypt-proxy
+</code></pre>
+
+<p>You&rsquo;d see something like this:</p>
+<pre class="highlight plaintext"><code>tcp 0 0 127.0.0.2:53  0.0.0.0:* LISTEN 3220/dnscrypt-proxy
+udp 0 0 127.0.0.2:53  0.0.0.0:*        3220/dnscrypt-proxy
+</code></pre>
+
+<p>This means dnscrypt works :)</p>
+
+<h1>Configuring elementary OS</h1>
+
+<p>Open Settings - Network. Select your device in the left toolbar, press
+&ldquo;Advanced Settings&hellip;&rdquo;.</p>
+
+<p>Open the &ldquo;IPv4 Settings&rdquo;, choose the &ldquo;Automatic (DHCP) <em>addresses</em> only&rdquo;.
+In the &ldquo;DNS servers&rdquo; input, type <code class="prettyprint">127.0.0.2</code>. Click the save button.</p>
+
+<p><img src="/assets/images/dnscrypt-and-elementary-network-settings.png" alt="image" /></p>
+
+<p>Open the terminal and run</p>
+<pre class="highlight plaintext"><code>sudo systemctl restart NetworkManager.service
+</code></pre>
+
+<p>You&rsquo;d reconnect to your network. If you&rsquo;ve chosen <code class="prettyprint">cisco</code> as the resolver, you
+can visit <a href="https://www.opendns.com/welcome/">this site</a> to test if it&rsquo;s working for you. Otherwise, if you&rsquo;ve
+chosen something else, you should run:</p>
+<pre class="highlight plaintext"><code>sudo tcpdump -i &lt;ETHERNET DEVICE&gt; dst host &lt;RESOLVER IP ADDRESS&gt;
+</code></pre>
+
+<p>and connect to a website (so the resolver will do the job). If you see something
+like that:</p>
+<pre class="highlight plaintext"><code>&lt;timestamp&gt; IP &lt;local ip&gt;.&lt;port&gt; &gt; &lt;resolver address&gt;.&lt;port&gt;: UDP, length 512
+</code></pre>
+
+<p>Then it&rsquo;s working for you.</p>
+
+<p>That&rsquo;s all. If you have any questions, feel free to ask in the comments section.</p>
+</div></div><div class="container comments"><div class="comments"><div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+    this.page.url = "http://defman.me/blog/dnscrypt-and-elementary-os/";
+    this.page.identifier = "201612142251-dnscrypt-and-elementary-os";
+};
+var loadDisqusComments = (function() {
+    (e=document.getElementById('load_comments_wrapper')).parentNode.removeChild(e);
+    var d = document, s = d.createElement('script');
+
+    s.src = '//defman.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a></div></footer></div><script src="/assets/javascripts/jquery.js?1481746851"></script><script src="/assets/javascripts/main.js?1481746851"></script></body></html>
