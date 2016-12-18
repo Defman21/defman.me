@@ -44,6 +44,7 @@ Then, run:
 
 ```
 sudo systemctl daemon-reload
+sudo systemctl enable dnscrypt.service
 sudo systemctl start dnscrypt.service
 ```
 

@@ -6,7 +6,7 @@ css:
 ---
 
  * <i class="fa fa-briefcase"></i> Volunteer Moderator at [Komodo IDE Forums][1]
- * <i class="fa fa-birthday-cake"></i> 16 Years Old
+ * <i class="fa fa-birthday-cake"></i> 17 Years Old
  * <i class="fa fa-globe"></i> Lives in Russia
 
 <section>
