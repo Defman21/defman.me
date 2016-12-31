@@ -1,0 +1,5 @@
+= partial "partials/search", locals: {file: "all"}
+= wrap_layout :layout do
+    .container.article.page
+        span.title = current_page.data.title
+        .content = yield

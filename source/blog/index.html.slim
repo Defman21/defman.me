@@ -3,8 +3,6 @@ title: Defman's Blog
 description: Defman's blog - articles about different things
 type: website
 name: Defman's Blog
-js:
-    - search
 ---
 = partial "partials/search", locals: {file: "articles"}
 - sorted = current_page.children.sort_by { |page| page.data.date } .reverse!

@@ -30,5 +30,6 @@ html
         = yield
         = javascript_include_tag :jquery
         = javascript_include_tag :main
+        = yield_content :js
         - current_page.data.js && current_page.data.js.each do |js|
             = javascript_include_tag js
