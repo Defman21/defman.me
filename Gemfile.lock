@@ -151,6 +151,7 @@ GEM
     redcarpet (3.3.4)
     ref (2.0.0)
     rouge (2.0.7)
+    rumoji (0.5.0)
     sass (3.4.23)
     servolux (0.12.0)
     shellany (0.0.1)
@@ -182,8 +183,10 @@ DEPENDENCIES
   middleman-livereload (~> 3.4.3)
   middleman-syntax
   nokogiri
+  rack
   rake
   redcarpet (~> 3.3.4)
+  rumoji
   slim
   therubyracer
   tzinfo-data

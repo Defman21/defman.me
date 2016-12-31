@@ -18,9 +18,14 @@ set :index_file, "index.html"
 set :bind_address, "0.0.0.0"
 set :port, 8080
 
+use Emojiware::Rumojiware
+
 activate :syntax
 set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
+set :markdown, fenced_code_blocks: true,
+               smartypants: true,
+               prettify: true,
+               no_intra_emphasis: true
 
 set :fonts_dir, "assets/fonts"
 set :images_dir, "assets/images"
