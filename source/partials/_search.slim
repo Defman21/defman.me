@@ -1,8 +1,11 @@
-#search
-    input placeholder="Search (use tag:, lang: or type: for advanced search)" autocomplete="off"
-    #results
-    javascript:
-        search_config = {
-            type: "#{file}",
-            show_type: #{file == "all"}
-        };
+- content_for :header do
+    #search
+        .icon
+            .i.fa.fa-search
+        input placeholder="Search.." autocomplete="off"
+        #results
+        javascript:
+            search_config = {
+                type: "#{file}",
+                show_type: #{file == "all"}
+            };

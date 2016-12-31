@@ -48,20 +48,18 @@ header {
     
     .overlay {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
     
     .logo {
         font-size: $font-normal;
         text-transform: uppercase;
-        margin-right: $margin-big;
-        flex-grow: 1;
         font-weight: 500;
         
         a { color: $foreground; }
     }
     
-    nav {        
+    nav {
         a {
             margin-right: $margin-big;
             position: relative;
@@ -81,27 +79,43 @@ header {
 }
 
 #search {
-    margin: 0 auto;
+    margin: 0 $margin-normal;
     max-width: $content-width;
-    margin-bottom: $margin-normal;
+    flex-grow: 2;
     position: relative;
     
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: $search;
+    }
+    
     input {
-        border: 1px solid $inactive;
-        padding: $padding-small;
+        border: none;
+        padding: 0 $padding-small;
+        padding-left: 1.2rem;
         box-sizing: border-box;
         width: 100%;
         transition: all 150ms ease;
         font-weight: 300;
         
-        &:focus {
-            border-color: $special;
+        &::-moz-placeholder {
+            color: $search;
+            opacity: 1;
+        }
+        
+        &::-webkit-input-placeholder {
+            color: $search;
+        }
+        
+        &:-ms-input-placeholder {
+            color: $search;
         }
     }
     
     #results {
         border: 1px solid $inactive;
-        border-top: none;
         background: $background;
         position: absolute;
         width: 100%;
@@ -109,6 +123,8 @@ header {
         max-height: 40vh;
         overflow-y: auto;
         z-index: 9999;
+        margin-top: $margin-small;
+        box-shadow: 0 0 12px 6px rgba($foreground, 0.05);
         
         .result {
             padding: $padding-normal $padding-small;
@@ -355,14 +371,29 @@ footer {
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 620px) {
+    header {
+        .overlay {
+            .logo {
+                display: none;
+            }
+            
+            #search {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
     header {
         .overlay {
             flex-wrap: wrap;
             justify-content: center;
             
-            .logo {
-                display: none;
+            #search {
+                width: 100%;
+                margin: $margin-normal 0;
             }
         }
     }

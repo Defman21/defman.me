@@ -5,7 +5,7 @@ do ($ = jQuery) ->
       $target = $("#search input")
       $target.val(text)
       setTimeout ->
-        doSearch({target: $target[0]})
+        $target.focus()
       , 0
     
     $(".load-tags").click ->

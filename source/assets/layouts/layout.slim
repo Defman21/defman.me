@@ -4,6 +4,7 @@
         .overlay
             .logo
                 = link_to "Defman.me", "/"
+            = yield_content :header
             nav = partial "partials/header"
     .overlay
         main = yield
