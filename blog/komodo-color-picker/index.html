@@ -1,29 +1,78 @@
-<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#BA488A" name="theme-color" /><title>Komodo Color Picker by babobski</title><meta content="Nice color picker that supports RGBA colors" name="description" /><meta content="Komodo Color Picker by babobski" property="og:title" /><meta content="article" property="og:type" /><meta content="Nice color picker that supports RGBA colors" property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/komodo-color-picker/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="komodo" property="article:tag" /><meta content="colorpicker" property="article:tag" /><meta content="add-on" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1483180169" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="IE-edge" http-equiv="X-UA-Compatible">
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="#BA488A" name="theme-color">
+<title>Komodo Color Picker by babobski</title>
+<meta content="Nice color picker that supports RGBA colors" name="description">
+<meta content="Komodo Color Picker by babobski" property="og:title">
+<meta content="article" property="og:type">
+<meta content="Nice color picker that supports RGBA colors" property="og:description">
+<meta content="Defman.me" property="og:site_name">
+<meta content="//defman.me/blog/komodo-color-picker/" property="og:url">
+<meta content="Sergey Kislyakov" property="article:author">
+<meta content="komodo" property="article:tag">
+<meta content="colorpicker" property="article:tag">
+<meta content="add-on" property="article:tag">
+<link href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Slab" rel="stylesheet">
+<link href="/assets/stylesheets/font-awesome.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/index.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/highlight/styles.css?1483186244" rel="stylesheet">
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-52157854-2', 'auto');
-ga('send', 'pageview');</script></head><body><header><div class="overlay"><div class="logo"><a href="/">Defman.me</a></div><nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav></div></header><div class="overlay"><main><div class="container article page" id="201606011153-komodo-color-picker"><span class="title">Komodo Color Picker by babobski</span><div class="infobar"><span class="readtime"><i class="fa fa-clock-o"></i> 1 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> June 01, 2016</span><span class="tags"><i class="fa fa-tags"></i> komodo, colorpicker, add-on</span></div><div class="content"><p>In Komodo X, the default color picker got some improvements, but it still does
-not support RGBA. (the preview popup supports it, but you can&rsquo;t adjust the
+ga('send', 'pageview');</script>
+</head>
+<body>
+<header><div class="overlay">
+<div class="logo"><a href="/">Defman.me</a></div>
+<div id="search">
+<div class="icon"><div class="i fa fa-search"></div></div>
+<input autocomplete="off" placeholder="Search.."><div id="results"></div>
+<script>search_config = {
+    type: "articles",
+    show_type: false
+};</script>
+</div>
+<nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav>
+</div></header><div class="overlay">
+<main><div class="container article page" id="201606011153-komodo-color-picker">
+<span class="title">Komodo Color Picker by babobski</span><div class="infobar">
+<span class="readtime"><i class="fa fa-clock-o"></i> 1 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> June 01, 2016</span><span class="tags"><i class="fa fa-tags"></i> komodo, colorpicker, add-on</span>
+</div>
+<div class="content">
+<p>In Komodo X, the default color picker got some improvements, but it still does
+not support RGBA. (the preview popup supports it, but you can’t adjust the
 transparency with the picker itself)</p>
 
 <p><a href="//github.com/babobski">@babobski</a> solved that problem. His RGBA Colorpicker
 is based on <a href="//github.com/PitPik/colorPicker">PitPik colorPicker</a>.</p>
 
-<p>It&rsquo;s very powerful! The most useful feature is adjusting transparency of
+<p>It’s very powerful! The most useful feature is adjusting transparency of
 current color with a slider. However, there are a lot of other things you may
-find useful, but I don&rsquo;t find them useful for me.</p>
+find useful, but I don’t find them useful for me.</p>
 
 <h3>Note</h3>
 
-<p>It replaces the default color picker and there&rsquo;s no way to change between them.
+<p>It replaces the default color picker and there’s no way to change between them.
 If you want to restore the default color picker, just remove this one and
 restart Komodo.</p>
 
 <h3>Screenshot</h3>
 
-<p><img src="//github.com/babobski/RGBA-Colorpicker/raw/master/screenshot01.png" alt="RGBA-Colorpicker" /></p>
-</div><div class="links"><p><a class="external-link" href="//github.com/babobski/RGBA-Colorpicker"><i class="fa fa-github"></i> RGBA Colorpicker</a></p></div></div><div class="container comments"><div class="comments"><div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+<p><img src="//github.com/babobski/RGBA-Colorpicker/raw/master/screenshot01.png" alt="RGBA-Colorpicker"></p>
+</div>
+<div class="links"><p><a class="external-link" href="//github.com/babobski/RGBA-Colorpicker"><i class="fa fa-github"></i> RGBA Colorpicker</a></p></div>
+</div>
+<div class="container comments"><div class="comments">
+<div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div>
+<div id="disqus_thread"></div>
+<script>var disqus_config = function () {
     this.page.url = "http://defman.me/blog/komodo-color-picker/";
     this.page.identifier = "201606011153-komodo-color-picker";
 };
@@ -35,4 +84,10 @@ var loadDisqusComments = (function() {
 
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
-});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a></div></footer></div><script src="/assets/javascripts/jquery.js?1483180169"></script><script src="/assets/javascripts/main.js?1483180169"></script></body></html>
+});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>
+</noscript>
+</div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me © 2016</a></div></footer>
+</div>
+<script src="/assets/javascripts/jquery.js?1483186244"></script><script src="/assets/javascripts/main.js?1483186244"></script><script src="/assets/javascripts/search.js?1483186244"></script>
+</body>
+</html>

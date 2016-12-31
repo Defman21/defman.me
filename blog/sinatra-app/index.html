@@ -1,10 +1,54 @@
-<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#BA488A" name="theme-color" /><title>Sinatra + Rack + Rake + ActiveRecord</title><meta content="How to build an application with Sinatra, Rack and ActiveRecord?" name="description" /><meta content="Sinatra + Rack + Rake + ActiveRecord" property="og:title" /><meta content="article" property="og:type" /><meta content="How to build an application with Sinatra, Rack and ActiveRecord?" property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/sinatra-app/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="sinatra" property="article:tag" /><meta content="ruby" property="article:tag" /><meta content="rest" property="article:tag" /><meta content="api" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1483180169" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="IE-edge" http-equiv="X-UA-Compatible">
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="#BA488A" name="theme-color">
+<title>Sinatra + Rack + Rake + ActiveRecord</title>
+<meta content="How to build an application with Sinatra, Rack and ActiveRecord?" name="description">
+<meta content="Sinatra + Rack + Rake + ActiveRecord" property="og:title">
+<meta content="article" property="og:type">
+<meta content="How to build an application with Sinatra, Rack and ActiveRecord?" property="og:description">
+<meta content="Defman.me" property="og:site_name">
+<meta content="//defman.me/blog/sinatra-app/" property="og:url">
+<meta content="Sergey Kislyakov" property="article:author">
+<meta content="sinatra" property="article:tag">
+<meta content="ruby" property="article:tag">
+<meta content="rest" property="article:tag">
+<meta content="api" property="article:tag">
+<link href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Slab" rel="stylesheet">
+<link href="/assets/stylesheets/font-awesome.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/index.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/highlight/styles.css?1483186244" rel="stylesheet">
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-52157854-2', 'auto');
-ga('send', 'pageview');</script></head><body><header><div class="overlay"><div class="logo"><a href="/">Defman.me</a></div><nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav></div></header><div class="overlay"><main><div class="container article page" id="201605101630-create-sinatra-app"><span class="title">Sinatra + Rack + Rake + ActiveRecord</span><div class="infobar"><span class="readtime"><i class="fa fa-clock-o"></i> 6 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> May 10, 2016</span><span class="tags"><i class="fa fa-tags"></i> sinatra, ruby, rest, api</span></div><div class="content"><p>Building an application with Ruby is pretty interesting (at least for me).
-You can use Rails if you want to do it fast or you can use Sinatra if you&rsquo;re
+ga('send', 'pageview');</script>
+</head>
+<body>
+<header><div class="overlay">
+<div class="logo"><a href="/">Defman.me</a></div>
+<div id="search">
+<div class="icon"><div class="i fa fa-search"></div></div>
+<input autocomplete="off" placeholder="Search.."><div id="results"></div>
+<script>search_config = {
+    type: "articles",
+    show_type: false
+};</script>
+</div>
+<nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav>
+</div></header><div class="overlay">
+<main><div class="container article page" id="201605101630-create-sinatra-app">
+<span class="title">Sinatra + Rack + Rake + ActiveRecord</span><div class="infobar">
+<span class="readtime"><i class="fa fa-clock-o"></i> 6 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> May 10, 2016</span><span class="tags"><i class="fa fa-tags"></i> sinatra, ruby, rest, api</span>
+</div>
+<div class="content">
+<p>Building an application with Ruby is pretty interesting (at least for me).
+You can use Rails if you want to do it fast or you can use Sinatra if you’re
 interested in building a very lightweight REST API application.</p>
 
 <p>This article should help you create a simple Sinatra RESTFUL application with
@@ -49,7 +93,7 @@ Rack tasks for ActiveRecord and Rake.</p>
 <h1>Rakefile</h1>
 
 <p>If you want to use ActiveRecord tasks with Sinatra, you have to configure
-Rackfile. It&rsquo;s not very hard and you don&rsquo;t have to install any extensions
+Rackfile. It’s not very hard and you don’t have to install any extensions
 (like <code class="prettyprint">sinatra-activerecord</code>).</p>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'yaml'</span>
 <span class="nb">require</span> <span class="s1">'logger'</span>
@@ -103,13 +147,13 @@ rake db:structure:dump      # Dump the database structure to db/structure.sql
 rake db:structure:load      # Recreate the databases from the structure.sql...
 rake db:version             # Retrieves the current schema version number
 </code></pre>
-<p>It&rsquo;s truncated to 80 chars, but if you just see <code class="prettyprint">rake db:</code> - then you&rsquo;re good.</p>
+<p>It’s truncated to 80 chars, but if you just see <code class="prettyprint">rake db:</code> - then you’re good.</p>
 
 <p>Now we should add a config file for our ActiveRecord connection.</p>
 
 <h1>ActiveRecord config file</h1>
 
-<p>It&rsquo;s placed at <code class="prettyprint">db/config.yml</code> and here&rsquo;s how it looks:</p>
+<p>It’s placed at <code class="prettyprint">db/config.yml</code> and here’s how it looks:</p>
 <pre class="highlight yaml"><code><span class="na">development</span><span class="pi">:</span>
     <span class="na">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
     <span class="na">database</span><span class="pi">:</span> <span class="s">development.db</span>
@@ -142,11 +186,11 @@ migration placed in <code class="prettyprint">db/migrate/</code>.</p>
 
 <p>Run <code class="prettyprint">rake db:migrate</code> to execute migrations.</p>
 
-<p>We have prepared everything, so now we&rsquo;re gonna create an application!</p>
+<p>We have prepared everything, so now we’re gonna create an application!</p>
 
 <h1>Creating the application</h1>
 
-<p>At first, let&rsquo;s create our Rack file (<code class="prettyprint">config.ru</code>)</p>
+<p>At first, let’s create our Rack file (<code class="prettyprint">config.ru</code>)</p>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'sinatra/base'</span>
 <span class="nb">require</span> <span class="s1">'sinatra/json'</span>
 <span class="nb">require</span> <span class="s1">'sinatra/reloader'</span>
@@ -194,24 +238,26 @@ migration placed in <code class="prettyprint">db/migrate/</code>.</p>
   <span class="n">run</span> <span class="no">RootApp</span>
 <span class="k">end</span>
 </code></pre>
-<p>So, what&rsquo;s going on there?</p>
+<p>So, what’s going on there?</p>
 
 <ol>
 <li>At first, we require our dependencies.</li>
 <li>We create a new instance of <code class="prettyprint">Sinatra::Base</code>, which contains some settings
 and ActiveRecord connection initialization which our <code class="prettyprint">apps/</code> uses.</li>
-<li>Next, because we&rsquo;re creating a RESTFUL API, we should accept request body
+<li>Next, because we’re creating a RESTFUL API, we should accept request body
 and parse it. This is the <code class="prettyprint">before</code> block, which invokes by Sinatra before the
 active route. (so if an user call <code class="prettyprint">/route</code>, Sinatra executes <code class="prettyprint">before</code> and
 then the route).</li>
-<li><code class="prettyprint">Dir.glob</code> loads our models and apps. Models are loading first because
+<li>
+<code class="prettyprint">Dir.glob</code> loads our models and apps. Models are loading first because
 Apps depends on them.</li>
-<li><code class="prettyprint">map</code> is some sort of namespaces, we could add more <code class="prettyprint">map</code> to run different
-apps on these urls, so if you add <code class="prettyprint">map &#39;/users/ do ... end</code>, Rack will run the
+<li>
+<code class="prettyprint">map</code> is some sort of namespaces, we could add more <code class="prettyprint">map</code> to run different
+apps on these urls, so if you add <code class="prettyprint">map '/users/ do ... end</code>, Rack will run the
 code defined in the block for <code class="prettyprint">/users/*</code> url.</li>
 </ol>
 
-<p>In the code, <code class="prettyprint">map</code> binds <code class="prettyprint">/</code> to run RootApp. Let&rsquo;s take a look how <code class="prettyprint">RootApp</code>
+<p>In the code, <code class="prettyprint">map</code> binds <code class="prettyprint">/</code> to run RootApp. Let’s take a look how <code class="prettyprint">RootApp</code>
 looks.</p>
 
 <p><strong>Path:</strong> <code class="prettyprint">apps/root.rb</code></p>
@@ -263,19 +309,19 @@ looks.</p>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre>
-<p>class <code class="prettyprint">RootApp</code> extends <code class="prettyprint">BaseApp</code>, so we don&rsquo;t have to re-initialize
+<p>class <code class="prettyprint">RootApp</code> extends <code class="prettyprint">BaseApp</code>, so we don’t have to re-initialize
 ActiveRecord connection and register extensions again.</p>
 
 <p><code class="prettyprint">get</code> and <code class="prettyprint">post</code> methods are bindings for <code class="prettyprint">GET /</code> and <code class="prettyprint">POST /</code> requests.</p>
 
-<p><code class="prettyprint">get</code> Accepts JSON body with <code class="prettyprint">id</code> parameter in it and it&rsquo;s using ActiveRecord
+<p><code class="prettyprint">get</code> Accepts JSON body with <code class="prettyprint">id</code> parameter in it and it’s using ActiveRecord
 to find the user by ID. If user with this ID does not exist, we response with
 JSON contains <code class="prettyprint">errors</code> key, but if it does exist, we just return the data.</p>
 
 <p><code class="prettyprint">post</code> uses the same ideology as <code class="prettyprint">get</code> for responding, but in this method
-we&rsquo;re creating a new User instance using ActiveRecord::Base class (<code class="prettyprint">User</code>).</p>
+we’re creating a new User instance using ActiveRecord::Base class (<code class="prettyprint">User</code>).</p>
 
-<p>Let&rsquo;s take a look at it!</p>
+<p>Let’s take a look at it!</p>
 
 <p><strong>Path:</strong> <code class="prettyprint">models/user.rb</code></p>
 <pre class="highlight ruby"><code><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
@@ -290,7 +336,7 @@ we&rsquo;re creating a new User instance using ActiveRecord::Base class (<code c
   <span class="p">}</span>
 <span class="k">end</span>
 </code></pre>
-<p>As you can see, there are no new methods defined, but I&rsquo;ve
+<p>As you can see, there are no new methods defined, but I’ve
 added some validations:</p>
 
 <ol>
@@ -301,7 +347,7 @@ added some validations:</p>
 <p>You can add validation for <code class="prettyprint">:email</code> field as well, but the best
 validation for e-mail is sending a mail to it with a confirmation link.</p>
 
-<p>And&hellip; we&rsquo;re done! Now you should able to run your application with
+<p>And… we’re done! Now you should able to run your application with
 <code class="prettyprint">rackup -p 3000</code>.</p>
 
 <ul>
@@ -314,7 +360,13 @@ validation for e-mail is sending a mail to it with a confirmation link.</p>
 inside and the empty <code class="prettyprint">data</code> array).</p>
 
 <p>If you have any questions, feel free to ask them in the comments!</p>
-</div><div class="links"><p><a class="external-link" href="//github.com/Defman21/simple-sinatra-app"><i class="fa fa-github"></i> Simple Sinatra App</a></p></div></div><div class="container comments"><div class="comments"><div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+</div>
+<div class="links"><p><a class="external-link" href="//github.com/Defman21/simple-sinatra-app"><i class="fa fa-github"></i> Simple Sinatra App</a></p></div>
+</div>
+<div class="container comments"><div class="comments">
+<div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div>
+<div id="disqus_thread"></div>
+<script>var disqus_config = function () {
     this.page.url = "http://defman.me/blog/sinatra-app/";
     this.page.identifier = "201605101630-create-sinatra-app";
 };
@@ -326,4 +378,10 @@ var loadDisqusComments = (function() {
 
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
-});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a></div></footer></div><script src="/assets/javascripts/jquery.js?1483180169"></script><script src="/assets/javascripts/main.js?1483180169"></script></body></html>
+});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>
+</noscript>
+</div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me © 2016</a></div></footer>
+</div>
+<script src="/assets/javascripts/jquery.js?1483186244"></script><script src="/assets/javascripts/main.js?1483186244"></script><script src="/assets/javascripts/search.js?1483186244"></script>
+</body>
+</html>

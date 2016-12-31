@@ -1,13 +1,58 @@
-<!DOCTYPE html><html><head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#"><meta content="IE-edge" http-equiv="X-UA-Compatible" /><meta charset="utf-8" /><meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" /><meta content="#BA488A" name="theme-color" /><title>Better screenshots in elementary OS</title><meta content="There are 2 different tools to make screenshots in eOS. We'll merge them into one to cover gtk2, gtk3 and qt apps." name="description" /><meta content="Better screenshots in elementary OS" property="og:title" /><meta content="article" property="og:type" /><meta content="There are 2 different tools to make screenshots in eOS. We'll merge them into one to cover gtk2, gtk3 and qt apps." property="og:description" /><meta content="Defman.me" property="og:site_name" /><meta content="//defman.me/blog/elementary-os-screenshots/" property="og:url" /><meta content="Sergey Kislyakov" property="article:author" /><meta content="elementary" property="article:tag" /><meta content="bash" property="article:tag" /><meta content="script" property="article:tag" /><meta content="shell" property="article:tag" /><meta content="screenshots" property="article:tag" /><link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet" /><link href="/assets/stylesheets/font-awesome.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/index.css?1483180169" rel="stylesheet" /><link href="/assets/stylesheets/highlight/styles.css?1483180169" rel="stylesheet" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile# article: http://ogp.me/ns/article#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="IE-edge" http-equiv="X-UA-Compatible">
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="#BA488A" name="theme-color">
+<title>Better screenshots in elementary OS</title>
+<meta content="There are 2 different tools to make screenshots in eOS. We'll merge them into one to cover gtk2, gtk3 and qt apps." name="description">
+<meta content="Better screenshots in elementary OS" property="og:title">
+<meta content="article" property="og:type">
+<meta content="There are 2 different tools to make screenshots in eOS. We'll merge them into one to cover gtk2, gtk3 and qt apps." property="og:description">
+<meta content="Defman.me" property="og:site_name">
+<meta content="//defman.me/blog/elementary-os-screenshots/" property="og:url">
+<meta content="Sergey Kislyakov" property="article:author">
+<meta content="elementary" property="article:tag">
+<meta content="bash" property="article:tag">
+<meta content="script" property="article:tag">
+<meta content="shell" property="article:tag">
+<meta content="screenshots" property="article:tag">
+<link href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Slab" rel="stylesheet">
+<link href="/assets/stylesheets/font-awesome.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/index.css?1483186244" rel="stylesheet">
+<link href="/assets/stylesheets/highlight/styles.css?1483186244" rel="stylesheet">
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-52157854-2', 'auto');
-ga('send', 'pageview');</script></head><body><header><div class="overlay"><div class="logo"><a href="/">Defman.me</a></div><nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav></div></header><div class="overlay"><main><div class="container article page" id="201607231539-elementary-os-screenshots"><span class="title">Better screenshots in elementary OS</span><div class="infobar"><span class="readtime"><i class="fa fa-clock-o"></i> 1 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> July 23, 2016</span><span class="tags"><i class="fa fa-tags"></i> elementary, bash, script, shell, screenshots</span></div><div class="content"><p>Create this script in your <code class="prettyprint">$HOME</code> directory:</p>
+ga('send', 'pageview');</script>
+</head>
+<body>
+<header><div class="overlay">
+<div class="logo"><a href="/">Defman.me</a></div>
+<div id="search">
+<div class="icon"><div class="i fa fa-search"></div></div>
+<input autocomplete="off" placeholder="Search.."><div id="results"></div>
+<script>search_config = {
+    type: "articles",
+    show_type: false
+};</script>
+</div>
+<nav><a href="/blog" id="blog">BLOG</a><a href="/projects" id="projects">PROJECTS</a><a href="/schemes" id="schemes">SCHEMES</a></nav>
+</div></header><div class="overlay">
+<main><div class="container article page" id="201607231539-elementary-os-screenshots">
+<span class="title">Better screenshots in elementary OS</span><div class="infobar">
+<span class="readtime"><i class="fa fa-clock-o"></i> 1 min read</span><span class="timestamp"><i class="fa fa-calendar"></i> July 23, 2016</span><span class="tags"><i class="fa fa-tags"></i> elementary, bash, script, shell, screenshots</span>
+</div>
+<div class="content">
+<p>Create this script in your <code class="prettyprint">$HOME</code> directory:</p>
 
 <script src="https://gist.github.com/Defman21/a0dcd8ad164928b4b7509f48ef5ee087.js"></script>
 
-<p>I&rsquo;ll explain it.</p>
+<p>I’ll explain it.</p>
 
 <p>The first line is our temporary file which we will use for:</p>
 
@@ -20,28 +65,28 @@ ga('send', 'pageview');</script></head><body><header><div class="overlay"><div c
 
 <p><code class="prettyprint">GTKVERSION</code> variable is used to detect GTK version because we will use
 <code class="prettyprint">screenshot-tool</code> for GTK3 applications and <code class="prettyprint">gnome-screenshot</code> for GTK2/Qt
-applications. If you&rsquo;re confused about why you have to use 2 different
-applications, I&rsquo;ll explain it: there&rsquo;s a bug when you&rsquo;re trying to make a
-screenshot of a GTK2/Qt app using <code class="prettyprint">screenshot-tool</code> - you won&rsquo;t see any WM
-decorations on it. And there&rsquo;s a bug in <code class="prettyprint">gnome-screenshot</code>: if you try to
+applications. If you’re confused about why you have to use 2 different
+applications, I’ll explain it: there’s a bug when you’re trying to make a
+screenshot of a GTK2/Qt app using <code class="prettyprint">screenshot-tool</code> - you won’t see any WM
+decorations on it. And there’s a bug in <code class="prettyprint">gnome-screenshot</code>: if you try to
 make a screenshot of a GTK3 application, it will grab its shadow effet as well.
-There&rsquo;s no problem with shadows, but the problem is that <code class="prettyprint">gnome-screenshot</code> will
+There’s no problem with shadows, but the problem is that <code class="prettyprint">gnome-screenshot</code> will
 grab everything under the shadow as well (= your desktop, browser ,etc.)</p>
 
 <p><code class="prettyprint">SCRPROGRAM</code> variable contains  the program that will be used to create a
-screenshot. It could be changed at runtime if we&rsquo;re trying to capture a
-GTK3 <strong>window</strong>. If that&rsquo;s the case, the script will run <code class="prettyprint">screenshot-tool</code>. If
-not (we&rsquo;re trying to make a screenshot of a GTK2/Qt window or capture an area
+screenshot. It could be changed at runtime if we’re trying to capture a
+GTK3 <strong>window</strong>. If that’s the case, the script will run <code class="prettyprint">screenshot-tool</code>. If
+not (we’re trying to make a screenshot of a GTK2/Qt window or capture an area
 of GTK3/GTK2/Qt window) - the script will run <code class="prettyprint">gnome-screenshot</code>, add the shadow
 effect to it and copy the final result to clipboard.</p>
 
-<p>When you&rsquo;re making a screenshot of a GTK3 application, you&rsquo;ll be prompted for
+<p>When you’re making a screenshot of a GTK3 application, you’ll be prompted for
 the name of your screenshot. You have to name it <code class="prettyprint">tmp</code> and save it under <code class="prettyprint">~/</code>.</p>
 
 <p>Once you did that, the screenshot will be copied to your clipboard and the
 temporary file will be removed.</p>
 
-<p>You should have ImageMagick, <code class="prettyprint">awk</code> and <code class="prettyprint">xclip</code> installed. I&rsquo;m sure they are
+<p>You should have ImageMagick, <code class="prettyprint">awk</code> and <code class="prettyprint">xclip</code> installed. I’m sure they are
 already installed except for <code class="prettyprint">xclip</code>: <code class="prettyprint"># apt install xclip</code>.</p>
 
 <h1>Usage</h1>
@@ -53,13 +98,19 @@ already installed except for <code class="prettyprint">xclip</code>: <code class
 <p><code class="prettyprint">~/screenshot.sh -w -d 5</code> - capture focused window with 5 sec delay.</p>
 
 <p>You can pass <code class="prettyprint">gnome-screenshot</code> arguments and <code class="prettyprint">screenshot-tool</code> arguments
-depends on what you&rsquo;re trying to capture.</p>
+depends on what you’re trying to capture.</p>
 
 <h1>Examples</h1>
 
-<p><img src="/assets/images/eos-komodo.png" alt="eos-komodo.png" />
-<img src="/assets/images/eos-terminal.png" alt="eos-terminal.png" /></p>
-</div><div class="links"><p><a class="external-link" href="//gist.github.com/Defman21/a0dcd8ad164928b4b7509f48ef5ee087"><i class="fa fa-github"></i> Gist</a></p></div></div><div class="container comments"><div class="comments"><div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+<p><img src="/assets/images/eos-komodo.png" alt="eos-komodo.png">
+<img src="/assets/images/eos-terminal.png" alt="eos-terminal.png"></p>
+</div>
+<div class="links"><p><a class="external-link" href="//gist.github.com/Defman21/a0dcd8ad164928b4b7509f48ef5ee087"><i class="fa fa-github"></i> Gist</a></p></div>
+</div>
+<div class="container comments"><div class="comments">
+<div id="load_comments_wrapper"><div id="load_comments">Join the discussion</div></div>
+<div id="disqus_thread"></div>
+<script>var disqus_config = function () {
     this.page.url = "http://defman.me/blog/elementary-os-screenshots/";
     this.page.identifier = "201607231539-elementary-os-screenshots";
 };
@@ -71,4 +122,10 @@ var loadDisqusComments = (function() {
 
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
-});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript></div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me &copy; 2016</a></div></footer></div><script src="/assets/javascripts/jquery.js?1483180169"></script><script src="/assets/javascripts/main.js?1483180169"></script></body></html>
+});</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>
+</noscript>
+</div></div></main><footer><div class="copyright"><a href="//github.com/Defman21/defman.me">defman.me © 2016</a></div></footer>
+</div>
+<script src="/assets/javascripts/jquery.js?1483186244"></script><script src="/assets/javascripts/main.js?1483186244"></script><script src="/assets/javascripts/search.js?1483186244"></script>
+</body>
+</html>
