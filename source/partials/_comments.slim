@@ -1,4 +1,4 @@
-- unless current_page.data.comments == false
+- unless current_page.data.comments == false || current_page.data.date?
     .comments
         #load_comments_wrapper
             #load_comments Join the discussion
@@ -20,3 +20,7 @@
         noscript
             ' Please enable JavaScript to view the
             = link_to 'comments powered by Disqus', 'https://disqus.com/?ref_noscript'
+- else
+    .comments
+        #load_comments_wrapper
+            #load_comments.disabled Archieved post

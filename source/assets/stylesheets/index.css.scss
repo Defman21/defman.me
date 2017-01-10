@@ -347,6 +347,17 @@ main {
         padding: $padding-small;
         border-radius: 2px;
         cursor: pointer;
+        
+        &.disabled {
+            border-color: $inactive;
+            color: $inactive;
+            transition: all $transition ease;
+            
+            &:hover {
+                border-color: $foreground-special;
+                color: $foreground-special;
+            }
+        }
     }
 }
 
