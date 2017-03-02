@@ -10,7 +10,7 @@ project:
 tags: komodo terminal butterfly add-on
 links:
     Package:
-        href: //komodoide.com/packages/terminal
+        href: http://community.komodoide.com/packages/addons/terminal/
         fa: archive
 ---
 This adds a tabbed terminal to the bottom panel in Komodo. It is powered by
