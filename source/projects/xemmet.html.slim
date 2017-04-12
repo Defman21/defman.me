@@ -74,25 +74,16 @@ js:
                         and it will put your text at this placeholder. If there's
                         no such brackets, Xemmet will automatically add them the end of
                         your abbreviation.
-            .subblock#toolbox-integration
+            .subblock#snippets
                 span.title
-                    ' Toolbox Integration
-                    = link_to "<i class='fa fa-link'></i>", "#toolbox-integration"
+                    ' Snippets
+                    = link_to "<i class='fa fa-link'></i>", "#snippets"
                 .description
-                    |
-                        Xemmet provides a very simple way to define your own abbreviations. You can create a snippet in your Toolbox
-                        and Xemmet will find it.
-                    br
-                    |
-                        A snippet should be named <code>xemmet_%Abbreviation</code>
-                        and be in <code>Abbreviations - general</code> folder.
-                        If you want it to be language-specific, put it in
-                        <code>Abbreviations - css/html</code> folder.
-                        It works in Project-specific toolbox too!
-                    .note
-                        |
-                            You can override default abbreviations. Name your snippet
-                            in the same way as the abbreviation you want to override.
+                    '
+                        Xemmet supports custom snippets/abbreviations.
+                        To create them, open your profile folder, create the
+                        <code>snippets.json</code> file and read
+                    = link_to "this article.", "https://docs.emmet.io/customization/snippets/"
             .subblock#flexible-settings
                 span.title
                     ' Flexible Settings
@@ -102,5 +93,5 @@ js:
                         Xemmet provides different settings you can customize.
                         You can find them under <code>Editor - Smart Editing</code>.
     .copyright
-        ' Xemmet &copy; 2016 by
+        ' Xemmet &copy; 2017 by
         = link_to "Defman21", "/"
