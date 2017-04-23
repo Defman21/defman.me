@@ -26,14 +26,14 @@ css:
             <i class="fa fa-twitter"></i> My tweets</a>
     </div>
     <div class="link blog">
-        <a href="/blog">
+        <a href="//blog.defman.me">
             <i class="fa fa-rss"></i> My blog</a>
     </div>
 </section>
 
 <section>
     I play games. You can add me on Steam if you want.
-    
+
     <div class="link steam">
         <a href="//steamcommunity.com/id/defman21">
             <i class="fa fa-steam"></i> My Steam
@@ -46,10 +46,10 @@ css:
     I use Telegram to chat with people. If you too, we can chat then.
     
     <div class="link telegram">
-        <a href="//telegram.me/defman">
+        <a href="//t.me/defman">
             <i class="fa fa-paper-plane"></i> My Telegram
         </a>
     </div>
 </section>
 
-[1]: http://forum.komodoide.com/
+[1]: https://community.komodoide.com/
