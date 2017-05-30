@@ -2,7 +2,8 @@
 @import "normalize";
 
 body {
-    font: $font-normal Roboto;
+    font-size: $font-normal;
+    font-family: Roboto, sans-serif;
     background: $background;
     color: $foreground;
 }

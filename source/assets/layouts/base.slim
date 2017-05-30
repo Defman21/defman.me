@@ -11,7 +11,7 @@ html
         - unless defined? current_page.data.og
             = partial "partials/og_meta"
         
-        = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab"
+        = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Slab:300,400,500"
         = stylesheet_link_tag "font-awesome"
         - if content_for? :base
             = stylesheet_link_tag :index
